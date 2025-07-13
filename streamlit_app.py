@@ -2,10 +2,16 @@ import streamlit as st
 
 st.title("Chemical Analysis")
 st.title("_chemical_ is :blue[cool] :sunglasses:")
-project-folder/
-│
-├── streamlit_app.py       # Main file utama
-├── slide1.py              # File untuk konten slide 1
-├── slide2.py              # File untuk konten slide 2
-├── slide3.py              # (Opsional) Slide tambahan
-└── requirements.txt       # Buat deploy ke Streamlit Cloud
+import streamlit as st
+
+tab1, tab2, tab3 = st.tabs(["Cat", "Dog", "Owl"])
+
+with tab1:
+    st.header("A cat")
+    st.image("https://static.streamlit.io/examples/cat.jpg", width=200)
+with tab2:
+    st.header("A dog")
+    st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
+with tab3:
+    st.header("An owl")
+    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
