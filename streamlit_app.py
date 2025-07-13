@@ -4,7 +4,7 @@ st.title("Chemical Analysis")
 st.title("_chemical_ is :blue[cool] :sunglasses:")
 import streamlit as st
 
-tab1, tab2, tab3, tab4 = st.tabs(["Cat", "Dog", "Owl", "Tabel"])
+tab1, tab2, tab3, tab4, tab5, tab6= st.tabs(["Beranda", "Tabel Periodik", "Regresi", "Ketidakpastian", "Cover"t, "Titrasi"])
 
 with tab1:
     st.header("Regresi Linear ")
@@ -16,5 +16,11 @@ with tab3:
     st.header("An owl")
     st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
 with tab4:
+    st.header("Titrasi")
+    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
+with tab5:
+    st.header("Titrasi")
+    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
+with tab6:
     st.header("Titrasi")
     st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
