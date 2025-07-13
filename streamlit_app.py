@@ -4,7 +4,7 @@ st.title("Chemical Analysis")
 st.title("_chemical_ is :blue[cool] :sunglasses:")
 import streamlit as st
 
-tab1, tab2, tab3, tab4, tab5, tab6= st.tabs(["Beranda", "Tabel Periodik", "Regresi", "Ketidakpastian", "Cover"t, "Titrasi"])
+tab1, tab2, tab3, tab4, tab5, tab6= st.tabs(["Beranda", "Tabel Periodik", "Regresi", "Ketidakpastian", "Konversi", "Titrasi"])
 
 with tab1:
     st.header("Regresi Linear ")
