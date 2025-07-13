@@ -2,26 +2,23 @@ import streamlit as st
 
 st.title("Chemical Analysis")
 st.title("_chemical_ is :blue[cool] :sunglasses:")
-import React, { useState } from "react";
-import Slide1 from "./Slide1";
-import Slide2 from "./Slide2";
+import streamlit as st
+import slide1
+import slide2
+import slide3  # Kalau kamu tambah slide lain
 
-function App() {
-  const [tab, setTab] = useState("slide1");
+st.set_page_config(page_title="Slide Interaktif", layout="wide")
 
-  return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Slide App dengan Tabs</h1>
-      <div className="flex space-x-4 mb-4">
-        <button onClick={() => setTab("slide1")}>Slide 1</button>
-        <button onClick={() => setTab("slide2")}>Slide 2</button>
-      </div>
-      <div className="border p-4 rounded">
-        {tab === "slide1" && <Slide1 />}
-        {tab === "slide2" && <Slide2 />}
-      </div>
-    </div>
-  );
-}
+st.title("📊 Aplikasi Slide Interaktif Berbasis Streamlit")
 
-export default App;
+# Tabs untuk setiap slide
+tab1, tab2, tab3 = st.tabs(["🧪 Slide 1", "📈 Slide 2", "📘 Slide 3"])
+
+with tab1:
+    slide1.show()
+
+with tab2:
+    slide2.show()
+
+with tab3:
+    slide3.show()
