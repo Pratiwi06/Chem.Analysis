@@ -69,12 +69,31 @@ with tab3:
     if "y_sampel" not in st.session_state:
         st.session_state.y_sampel = 0.0
 
-    x_input = st.text_input("Konsentrasi Standar (x), pisahkan koma", st.session_state.x_input)
-    y_input = st.text_input("Absorbansi Standar (y), pisahkan koma", st.session_state.y_input)
-    y_sampel = st.number_input("Absorbansi Sampel", step=0.001, format="%.3f", value=st.session_state.y_sampel)
-
     if "clear_state" not in st.session_state:
+    st.session_state.clear_state = False
+
+if not st.session_state.clear_state:
+    st.session_state.x_input = st.text_input("Konsentrasi Standar (x), pisahkan koma", st.session_state.x_input)
+    st.session_state.y_input = st.text_input("Absorbansi Standar (y), pisahkan koma", st.session_state.y_input)
+    st.session_state.y_sampel = st.number_input("Absorbansi Sampel", step=0.001, format="%.3f", value=st.session_state.y_sampel)
+
+    col1, col2 = st.columns([1, 1])
+    hitung = col1.button("🔍 Hitung")
+    clear = col2.button("❌ Clear")
+    if clear:
+        st.session_state.clear_state = True
+        st.experimental_rerun()
+else:
+    col1, col2 = st.columns([1, 1])
+    dummy = col1.empty()
+    back = col2.button("🔁 Kembali")
+    if back:
         st.session_state.clear_state = False
+        st.session_state.x_input = ""
+        st.session_state.y_input = ""
+        st.session_state.y_sampel = 0.0
+        st.experimental_rerun()
+
 
     if not st.session_state.clear_state:
         col1, col2 = st.columns([1, 1])
