@@ -1,28 +1,6 @@
-# ==================== PAGE CONFIG & TITLE =====================
-st.set_page_config(page_title="Chemical Analysis App", layout="wide")
-st.title("Chemical Analysis")
-st.title("_chemical_ is :blue[cool] :sunglasses:")
-
-# ==================== TAB 1 =====================
-with tab1:
-    st.header("📏 Regresi Linear dan Ketidakpastian Pengukuran")
-    st.subheader("Selamat datang di aplikasi analisis kimia!")
-    st.write("Gunakan tab-tab di atas untuk menjelajahi fitur seperti regresi, konversi satuan, dan tabel periodik interaktif.")
-    st.image("https://static.streamlit.io/examples/dog.jpg", width=200)
-
-# ==================== TAB 2 =====================
-with tab2:
-    st.header("Tabel Periodik")
-    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
-
 # ==================== TAB 3 =====================
 with tab3:
     st.header(":bar_chart: Regresi Linear dan Ketidakpastian Regresi")
-
-    # Initialize session state
-    for key, default in [("x_input", ""), ("y_input", "")]:  # removed y_sampel state
-        if key not in st.session_state:
-            st.session_state[key] = default
 
     # Input fields
     x_input = st.text_input("Konsentrasi Standar (x), pisahkan koma", st.session_state.x_input)
