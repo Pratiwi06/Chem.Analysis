@@ -1,5 +1,6 @@
 mu_reg = (Sy / abs(m)) * np.sqrt((1 / n) + (np.mean((x_vals - x_mean) ** 2) / sum_sq_x)) if m else 0.0
                 r = np.corrcoef(x_vals, y_vals)[0, 1]
+                r = np.corrcoef(x_vals, y_vals)[0, 1]
                 R2 = r ** 2
 
                 st.success(f"Persamaan regresi: y = {m:.4f}x + {b:.4f}")
