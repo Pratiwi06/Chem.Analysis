@@ -99,7 +99,7 @@ with tab3:
 
                 st.success(f"Persamaan regresi: y = {m:.4f}x + {b:.4f}")
                 if y_sampel > 0:
-                    st.info(f"Hasil konsentrasi sampel = {x_sampel:.2f} ± {mu_reg:.2f} (\u03bc_reg)")
+                    st.info(f"Hasil konsentrasi sampel = {x_sampel:.2f} ± {mu_reg:.2f} (μ_reg)")
                 st.write(f"Koefisien Korelasi (r): **{r:.4f}**")
                 st.write(f"Koefisien Determinasi (R²): **{R2:.4f}**")
 
@@ -113,13 +113,13 @@ with tab3:
                 ax.legend()
                 st.pyplot(fig)
 
-                if st.button("🎯 Hitung Ketidakpastian"):
-                    uc = mu_reg
-                    U = 2 * uc
-                    st.header("📤 Hasil Akhir")
-                    st.write(f"Ketidakpastian gabungan (uc): **{uc:.4f}**")
-                    st.write(f"Ketidakpastian diperluas (U, k=2): **{U:.4f}**")
-                    st.success(f"🔬 Konsentrasi Sampel: **{x_sampel:.2f} ± {U:.2f}** (95% CI)")
+                # Hitung otomatis ketidakpastian tanpa klik tombol
+                uc = mu_reg
+                U = 2 * uc
+                st.header("📤 Hasil Akhir")
+                st.write(f"Ketidakpastian gabungan (uc): **{uc:.4f}**")
+                st.write(f"Ketidakpastian diperluas (U, k=2): **{U:.4f}**")
+                st.success(f"🔬 Konsentrasi Sampel: **{x_sampel:.2f} ± {U:.2f}** (95% CI)")
         except Exception as e:
             st.warning(f"❌ Masukkan data numerik yang valid. Kesalahan: {e}")
     else:
