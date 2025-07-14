@@ -1,8 +1,3 @@
-import streamlit as st
-from math import sqrt
-import numpy as np
-import matplotlib.pyplot as plt
-
 st.set_page_config(page_title="Chemical Analysis App", layout="wide")
 
 st.title("Chemical Analysis")
