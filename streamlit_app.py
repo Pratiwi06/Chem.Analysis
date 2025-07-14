@@ -65,7 +65,7 @@ with tab3:
                 y_fit = m * x_vals + b
                 Sy = np.sqrt(np.sum((y_vals - y_fit) ** 2) / (n - 2))
                 sum_sq_x = np.sum((x_vals - x_mean) ** 2)
-                mu_reg = (Sy / abs(m)) * np.sqrt((1 / n) + (np.mean((x_vals - x_mean) ** 2) / sum_sq_x)) if m else 0.0
+                mu_reg = (Sy / abs(m)) * np.sqrt((1/n) + (np.mean((x_vals - x_mean)**2) / sum_sq_x)) if m else 0.0
                 r = np.corrcoef(x_vals, y_vals)[0, 1]
                 R2 = r ** 2
 
