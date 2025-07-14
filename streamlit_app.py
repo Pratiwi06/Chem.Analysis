@@ -114,8 +114,7 @@ with tab3:
                     st.write(f"• Intercept (b): {b:.4f}")
                     st.write(f"Koefisien Korelasi (r): {r:.4f}")
                     st.write(f"Koefisien Determinasi (R²): {R2:.4f}")
-                    st.info(
-                        f"Hasil konsentrasi sampel = {x_sampel:.2f} ± {mu_reg:.2f} (μ_reg)"
+                    st.info(f"Ketidakpastian regresi (μ_reg): {mu_reg:.2f}")"
                     )
                     # Plot
                     fig, ax = plt.subplots()
