@@ -95,11 +95,9 @@ with tab3:
                     Sy = np.sqrt(np.sum((y_vals - y_fit) ** 2) / (n - 2))
                     sum_sq_x = np.sum((x_vals - x_mean) ** 2)
 
-                    if y_sampel > 0:
+                    if len(x_vals) > 1 and m != 0:
                         x_sampel = (y_sampel - b) / m
-                        mu_reg = Sy * np.sqrt(
-                            (1 / n) + ((x_sampel - x_mean) ** 2 / sum_sq_x)
-                        )
+                        mu_reg = (Sy / m) * sqrt((1 / n) + ((x_sampel - x_mean) ** 2 / sum_sq_x))
                     else:
                         mu_reg = 0
                         x_sampel = 0
