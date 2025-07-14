@@ -38,16 +38,14 @@ with tab2:
 
 # ==================== TAB 3 =====================
 with tab3:
-    st.header(":bar_chart: Regresi Linear dan Ketidakpastian Regresi")
+    st.header(":bar_chart: Regresi Linear")
 
-    # Input fields
     x_input = st.text_input("Konsentrasi Standar (x), pisahkan koma", "")
     y_input = st.text_input("Absorbansi Standar (y), pisahkan koma", "")
+    y_sample = st.text_input("Absorbansi Sampel (Opsional)", "")
 
-    # Tombol Hitung
     hitung = st.button("🔍 Hitung")
 
-    # Perform calculation when hitung pressed
     if hitung and x_input and y_input:
         try:
             x_vals = np.array([float(v) for v in x_input.split(",")])
@@ -65,8 +63,6 @@ with tab3:
                 y_fit = m * x_vals + b
                 Sy = np.sqrt(np.sum((y_vals - y_fit) ** 2) / (n - 2))
                 sum_sq_x = np.sum((x_vals - x_mean) ** 2)
-                # μ_reg sesuai rumus referensi gambar
-                mu_reg = (Sy / abs(m)) * np.sqrt((1 + (1 / n) + ((y_mean - np.mean(y_fit))**2 / (m**2 * sum_sq_x)))) if m else 0.0
                 r = np.corrcoef(x_vals, y_vals)[0, 1]
                 R2 = r ** 2
 
@@ -75,7 +71,17 @@ with tab3:
                 st.write(f"• Intercept (b): {b:.4f}")
                 st.write(f"Koefisien Korelasi (r): {r:.4f}")
                 st.write(f"Koefisien Determinasi (R²): {R2:.4f}")
-                st.info(f"Ketidakpastian regresi (μ_reg): {mu_reg:.4f}")
+
+                RSD = Sy / y_mean * 100 if y_mean else 0.0
+                st.write(f"RSD kurva regresi: {RSD:.2f}%")
+
+                if y_sample:
+                    try:
+                        y_sample_val = float(y_sample)
+                        mu_reg = (Sy / abs(m)) * np.sqrt(1 + (1 / n) + ((y_sample_val - y_mean) ** 2 / (m**2 * sum_sq_x))) if m else 0.0
+                        st.info(f"Ketidakpastian regresi (μ_reg): {mu_reg:.4f}")
+                    except:
+                        st.warning("Masukkan nilai numerik untuk absorbansi sampel.")
 
                 fig, ax = plt.subplots()
                 ax.scatter(x_vals, y_vals, label='Data')
@@ -84,10 +90,6 @@ with tab3:
                 ax.set_ylabel('Absorbansi')
                 ax.legend()
                 st.pyplot(fig)
-
-                U = 2 * mu_reg
-                st.write(f"Ketidakpastian gabungan (uc): {mu_reg:.4f}")
-                st.write(f"Ketidakpastian diperluas (U, k=2): {U:.4f}")
 
         except Exception as e:
             st.warning(f"❌ Masukkan data valid. Kesalahan: {e}")
