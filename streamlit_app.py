@@ -66,7 +66,14 @@ with tab3:
     y_input = st.text_input("Absorbansi Standar (y), pisahkan koma", "")
     y_sampel = st.number_input("Absorbansi Sampel", step=0.001, format="%.3f")
 
-    if st.button("🔍 Hitung"):
+    col1, col2 = st.columns([1, 1])
+    hitung = col1.button("🔍 Hitung")
+    clear = col2.button("❌ Clear")
+
+    if clear:
+        st.experimental_rerun()
+
+    if hitung:
         if x_input.strip() != "" and y_input.strip() != "":
             try:
                 x_vals = np.array([float(i.strip()) for i in x_input.split(",") if i.strip() != ""])
@@ -89,8 +96,10 @@ with tab3:
                     sum_sq_x = np.sum((x_vals - x_mean) ** 2)
 
                     if y_sampel > 0:
-                        mu_reg = (Sy / m) * np.sqrt((1 / n) + ((y_sampel - y_mean) ** 2 / (m ** 2 * sum_sq_x)))
                         x_sampel = (y_sampel - b) / m
+                        mu_reg = Sy * np.sqrt(
+                            (1 / n) + ((x_sampel - x_mean) ** 2 / sum_sq_x)
+                        )
                     else:
                         mu_reg = 0
                         x_sampel = 0
@@ -99,6 +108,7 @@ with tab3:
                     R2 = r ** 2
 
                     st.success(f"Persamaan regresi: y = {m:.4f}x + {b:.4f}")
+                    st.caption(f"Keterangan: slope (m) adalah sensitivitas, intercept (b) adalah nilai y saat x = 0")
                     if y_sampel > 0:
                         st.info(f"Hasil konsentrasi sampel = {x_sampel:.2f} ± {mu_reg:.2f} (μ_reg)")
                     st.write(f"Koefisien Korelasi (r): **{r:.4f}**")
