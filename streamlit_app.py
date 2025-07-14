@@ -60,12 +60,16 @@ with tab3:
     st.session_state.y_input = y_input
     st.session_state.y_sampel = y_sampel
 
-    # Buttons side by side
+        # Buttons side by side
     col1, col2 = st.columns(2)
     hitung = col1.button("🔍 Hitung")
-    clear = col2.button("❌ Clear Regresi")
+    clear = col2.button("❌ Clear Input")
 
     # Clear action
+    if clear:
+        for k in ["x_input", "y_input", "y_sampel"]:
+            st.session_state[k] = "" if isinstance(st.session_state[k], str) else 0.0
+        hitung = False
     if clear:
         for k in ["x_input", "y_input", "y_sampel"]:
             st.session_state[k] = "" if isinstance(st.session_state[k], str) else 0.0
