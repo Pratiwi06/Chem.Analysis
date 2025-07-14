@@ -62,7 +62,7 @@ with tab2:
 with tab3:
     st.header(":bar_chart: Regresi Linear dan Ketidakpastian Regresi")
 
-        if "x_input" not in st.session_state:
+    if "x_input" not in st.session_state:
         st.session_state.x_input = ""
     if "y_input" not in st.session_state:
         st.session_state.y_input = ""
@@ -73,7 +73,7 @@ with tab3:
     y_input = st.text_input("Absorbansi Standar (y), pisahkan koma", st.session_state.y_input)
     y_sampel = st.number_input("Absorbansi Sampel", step=0.001, format="%.3f", value=st.session_state.y_sampel)
 
-        if "clear_state" not in st.session_state:
+    if "clear_state" not in st.session_state:
         st.session_state.clear_state = False
 
     if not st.session_state.clear_state:
@@ -91,16 +91,13 @@ with tab3:
         dummy = col1.empty()
         back = col2.button("🔁 Kembali")
         if back:
-        st.session_state.clear_state = False
-        st.session_state.x_input = ""
-        st.session_state.y_input = ""
-        st.session_state.y_sampel = 0.0
-        st.experimental_rerun()
+            st.session_state.clear_state = False
+            st.session_state.x_input = ""
+            st.session_state.y_input = ""
+            st.session_state.y_sampel = 0.0
+            st.experimental_rerun()
 
     hitung = 'hitung' in locals() and hitung
-
-    if clear:
-        st.experimental_rerun()
 
     if hitung:
         if x_input.strip() != "" and y_input.strip() != "":
