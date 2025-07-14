@@ -34,7 +34,7 @@ with tab3:
 
     # Perform calculation when hitung pressed
     if hitung and x_input and y_input:
-            try:
+        try:
         x_vals = np.array([float(v) for v in x_input.split(",")])
         y_vals = np.array([float(v) for v in y_input.split(",")])
         if len(x_vals) != len(y_vals):
