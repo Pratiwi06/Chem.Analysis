@@ -65,9 +65,8 @@ with tab3:
     if "clear_state" not in st.session_state:
         st.session_state.clear_state = False
     if "has_calculated" not in st.session_state:
-    st.session_state.has_calculated = False
-
-if "x_input" not in st.session_state:
+        st.session_state.has_calculated = False
+    if "x_input" not in st.session_state:
         st.session_state.x_input = ""
     if "y_input" not in st.session_state:
         st.session_state.y_input = ""
@@ -83,26 +82,27 @@ if "x_input" not in st.session_state:
         st.session_state.y_input = y_input
         st.session_state.y_sampel = y_sampel
 
-                hitung = st.button("🔍 Hitung")
+        if not st.session_state.has_calculated:
+            if st.button("🔍 Hitung"):
+                st.session_state.has_calculated = True
+                st.experimental_rerun()
     else:
         col1, col2 = st.columns([1, 1])
         dummy = col1.empty()
         back = col2.button("🔁 Kembali")
         if back:
             st.session_state.clear_state = False
+            st.session_state.has_calculated = False
             st.session_state.x_input = ""
             st.session_state.y_input = ""
             st.session_state.y_sampel = 0.0
             st.experimental_rerun()
 
-    hitung = not st.session_state.clear_state and 'hitung' in locals() and hitung
-
-    if hitung:
-        st.session_state.has_calculated = True
-        if x_input.strip() != "" and y_input.strip() != "":
+    if st.session_state.has_calculated:
+        if st.session_state.x_input.strip() != "" and st.session_state.y_input.strip() != "":
             try:
-                x_vals = np.array([float(i.strip()) for i in x_input.split(",") if i.strip() != ""])
-                y_vals = np.array([float(i.strip()) for i in y_input.split(",") if i.strip() != ""])
+                x_vals = np.array([float(i.strip()) for i in st.session_state.x_input.split(",") if i.strip() != ""])
+                y_vals = np.array([float(i.strip()) for i in st.session_state.y_input.split(",") if i.strip() != ""])
 
                 if len(x_vals) != len(y_vals):
                     st.error("❌ Jumlah data x dan y tidak sama.")
@@ -121,7 +121,7 @@ if "x_input" not in st.session_state:
                     sum_sq_x = np.sum((x_vals - x_mean) ** 2)
 
                     if len(x_vals) > 1 and m != 0:
-                        x_sampel = (y_sampel - b) / m
+                        x_sampel = (st.session_state.y_sampel - b) / m
                         mu_reg = (Sy / m) * sqrt((1 / n) + ((x_sampel - x_mean) ** 2 / sum_sq_x))
                     else:
                         mu_reg = 0
@@ -132,10 +132,11 @@ if "x_input" not in st.session_state:
 
                     st.success(f"Persamaan regresi: y = {m:.4f}x + {b:.4f}")
                     st.caption(f"Keterangan: slope (m) adalah sensitivitas, intercept (b) adalah nilai y saat x = 0")
-                    if y_sampel > 0:
-                        st.info(f"Hasil konsentrasi sampel = {x_sampel:.2f} ± {mu_reg:.2f} (μ_reg)")
                     st.write(f"Koefisien Korelasi (r): **{r:.4f}**")
                     st.write(f"Koefisien Determinasi (R²): **{R2:.4f}**")
+
+                    if st.session_state.y_sampel > 0:
+                        st.info(f"Hasil konsentrasi sampel = {x_sampel:.2f} ± {mu_reg:.2f} (μ_reg)")
 
                     fig, ax = plt.subplots()
                     ax.scatter(x_vals, y_vals, color='blue', label='Data')
@@ -156,17 +157,15 @@ if "x_input" not in st.session_state:
                     if st.button("❌ Clear"):
                         st.session_state.clear_state = True
                         st.session_state.has_calculated = False
+                        st.session_state.x_input = ""
+                        st.session_state.y_input = ""
+                        st.session_state.y_sampel = 0.0
                         st.experimental_rerun()
             except Exception as e:
                 st.warning(f"❌ Masukkan data numerik yang valid. Kesalahan: {e}")
         else:
             st.info("⬅️ Masukkan data x dan y terlebih dahulu untuk mulai perhitungan.")
-            except Exception as e:
-                st.warning(f"❌ Masukkan data numerik yang valid. Kesalahan: {e}")
-        else:
-            st.info("⬅️ Masukkan data x dan y terlebih dahulu untuk mulai perhitungan.")
 
-# ==================== TAB 4 s.d. 6 =====================
 with tab4:
     st.header("Ketidakpastian Placeholder")
     st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
