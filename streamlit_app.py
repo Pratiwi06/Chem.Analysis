@@ -66,64 +66,63 @@ with tab3:
     y_input = st.text_input("Absorbansi Standar (y), pisahkan koma", "")
     y_sampel = st.number_input("Absorbansi Sampel", step=0.001, format="%.3f")
 
-    if x_input.strip() != "" and y_input.strip() != "":
-        try:
-            x_vals = np.array([float(i.strip()) for i in x_input.split(",") if i.strip() != ""])
-            y_vals = np.array([float(i.strip()) for i in y_input.split(",") if i.strip() != ""])
+    if st.button("🔍 Hitung"):
+        if x_input.strip() != "" and y_input.strip() != "":
+            try:
+                x_vals = np.array([float(i.strip()) for i in x_input.split(",") if i.strip() != ""])
+                y_vals = np.array([float(i.strip()) for i in y_input.split(",") if i.strip() != ""])
 
-            if len(x_vals) != len(y_vals):
-                st.error("❌ Jumlah data x dan y tidak sama.")
-            elif len(x_vals) < 2:
-                st.warning("❗ Minimal 2 pasang data diperlukan untuk regresi.")
-            else:
-                n = len(x_vals)
-                x_mean = np.mean(x_vals)
-                y_mean = np.mean(y_vals)
-
-                m = np.sum((x_vals - x_mean) * (y_vals - y_mean)) / np.sum((x_vals - x_mean) ** 2)
-                b = y_mean - m * x_mean
-                y_fit = m * x_vals + b
-
-                Sy = np.sqrt(np.sum((y_vals - y_fit) ** 2) / (n - 2))
-                sum_sq_x = np.sum((x_vals - x_mean) ** 2)
-
-                if y_sampel > 0:
-                    mu_reg = (Sy / m) * np.sqrt((1 / n) + ((y_sampel - y_mean) ** 2 / (m ** 2 * sum_sq_x)))
-                    x_sampel = (y_sampel - b) / m
+                if len(x_vals) != len(y_vals):
+                    st.error("❌ Jumlah data x dan y tidak sama.")
+                elif len(x_vals) < 2:
+                    st.warning("❗ Minimal 2 pasang data diperlukan untuk regresi.")
                 else:
-                    mu_reg = 0
-                    x_sampel = 0
+                    n = len(x_vals)
+                    x_mean = np.mean(x_vals)
+                    y_mean = np.mean(y_vals)
 
-                r = np.corrcoef(x_vals, y_vals)[0, 1]
-                R2 = r ** 2
+                    m = np.sum((x_vals - x_mean) * (y_vals - y_mean)) / np.sum((x_vals - x_mean) ** 2)
+                    b = y_mean - m * x_mean
+                    y_fit = m * x_vals + b
 
-                st.success(f"Persamaan regresi: y = {m:.4f}x + {b:.4f}")
-                if y_sampel > 0:
-                    st.info(f"Hasil konsentrasi sampel = {x_sampel:.2f} ± {mu_reg:.2f} (μ_reg)")
-                st.write(f"Koefisien Korelasi (r): **{r:.4f}**")
-                st.write(f"Koefisien Determinasi (R²): **{R2:.4f}**")
+                    Sy = np.sqrt(np.sum((y_vals - y_fit) ** 2) / (n - 2))
+                    sum_sq_x = np.sum((x_vals - x_mean) ** 2)
 
-                # Tambah grafik
-                fig, ax = plt.subplots()
-                ax.scatter(x_vals, y_vals, color='blue', label='Data')
-                ax.plot(x_vals, y_fit, color='red', label='Regresi Linear')
-                ax.set_xlabel("Konsentrasi")
-                ax.set_ylabel("Absorbansi")
-                ax.set_title("Kurva Kalibrasi")
-                ax.legend()
-                st.pyplot(fig)
+                    if y_sampel > 0:
+                        mu_reg = (Sy / m) * np.sqrt((1 / n) + ((y_sampel - y_mean) ** 2 / (m ** 2 * sum_sq_x)))
+                        x_sampel = (y_sampel - b) / m
+                    else:
+                        mu_reg = 0
+                        x_sampel = 0
 
-                # Hitung otomatis ketidakpastian tanpa klik tombol
-                uc = mu_reg
-                U = 2 * uc
-                st.header("📤 Hasil Akhir")
-                st.write(f"Ketidakpastian gabungan (uc): **{uc:.4f}**")
-                st.write(f"Ketidakpastian diperluas (U, k=2): **{U:.4f}**")
-                st.success(f"🔬 Konsentrasi Sampel: **{x_sampel:.2f} ± {U:.2f}** (95% CI)")
-        except Exception as e:
-            st.warning(f"❌ Masukkan data numerik yang valid. Kesalahan: {e}")
-    else:
-        st.info("⬅️ Masukkan data x dan y terlebih dahulu untuk mulai perhitungan.")
+                    r = np.corrcoef(x_vals, y_vals)[0, 1]
+                    R2 = r ** 2
+
+                    st.success(f"Persamaan regresi: y = {m:.4f}x + {b:.4f}")
+                    if y_sampel > 0:
+                        st.info(f"Hasil konsentrasi sampel = {x_sampel:.2f} ± {mu_reg:.2f} (μ_reg)")
+                    st.write(f"Koefisien Korelasi (r): **{r:.4f}**")
+                    st.write(f"Koefisien Determinasi (R²): **{R2:.4f}**")
+
+                    fig, ax = plt.subplots()
+                    ax.scatter(x_vals, y_vals, color='blue', label='Data')
+                    ax.plot(x_vals, y_fit, color='red', label='Regresi Linear')
+                    ax.set_xlabel("Konsentrasi")
+                    ax.set_ylabel("Absorbansi")
+                    ax.set_title("Kurva Kalibrasi")
+                    ax.legend()
+                    st.pyplot(fig)
+
+                    uc = mu_reg
+                    U = 2 * uc
+                    st.header("📤 Hasil Akhir")
+                    st.write(f"Ketidakpastian gabungan (uc): **{uc:.4f}**")
+                    st.write(f"Ketidakpastian diperluas (U, k=2): **{U:.4f}**")
+                    st.success(f"🔬 Konsentrasi Sampel: **{x_sampel:.2f} ± {U:.2f}** (95% CI)")
+            except Exception as e:
+                st.warning(f"❌ Masukkan data numerik yang valid. Kesalahan: {e}")
+        else:
+            st.info("⬅️ Masukkan data x dan y terlebih dahulu untuk mulai perhitungan.")
 
 # ==================== TAB 4 s.d. 6 =====================
 with tab4:
