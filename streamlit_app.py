@@ -56,26 +56,22 @@ with tab3:
     x_input = st.text_input("Konsentrasi Standar (x), pisahkan koma", st.session_state.x_input)
     y_input = st.text_input("Absorbansi Standar (y), pisahkan koma", st.session_state.y_input)
     y_sampel = st.number_input("Absorbansi Sampel", step=0.001, format="%.3f", value=st.session_state.y_sampel)
-    st.session_state.x_input = x_input
-    st.session_state.y_input = y_input
-    st.session_state.y_sampel = y_sampel
 
-        # Buttons side by side
+    # Buttons side by side
     col1, col2 = st.columns(2)
     hitung = col1.button("🔍 Hitung")
     clear = col2.button("❌ Clear Input")
 
-    # Clear action
+    # Clear input action: reset session state and clear variables
     if clear:
-        for k in ["x_input", "y_input", "y_sampel"]:
-            st.session_state[k] = "" if isinstance(st.session_state[k], str) else 0.0
-        hitung = False
-    if clear:
-        for k in ["x_input", "y_input", "y_sampel"]:
-            st.session_state[k] = "" if isinstance(st.session_state[k], str) else 0.0
-        hitung = False
+        st.session_state.x_input = ""
+        st.session_state.y_input = ""
+        st.session_state.y_sampel = 0.0
+        x_input = ""
+        y_input = ""
+        y_sampel = 0.0
 
-    # Perform calculation
+    # Perform calculation when hitung pressed
     if hitung and x_input and y_input:
         try:
             x_vals = np.array([float(v) for v in x_input.split(",")])
@@ -121,7 +117,7 @@ with tab3:
     elif hitung:
         st.info("⬅️ Masukkan data x dan y terlebih dahulu untuk perhitungan.")
 
-# ==================== TAB 4 - 6 ===================== - 6 =====================
+# ==================== TAB 4 - 6 ===================== - 6 ===================== - 6 =====================
 with tab4:
     st.header("Ketidakpastian Placeholder")
     st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
