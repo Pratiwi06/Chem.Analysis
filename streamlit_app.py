@@ -67,6 +67,7 @@ with tab3:
         st.session_state.x_input = ""
         st.session_state.y_input = ""
         st.session_state.y_sampel = 0.0
+        st.experimental_rerun()
         x_input = ""
         y_input = ""
         y_sampel = 0.0
