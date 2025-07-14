@@ -1,5 +1,71 @@
-mu_reg = (Sy / abs(m)) * np.sqrt((1 / n) + (np.mean((x_vals - x_mean) ** 2) / sum_sq_x)) if m else 0.0
-                r = np.corrcoef(x_vals, y_vals)[0, 1]
+import streamlit as st
+import numpy as np
+import matplotlib.pyplot as plt
+
+st.set_page_config(page_title="Chemical Analysis App", layout="wide")
+
+st.title("Chemical Analysis")
+st.title("_chemical_ is :blue[cool] :sunglasses:")
+
+# Buat tabs
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Beranda", "Tabel Periodik", "Regresi", "Ketidakpastian", "Konversi", "Titrasi"])
+
+# ==================== TAB 1 =====================
+with tab1:
+    st.header("📘 Selamat Datang di Aplikasi Analisis Kimia")
+    st.write("Aplikasi ini dirancang untuk membantu analisis data kimia seperti regresi linear, konversi satuan, dan perhitungan titrasi.")
+
+# ==================== TAB 2 =====================
+with tab2:
+    st.header("🔬 Tabel Periodik Interaktif")
+    elements = {
+        "hidrogen": {"nomor_atom": 1, "massa_atom": 1.008},
+        "helium": {"nomor_atom": 2, "massa_atom": 4.0026},
+        "litium": {"nomor_atom": 3, "massa_atom": 6.94},
+        "berilium": {"nomor_atom": 4, "massa_atom": 9.0122},
+        "boron": {"nomor_atom": 5, "massa_atom": 10.81},
+        "karbon": {"nomor_atom": 6, "massa_atom": 12.01},
+        "nitrogen": {"nomor_atom": 7, "massa_atom": 14.01},
+        "oksigen": {"nomor_atom": 8, "massa_atom": 16.00},
+        "fluorin": {"nomor_atom": 9, "massa_atom": 19.00},
+        "neon": {"nomor_atom": 10, "massa_atom": 20.18},
+    }
+    user_input = st.text_input("Masukkan nama unsur (contoh: karbon)").lower()
+    if user_input in elements:
+        st.success(f"Nomor Atom: {elements[user_input]['nomor_atom']}, Massa Atom: {elements[user_input]['massa_atom']}")
+    elif user_input:
+        st.warning("Unsur tidak ditemukan dalam database.")
+
+# ==================== TAB 3 =====================
+with tab3:
+    st.header(":bar_chart: Regresi Linear dan Ketidakpastian Regresi")
+
+    # Input fields
+    x_input = st.text_input("Konsentrasi Standar (x), pisahkan koma", "")
+    y_input = st.text_input("Absorbansi Standar (y), pisahkan koma", "")
+
+    # Tombol Hitung
+    hitung = st.button("🔍 Hitung")
+
+    # Perform calculation when hitung pressed
+    if hitung and x_input and y_input:
+        try:
+            x_vals = np.array([float(v) for v in x_input.split(",")])
+            y_vals = np.array([float(v) for v in y_input.split(",")])
+            if len(x_vals) != len(y_vals):
+                st.error("❌ Jumlah data x dan y tidak sama.")
+            elif len(x_vals) < 2:
+                st.warning("❗ Minimal 2 pasang data diperlukan.")
+            else:
+                n = len(x_vals)
+                x_mean = np.mean(x_vals)
+                y_mean = np.mean(y_vals)
+                m = np.sum((x_vals - x_mean) * (y_vals - y_mean)) / np.sum((x_vals - x_mean) ** 2)
+                b = y_mean - m * x_mean
+                y_fit = m * x_vals + b
+                Sy = np.sqrt(np.sum((y_vals - y_fit) ** 2) / (n - 2))
+                sum_sq_x = np.sum((x_vals - x_mean) ** 2)
+                mu_reg = (Sy / abs(m)) * np.sqrt((1 / n) + (np.mean((x_vals - x_mean) ** 2) / sum_sq_x)) if m else 0.0
                 r = np.corrcoef(x_vals, y_vals)[0, 1]
                 R2 = r ** 2
 
