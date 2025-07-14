@@ -123,22 +123,14 @@ with tab3:
                     ax.set_ylabel("Absorbansi")
                     ax.legend()
                     st.pyplot(fig)
-                    # Uncertainty output
+                                        # Uncertainty output
                     U = 2 * mu_reg
                     st.write(f"Ketidakpastian gabungan (uc): {mu_reg:.4f}")
                     st.write(f"Ketidakpastian diperluas (U, k=2): {U:.4f}")
-            except Exception as e:
-                st.warning(f"❌ Masukkan data valid. Kesalahan: {e}")
-        else:
-            st.info("⬅️ Masukkan data x dan y terlebih dahulu.")
-
-# ==================== TAB 4 - 6 ===================== - 6 =====================
-with tab4:
-    st.header("Ketidakpastian Placeholder")
-    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
-with tab5:
-    st.header("Konversi Placeholder")
-    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
-with tab6:
-    st.header("Titrasi Placeholder")
-    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
+                    # Clear button after results
+                    if st.button("❌ Clear Regresi"):
+                        st.session_state.has_calculated = False
+                        st.session_state.x_input = ""
+                        st.session_state.y_input = ""
+                        st.session_state.y_sampel = 0.0
+                        st.experimental_rerun()
