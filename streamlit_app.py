@@ -42,7 +42,7 @@ with tab3:
 
     x_input = st.text_input("Konsentrasi Standar (x), pisahkan koma", "")
     y_input = st.text_input("Absorbansi Standar (y), pisahkan koma", "")
-    y_sample = st.text_input("Absorbansi Sampel (Opsional)", "")
+    y_sample = st.text_input("Absorbansi Rata-Rata Sampel (Y₀) [Opsional]", "")
 
     hitung = st.button("🔍 Hitung")
 
@@ -78,9 +78,12 @@ with tab3:
                 if y_sample:
                     try:
                         y_sample_val = float(y_sample)
-                        mu_reg = (Sy / abs(m)) * np.sqrt(1 + (1 / n) + ((y_sample_val - y_mean) ** 2 / (m**2 * sum_sq_x))) if m else 0.0
+                        mu_reg = (Sy / abs(m)) * np.sqrt(1 + (1 / n) + ((y_sample_val - y_mean) ** 2) / (m**2 * sum_sq_x)) if m else 0.0
                         st.info(f"Ketidakpastian regresi (μ_reg): {mu_reg:.4f}")
                     except:
+    st.warning("Masukkan nilai numerik untuk absorbansi sampel.")
+else:
+    st.info("μ_reg tidak dihitung karena absorbansi sampel (Y₀) tidak diisi.")
                         st.warning("Masukkan nilai numerik untuk absorbansi sampel.")
 
                 fig, ax = plt.subplots()
