@@ -57,7 +57,7 @@ with tab3:
     if "y_sampel" not in st.session_state:
         st.session_state.y_sampel = 0.0
 
-    # Input section or Clear button
+    # Input and calculation trigger
     if not st.session_state.has_calculated:
         x_input = st.text_input(
             "Konsentrasi Standar (x), pisahkan koma", st.session_state.x_input
@@ -71,21 +71,11 @@ with tab3:
         st.session_state.x_input = x_input
         st.session_state.y_input = y_input
         st.session_state.y_sampel = y_sampel
+
         if st.button("🔍 Hitung"):
             st.session_state.has_calculated = True
-            st.experimental_rerun()
     else:
-        if st.button("❌ Clear"):
-            # Reset state
-            st.session_state.has_calculated = False
-            st.session_state.x_input = ""
-            st.session_state.y_input = ""
-            st.session_state.y_sampel = 0.0
-            st.experimental_rerun()
-
-    # Calculation section
-    if st.session_state.has_calculated:
-        # Validate inputs
+        # Display results
         if st.session_state.x_input.strip() and st.session_state.y_input.strip():
             try:
                 x_vals = np.array(
@@ -144,7 +134,7 @@ with tab3:
         else:
             st.info("⬅️ Masukkan data x dan y terlebih dahulu.")
 
-# ==================== TAB 4 - 6 =====================
+# ==================== TAB 4 - 6 ===================== - 6 =====================
 with tab4:
     st.header("Ketidakpastian Placeholder")
     st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
