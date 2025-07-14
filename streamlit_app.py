@@ -103,6 +103,16 @@ with tab3:
                 st.write(f"Koefisien Korelasi (r): **{r:.4f}**")
                 st.write(f"Koefisien Determinasi (R²): **{R2:.4f}**")
 
+                # Tambah grafik
+                fig, ax = plt.subplots()
+                ax.scatter(x_vals, y_vals, color='blue', label='Data')
+                ax.plot(x_vals, y_fit, color='red', label='Regresi Linear')
+                ax.set_xlabel("Konsentrasi")
+                ax.set_ylabel("Absorbansi")
+                ax.set_title("Kurva Kalibrasi")
+                ax.legend()
+                st.pyplot(fig)
+
                 if st.button("🎯 Hitung Ketidakpastian"):
                     uc = mu_reg
                     U = 2 * uc
