@@ -64,7 +64,10 @@ with tab3:
 
     if "clear_state" not in st.session_state:
         st.session_state.clear_state = False
-    if "x_input" not in st.session_state:
+    if "has_calculated" not in st.session_state:
+    st.session_state.has_calculated = False
+
+if "x_input" not in st.session_state:
         st.session_state.x_input = ""
     if "y_input" not in st.session_state:
         st.session_state.y_input = ""
@@ -72,16 +75,15 @@ with tab3:
         st.session_state.y_sampel = 0.0
 
     if not st.session_state.clear_state:
-        st.session_state.x_input = st.text_input("Konsentrasi Standar (x), pisahkan koma", st.session_state.x_input)
-        st.session_state.y_input = st.text_input("Absorbansi Standar (y), pisahkan koma", st.session_state.y_input)
-        st.session_state.y_sampel = st.number_input("Absorbansi Sampel", step=0.001, format="%.3f", value=st.session_state.y_sampel)
+        x_input = st.text_input("Konsentrasi Standar (x), pisahkan koma", st.session_state.x_input)
+        y_input = st.text_input("Absorbansi Standar (y), pisahkan koma", st.session_state.y_input)
+        y_sampel = st.number_input("Absorbansi Sampel", step=0.001, format="%.3f", value=st.session_state.y_sampel)
 
-        col1, col2 = st.columns([1, 1])
-        hitung = col1.button("🔍 Hitung")
-        clear = col2.button("❌ Clear")
-        if clear:
-            st.session_state.clear_state = True
-            st.experimental_rerun()
+        st.session_state.x_input = x_input
+        st.session_state.y_input = y_input
+        st.session_state.y_sampel = y_sampel
+
+                hitung = st.button("🔍 Hitung")
     else:
         col1, col2 = st.columns([1, 1])
         dummy = col1.empty()
@@ -96,6 +98,7 @@ with tab3:
     hitung = not st.session_state.clear_state and 'hitung' in locals() and hitung
 
     if hitung:
+        st.session_state.has_calculated = True
         if x_input.strip() != "" and y_input.strip() != "":
             try:
                 x_vals = np.array([float(i.strip()) for i in x_input.split(",") if i.strip() != ""])
@@ -149,6 +152,15 @@ with tab3:
                     st.write(f"Ketidakpastian gabungan (uc): **{uc:.4f}**")
                     st.write(f"Ketidakpastian diperluas (U, k=2): **{U:.4f}**")
                     st.success(f"🔬 Konsentrasi Sampel: **{x_sampel:.2f} ± {U:.2f}** (95% CI)")
+
+                    if st.button("❌ Clear"):
+                        st.session_state.clear_state = True
+                        st.session_state.has_calculated = False
+                        st.experimental_rerun()
+            except Exception as e:
+                st.warning(f"❌ Masukkan data numerik yang valid. Kesalahan: {e}")
+        else:
+            st.info("⬅️ Masukkan data x dan y terlebih dahulu untuk mulai perhitungan.")
             except Exception as e:
                 st.warning(f"❌ Masukkan data numerik yang valid. Kesalahan: {e}")
         else:
