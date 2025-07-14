@@ -62,13 +62,42 @@ with tab2:
 with tab3:
     st.header(":bar_chart: Regresi Linear dan Ketidakpastian Regresi")
 
-    x_input = st.text_input("Konsentrasi Standar (x), pisahkan koma", "")
-    y_input = st.text_input("Absorbansi Standar (y), pisahkan koma", "")
-    y_sampel = st.number_input("Absorbansi Sampel", step=0.001, format="%.3f")
+        if "x_input" not in st.session_state:
+        st.session_state.x_input = ""
+    if "y_input" not in st.session_state:
+        st.session_state.y_input = ""
+    if "y_sampel" not in st.session_state:
+        st.session_state.y_sampel = 0.0
 
-    col1, col2 = st.columns([1, 1])
-    hitung = col1.button("🔍 Hitung")
-    clear = col2.button("❌ Clear")
+    x_input = st.text_input("Konsentrasi Standar (x), pisahkan koma", st.session_state.x_input)
+    y_input = st.text_input("Absorbansi Standar (y), pisahkan koma", st.session_state.y_input)
+    y_sampel = st.number_input("Absorbansi Sampel", step=0.001, format="%.3f", value=st.session_state.y_sampel)
+
+        if "clear_state" not in st.session_state:
+        st.session_state.clear_state = False
+
+    if not st.session_state.clear_state:
+        col1, col2 = st.columns([1, 1])
+        hitung = col1.button("🔍 Hitung")
+        clear = col2.button("❌ Clear")
+        if clear:
+            st.session_state.clear_state = True
+            st.session_state.x_input = ""
+            st.session_state.y_input = ""
+            st.session_state.y_sampel = 0.0
+            st.experimental_rerun()
+    else:
+        col1, col2 = st.columns([1, 1])
+        dummy = col1.empty()
+        back = col2.button("🔁 Kembali")
+        if back:
+        st.session_state.clear_state = False
+        st.session_state.x_input = ""
+        st.session_state.y_input = ""
+        st.session_state.y_sampel = 0.0
+        st.experimental_rerun()
+
+    hitung = 'hitung' in locals() and hitung
 
     if clear:
         st.experimental_rerun()
