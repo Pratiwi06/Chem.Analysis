@@ -115,7 +115,6 @@ with tab3:
                     st.write(f"Koefisien Korelasi (r): {r:.4f}")
                     st.write(f"Koefisien Determinasi (R²): {R2:.4f}")
                     st.info(f"Ketidakpastian regresi (μ_reg): {mu_reg:.2f}")
-                    )
                     # Plot
                     fig, ax = plt.subplots()
                     ax.scatter(x_vals, y_vals, label="Data")
