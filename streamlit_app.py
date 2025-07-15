@@ -19,29 +19,13 @@ with tab1:
 with tab2:
     st.header("🔬 Tabel Periodik Interaktif")
     elements = [
-        {"symbol": "Li", "name": "Litium", "atomicNumber": 3, "atomicMass": 6.941, "electronConfiguration": "[He] 2s¹", "electronsPerShell": [2, 1]},
-        {"symbol": "Be", "name": "Berilium", "atomicNumber": 4, "atomicMass": 9.012182, "electronConfiguration": "[He] 2s²", "electronsPerShell": [2, 2]},
-        {"symbol": "B", "name": "Bor", "atomicNumber": 5, "atomicMass": 10.811, "electronConfiguration": "[He] 2s² 2p¹", "electronsPerShell": [2, 3]},
-        {"symbol": "C", "name": "Karbon", "atomicNumber": 6, "atomicMass": 12.0107, "electronConfiguration": "[He] 2s² 2p²", "electronsPerShell": [2, 4]},
-        {"symbol": "N", "name": "Nitrogen", "atomicNumber": 7, "atomicMass": 14.0067, "electronConfiguration": "[He] 2s² 2p³", "electronsPerShell": [2, 5]},
-        {"symbol": "O", "name": "Oksigen", "atomicNumber": 8, "atomicMass": 15.9994, "electronConfiguration": "[He] 2s² 2p⁴", "electronsPerShell": [2, 6]},
-        {"symbol": "F", "name": "Fluorin", "atomicNumber": 9, "atomicMass": 18.9984032, "electronConfiguration": "[He] 2s² 2p⁵", "electronsPerShell": [2, 7]},
-        {"symbol": "Ne", "name": "Neon", "atomicNumber": 10, "atomicMass": 20.1797, "electronConfiguration": "[He] 2s² 2p⁶", "electronsPerShell": [2, 8]},
-        {"symbol": "Na", "name": "Natrium", "atomicNumber": 11, "atomicMass": 22.98976928, "electronConfiguration": "[Ne] 3s¹", "electronsPerShell": [2, 8, 1]},
-        {"symbol": "Mg", "name": "Magnesium", "atomicNumber": 12, "atomicMass": 24.305, "electronConfiguration": "[Ne] 3s²", "electronsPerShell": [2, 8, 2]},
-        {"symbol": "Al", "name": "Alumunium", "atomicNumber": 13, "atomicMass": 26.9815386, "electronConfiguration": "[Ne] 3s² 3p¹", "electronsPerShell": [2, 8, 3]},
-        {"symbol": "Si", "name": "Silikon", "atomicNumber": 14, "atomicMass": 28.0855, "electronConfiguration": "[Ne] 3s² 3p²", "electronsPerShell": [2, 8, 4]},
-        {"symbol": "P", "name": "Fosfor", "atomicNumber": 15, "atomicMass": 30.973762, "electronConfiguration": "[Ne] 3s² 3p³", "electronsPerShell": [2, 8, 5]},
-        {"symbol": "S", "name": "Belerang", "atomicNumber": 16, "atomicMass": 32.065, "electronConfiguration": "[Ne] 3s² 3p⁴", "electronsPerShell": [2, 8, 6]},
-        {"symbol": "Cl", "name": "Klor", "atomicNumber": 17, "atomicMass": 35.453, "electronConfiguration": "[Ne] 3s² 3p⁵", "electronsPerShell": [2, 8, 7]},
-        {"symbol": "Ar", "name": "Argon", "atomicNumber": 18, "atomicMass": 39.948, "electronConfiguration": "[Ne] 3s² 3p⁶", "electronsPerShell": [2, 8, 8]},
-        {"symbol": "K", "name": "Kalium", "atomicNumber": 19, "atomicMass": 39.0983, "electronConfiguration": "[Ar] 4s¹", "electronsPerShell": [2, 8, 8, 1]},
-        {"symbol": "Ca", "name": "Kalsium", "atomicNumber": 20, "atomicMass": 40.078, "electronConfiguration": "[Ar] 4s²", "electronsPerShell": [2, 8, 8, 2]},
-        {"symbol": "Zn", "name": "Seng", "atomicNumber": 30, "atomicMass": 65.38, "electronConfiguration": "[Ar] 3d¹⁰ 4s²", "electronsPerShell": [2, 8, 8, 12]},
-        {"symbol": "Ga", "name": "Galium", "atomicNumber": 31, "atomicMass": 69.723, "electronConfiguration": "[Ar] 3d¹⁰ 4s² 4p¹", "electronsPerShell": [2, 8, 8, 13]},
-        {"symbol": "Ge", "name": "Germanium", "atomicNumber": 32, "atomicMass": 72.630, "electronConfiguration": "[Ar] 3d¹⁰ 4s² 4p²", "electronsPerShell": [2, 8, 8, 14]},
-        {"symbol": "As", "name": "Arsen", "atomicNumber": 33, "atomicMass": 74.921595, "electronConfiguration": "[Ar] 3d¹⁰ 4s² 4p³", "electronsPerShell": [2, 8, 8, 15]},
-        {"symbol": "Se", "name": "Selenium", "atomicNumber": 34, "atomicMass": 78.971, "electronConfiguration": "[Ar] 3d¹⁰ 4s² 4p⁴", "electronsPerShell": [2, 8, 8, 16]}
+        {"symbol": "Zn", "name": "Seng", "atomicNumber": 30, "atomicMass": 65.38, "electronConfiguration": "[Ar] 3d¹⁰ 4s²", "electronsPerShell": [2, 8, 18, 2]},
+        {"symbol": "Ga", "name": "Galium", "atomicNumber": 31, "atomicMass": 69.723, "electronConfiguration": "[Ar] 3d¹⁰ 4s² 4p¹", "electronsPerShell": [2, 8, 18, 3]},
+        {"symbol": "Ge", "name": "Germanium", "atomicNumber": 32, "atomicMass": 72.630, "electronConfiguration": "[Ar] 3d¹⁰ 4s² 4p²", "electronsPerShell": [2, 8, 18, 4]},
+        {"symbol": "As", "name": "Arsen", "atomicNumber": 33, "atomicMass": 74.921595, "electronConfiguration": "[Ar] 3d¹⁰ 4s² 4p³", "electronsPerShell": [2, 8, 18, 5]},
+        {"symbol": "Se", "name": "Selenium", "atomicNumber": 34, "atomicMass": 78.971, "electronConfiguration": "[Ar] 3d¹⁰ 4s² 4p⁴", "electronsPerShell": [2, 8, 18, 6]},
+        {"symbol": "Br", "name": "Brom", "atomicNumber": 35, "atomicMass": 79.904, "electronConfiguration": "[Ar] 3d¹⁰ 4s² 4p⁵", "electronsPerShell": [2, 8, 18, 7]},
+        {"symbol": "Kr", "name": "Kripton", "atomicNumber": 36, "atomicMass": 83.798, "electronConfiguration": "[Ar] 3d¹⁰ 4s² 4p⁶", "electronsPerShell": [2, 8, 18, 8]}
     ]
     user_input = st.text_input("Masukkan nama unsur (contoh: Seng)").lower()
     if user_input:
@@ -49,10 +33,13 @@ with tab2:
         for elem in elements:
             if user_input == elem["name"].lower():
                 st.success(f"Unsur: {elem['name']} ({elem['symbol']})")
-                st.write(f"• Nomor Atom: {elem['atomicNumber']}")
-                st.write(f"• Massa Atom: {elem['atomicMass']}")
-                st.write(f"• Konfigurasi Elektron: {elem['electronConfiguration']}")
-                st.write(f"• Elektron tiap kulit: {elem['electronsPerShell']}")
+                col1, col2 = st.columns(2)
+                with col1:
+                    st.markdown(f"**Nomor Atom:** {elem['atomicNumber']}")
+                    st.markdown(f"**Massa Atom:** {elem['atomicMass']}")
+                with col2:
+                    st.markdown(f"**Konfigurasi Elektron:** {elem['electronConfiguration']}")
+                    st.markdown(f"**Elektron tiap kulit:** {elem['electronsPerShell']}")
                 found = True
                 break
         if not found:
