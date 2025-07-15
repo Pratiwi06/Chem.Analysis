@@ -18,22 +18,52 @@ with tab1:
 # ==================== TAB 2 =====================
 with tab2:
     st.header("🔬 Tabel Periodik Interaktif")
-    elements = {
-        "hidrogen": {"nomor_atom": 1, "massa_atom": 1.008},
-        "helium": {"nomor_atom": 2, "massa_atom": 4.0026},
-        "litium": {"nomor_atom": 3, "massa_atom": 6.94},
-        "berilium": {"nomor_atom": 4, "massa_atom": 9.0122},
-        "boron": {"nomor_atom": 5, "massa_atom": 10.81},
-        "karbon": {"nomor_atom": 6, "massa_atom": 12.01},
-        "nitrogen": {"nomor_atom": 7, "massa_atom": 14.01},
-        "oksigen": {"nomor_atom": 8, "massa_atom": 16.00},
-        "fluorin": {"nomor_atom": 9, "massa_atom": 19.00},
-        "neon": {"nomor_atom": 10, "massa_atom": 20.18},
-    }
-    user_input = st.text_input("Masukkan nama unsur (contoh: karbon)").lower()
-    if user_input in elements:
-        st.success(f"Nomor Atom: {elements[user_input]['nomor_atom']}, Massa Atom: {elements[user_input]['massa_atom']}")
-    elif user_input:
+    elements = [
+           {"symbol": "Nb", "name": "Niobium", "atomicNumber": 41, "atomicMass": 92.90637, "electronConfiguration": "[Kr] 4d⁴ 5s²", "shells": 5},
+    {"symbol": "Mo", "name": "Molybdenum", "atomicNumber": 42, "atomicMass": 95.95, "electronConfiguration": "[Kr] 4d⁵ 5s¹", "shells": 5},
+    {"symbol": "Tc", "name": "Teknetium", "atomicNumber": 43, "atomicMass": 98, "electronConfiguration": "[Kr] 4d⁵ 5s²", "shells": 5},
+    {"symbol": "Ru", "name": "Rutenium", "atomicNumber": 44, "atomicMass": 101.07, "electronConfiguration": "[Kr] 4d⁷ 5s¹", "shells": 5},
+    {"symbol": "Rh", "name": "Rhodium", "atomicNumber": 45, "atomicMass": 102.90550, "electronConfiguration": "[Kr] 4d⁸ 5s¹", "shells": 5},
+    {"symbol": "Pd", "name": "Palladium", "atomicNumber": 46, "atomicMass": 106.42, "electronConfiguration": "[Kr] 4d¹⁰", "shells": 5},
+    {"symbol": "Ag", "name": "Perak", "atomicNumber": 47, "atomicMass": 107.8682, "electronConfiguration": "[Kr] 4d¹⁰ 5s¹", "shells": 5},
+    {"symbol": "Cd", "name": "Kadmium", "atomicNumber": 48, "atomicMass": 112.414, "electronConfiguration": "[Kr] 4d¹⁰ 5s²", "shells": 5},
+    {"symbol": "In", "name": "Indium", "atomicNumber": 49, "atomicMass": 114.818, "electronConfiguration": "[Kr] 4d¹⁰ 5s² 5p¹", "shells": 5},
+    {"symbol": "Sn", "name": "Timah", "atomicNumber": 50, "atomicMass": 118.710, "electronConfiguration": "[Kr] 4d¹⁰ 5s² 5p²", "shells": 5},
+    {"symbol": "Sb", "name": "Antimon", "atomicNumber": 51, "atomicMass": 121.760, "electronConfiguration": "[Kr] 4d¹⁰ 5s² 5p³", "shells": 5},
+    {"symbol": "Te", "name": "Tellurium", "atomicNumber": 52, "atomicMass": 127.60, "electronConfiguration": "[Kr] 4d¹⁰ 5s² 5p⁴", "shells": 5},
+    {"symbol": "I", "name": "Iodium", "atomicNumber": 53, "atomicMass": 126.90447, "electronConfiguration": "[Kr] 4d¹⁰ 5s² 5p⁵", "shells": 5},
+    {"symbol": "Xe", "name": "Xenon", "atomicNumber": 54, "atomicMass": 131.293, "electronConfiguration": "[Kr] 4d¹⁰ 5s² 5p⁶", "shells": 5},
+    {"symbol": "Cs", "name": "Cesium", "atomicNumber": 55, "atomicMass": 132.90545196, "electronConfiguration": "[Xe] 6s¹", "shells": 6},
+    {"symbol": "Ba", "name": "Barium", "atomicNumber": 56, "atomicMass": 137.327, "electronConfiguration": "[Xe] 6s²", "shells": 6},
+    {"symbol": "La", "name": "Lantanum", "atomicNumber": 57, "atomicMass": 138.90547, "electronConfiguration": "[Xe] 5d¹ 6s²", "shells": 6},
+    {"symbol": "Ce", "name": "Cerium", "atomicNumber": 58, "atomicMass": 140.116, "electronConfiguration": "[Xe] 4f¹ 5d¹ 6s²", "shells": 6},
+    {"symbol": "Pr", "name": "Praseodimium", "atomicNumber": 59, "atomicMass": 140.90766, "electronConfiguration": "[Xe] 4f³ 6s²", "shells": 6},
+    {"symbol": "Nd", "name": "Neodimium", "atomicNumber": 60, "atomicMass": 144.242, "electronConfiguration": "[Xe] 4f⁴ 6s²", "shells": 6},
+    {"symbol": "Pm", "name": "Prometium", "atomicNumber": 61, "atomicMass": 145, "electronConfiguration": "[Xe] 4f⁵ 6s²", "shells": 6},
+    {"symbol": "Sm", "name": "Samarium", "atomicNumber": 62, "atomicMass": 150.36, "electronConfiguration": "[Xe] 4f⁶ 6s²", "shells": 6},
+    {"symbol": "Eu", "name": "Eurium", "atomicNumber": 63, "atomicMass": 151.964, "electronConfiguration": "[Xe] 4f⁷ 6s²", "shells": 6},
+    {"symbol": "Gd", "name": "Gadolinium", "atomicNumber": 64, "atomicMass": 157.25, "electronConfiguration": "[Xe] 4f⁷ 5d¹ 6s²", "shells": 6},
+    {"symbol": "Tb", "name": "Terbium", "atomicNumber": 65, "atomicMass": 158.92535, "electronConfiguration": "[Xe] 4f⁹ 6s²", "shells": 6},
+    {"symbol": "Dy", "name": "Dysprosium", "atomicNumber": 66, "atomicMass": 162.500, "electronConfiguration": "[Xe] 4f¹⁰ 6s²", "shells": 6},
+    {"symbol": "Ho", "name": "Holmium", "atomicNumber": 67, "atomicMass": 164.93033, "electronConfiguration": "[Xe] 4f¹¹ 6s²", "shells": 6},
+    {"symbol": "Er", "name": "Erbium", "atomicNumber": 68, "atomicMass": 167.259, "electronConfiguration": "[Xe] 4f¹² 6s²", "shells": 6},
+    {"symbol": "Tm", "name": "Thulium", "atomicNumber": 69, "atomicMass": 168.93422, "electronConfiguration": "[Xe] 4f¹³ 6s²", "shells": 6},
+    {"symbol": "Yb", "name": "Ytterbium", "atomicNumber": 70, "atomicMass": 173.04, "electronConfiguration": "[Xe] 4f¹⁴ 6s²", "shells": 6},
+    {"symbol": "Lu", "name": "Lutecium", "atomicNumber": 71, "atomicMass": 174.9668, "electronConfiguration": "[Xe] 4f¹⁴ 5d¹ 6s²", "shells": 6},
+    {"symbol": "Hf", "name": "Hafnium", "atomicNumber": 72, "atomicMass": 178.49, "electronConfiguration": "[Xe] 4f¹⁴ 5d² 6s²", "shells": 6},
+    ]
+    user_input = st.text_input("Masukkan nama unsur (contoh: Seng)").lower()
+    found = False
+    for elem in elements:
+        if user_input == elem["name"].lower():
+            st.success(f"Unsur: {elem['name']} ({elem['symbol']})")
+            st.write(f"• Nomor Atom: {elem['atomicNumber']}")
+            st.write(f"• Massa Atom: {elem['atomicMass']}")
+            st.write(f"• Konfigurasi Elektron: {elem['electronConfiguration']}")
+            st.write(f"• Kulit Elektron: {elem['shells']}")
+            found = True
+            break
+    if user_input and not found:
         st.warning("Unsur tidak ditemukan dalam database.")
 
 # ==================== TAB 3 =====================
@@ -42,7 +72,6 @@ with tab3:
 
     x_input = st.text_input("Konsentrasi Standar (x), pisahkan koma", "")
     y_input = st.text_input("Absorbansi Standar (y), pisahkan koma", "")
-    
 
     hitung = st.button("🔍 Hitung")
 
@@ -62,11 +91,9 @@ with tab3:
                 b = y_mean - m * x_mean
                 y_fit = m * x_vals + b
                 Sy = np.sqrt(np.sum((y_vals - y_fit) ** 2) / (n - 2))
-                sum_sq_x = np.sum((x_vals - x_mean) ** 2)
                 r = np.corrcoef(x_vals, y_vals)[0, 1]
                 R2 = r ** 2
 
-                
                 st.success(f"Persamaan regresi: y = {m:.4f}x + {b:.4f}")
                 st.write(f"• Slope (m): {m:.4f}")
                 st.write(f"• Intercept (b): {b:.4f}")
@@ -75,9 +102,6 @@ with tab3:
 
                 RSD = Sy / y_mean * 100 if y_mean else 0.0
                 st.success(f"%RSD Kurva Kalibrasi: {RSD:.2f}%")
-
-                
-                
 
                 fig, ax = plt.subplots()
                 ax.scatter(x_vals, y_vals, label='Data')
