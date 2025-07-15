@@ -66,16 +66,6 @@ with tab3:
                 r = np.corrcoef(x_vals, y_vals)[0, 1]
                 R2 = r ** 2
 
-                # Jika absorbansi sampel diisi, hitung konsentrasi terukur dan μ_reg
-                if y_sample:
-                    try:
-                        y0 = float(y_sample)
-                        x0 = (y0 - b) / m  # Konsentrasi terukur
-                        mu_reg = (Sy / abs(m)) * np.sqrt((1 / n) + ((y0 - y_mean) ** 2 / (m ** 2 * sum_sq_x)))
-                        st.success(f"Konsentrasi Terukur: {x0:.4f}")
-                        st.info(f"μ_reg (Ketidakpastian Regresi): {mu_reg:.4f}")
-                    except:
-                        st.warning("Masukkan nilai numerik yang valid untuk absorbansi sampel (Y₀).")
 
                 st.success(f"Persamaan regresi: y = {m:.4f}x + {b:.4f}")
                 st.write(f"• Slope (m): {m:.4f}")
