@@ -73,11 +73,10 @@ with tab3:
                 st.write(f"Koefisien Determinasi (R²): {R2:.4f}")
 
                 RSD = Sy / y_mean * 100 if y_mean else 0.0
-                st.write(f"RSD kurva regresi: {RSD:.2f}%")
+                st.success(f"%RSD Kurva Kalibrasi: {RSD:.2f}%")
 
-                if y_sample:
-    st.warning("μ_reg tidak ditampilkan sesuai permintaan.")
-                        st.warning("Masukkan nilai numerik untuk absorbansi sampel.")
+                
+                
 
                 fig, ax = plt.subplots()
                 ax.scatter(x_vals, y_vals, label='Data')
