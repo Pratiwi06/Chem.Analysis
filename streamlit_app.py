@@ -76,14 +76,7 @@ with tab3:
                 st.write(f"RSD kurva regresi: {RSD:.2f}%")
 
                 if y_sample:
-                    try:
-                        y_sample_val = float(y_sample)
-                        mu_reg = (Sy / abs(m)) * np.sqrt(1 + (1 / n) + ((y_sample_val - y_mean) ** 2) / (m**2 * sum_sq_x)) if m else 0.0
-                        st.info(f"Ketidakpastian regresi (μ_reg): {mu_reg:.4f}")
-                    except:
-    st.warning("Masukkan nilai numerik untuk absorbansi sampel.")
-else:
-    st.info("μ_reg tidak dihitung karena absorbansi sampel (Y₀) tidak diisi.")
+    st.warning("μ_reg tidak ditampilkan sesuai permintaan.")
                         st.warning("Masukkan nilai numerik untuk absorbansi sampel.")
 
                 fig, ax = plt.subplots()
