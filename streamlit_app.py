@@ -19,7 +19,7 @@ with tab1:
 with tab2:
     st.header("🔬 Tabel Periodik Interaktif")
     elements = [
-               {"symbol": "Li", "name": "Litium", "atomicNumber": 3, "atomicMass": 6.941, "electronConfiguration": "[He] 2s¹", "electronsPerShell": [2, 1]},
+        {"symbol": "Li", "name": "Litium", "atomicNumber": 3, "atomicMass": 6.941, "electronConfiguration": "[He] 2s¹", "electronsPerShell": [2, 1]},
         {"symbol": "Be", "name": "Berilium", "atomicNumber": 4, "atomicMass": 9.012182, "electronConfiguration": "[He] 2s²", "electronsPerShell": [2, 2]},
         {"symbol": "B", "name": "Bor", "atomicNumber": 5, "atomicMass": 10.811, "electronConfiguration": "[He] 2s² 2p¹", "electronsPerShell": [2, 3]},
         {"symbol": "C", "name": "Karbon", "atomicNumber": 6, "atomicMass": 12.0107, "electronConfiguration": "[He] 2s² 2p²", "electronsPerShell": [2, 4]},
@@ -37,33 +37,26 @@ with tab2:
         {"symbol": "Ar", "name": "Argon", "atomicNumber": 18, "atomicMass": 39.948, "electronConfiguration": "[Ne] 3s² 3p⁶", "electronsPerShell": [2, 8, 8]},
         {"symbol": "K", "name": "Kalium", "atomicNumber": 19, "atomicMass": 39.0983, "electronConfiguration": "[Ar] 4s¹", "electronsPerShell": [2, 8, 8, 1]},
         {"symbol": "Ca", "name": "Kalsium", "atomicNumber": 20, "atomicMass": 40.078, "electronConfiguration": "[Ar] 4s²", "electronsPerShell": [2, 8, 8, 2]},
-        {"symbol": "Sc", "name": "Skandium", "atomicNumber": 21, "atomicMass": 44.955908, "electronConfiguration": "[Ar] 3d¹ 4s²", "electronsPerShell": [2, 8, 8, 3]},
-        {"symbol": "Ti", "name": "Titanium", "atomicNumber": 22, "atomicMass": 47.867, "electronConfiguration": "[Ar] 3d² 4s²", "electronsPerShell": [2, 8, 8, 4]},
-        {"symbol": "V", "name": "Vanadium", "atomicNumber": 23, "atomicMass": 50.9415, "electronConfiguration": "[Ar] 3d³ 4s²", "electronsPerShell": [2, 8, 8, 5]},
-        {"symbol": "Cr", "name": "Krom", "atomicNumber": 24, "atomicMass": 51.9961, "electronConfiguration": "[Ar] 3d⁵ 4s¹", "electronsPerShell": [2, 8, 8, 6]},
-        {"symbol": "Mn", "name": "Mangan", "atomicNumber": 25, "atomicMass": 54.938044, "electronConfiguration": "[Ar] 3d⁵ 4s²", "electronsPerShell": [2, 8, 8, 7]},
-        {"symbol": "Fe", "name": "Besi", "atomicNumber": 26, "atomicMass": 55.845, "electronConfiguration": "[Ar] 3d⁶ 4s²", "electronsPerShell": [2, 8, 8, 8]},
-        {"symbol": "Co", "name": "Kobalt", "atomicNumber": 27, "atomicMass": 58.933194, "electronConfiguration": "[Ar] 3d⁷ 4s²", "electronsPerShell": [2, 8, 8, 9]},
-        {"symbol": "Ni", "name": "Nikel", "atomicNumber": 28, "atomicMass": 58.6934, "electronConfiguration": "[Ar] 3d⁸ 4s²", "electronsPerShell": [2, 8, 8, 10]},
-        {"symbol": "Cu", "name": "Tembaga", "atomicNumber": 29, "atomicMass": 63.546, "electronConfiguration": "[Ar] 3d¹⁰ 4s¹", "electronsPerShell": [2, 8, 8, 11]},
         {"symbol": "Zn", "name": "Seng", "atomicNumber": 30, "atomicMass": 65.38, "electronConfiguration": "[Ar] 3d¹⁰ 4s²", "electronsPerShell": [2, 8, 8, 12]},
         {"symbol": "Ga", "name": "Galium", "atomicNumber": 31, "atomicMass": 69.723, "electronConfiguration": "[Ar] 3d¹⁰ 4s² 4p¹", "electronsPerShell": [2, 8, 8, 13]},
         {"symbol": "Ge", "name": "Germanium", "atomicNumber": 32, "atomicMass": 72.630, "electronConfiguration": "[Ar] 3d¹⁰ 4s² 4p²", "electronsPerShell": [2, 8, 8, 14]},
         {"symbol": "As", "name": "Arsen", "atomicNumber": 33, "atomicMass": 74.921595, "electronConfiguration": "[Ar] 3d¹⁰ 4s² 4p³", "electronsPerShell": [2, 8, 8, 15]},
-        {"symbol": "Se", "name": "Selenium", "atomicNumber": 34, "atomicMass": 78.971, "electronConfiguration": "[Ar] 3d¹⁰ 4s² 4p⁴", "electronsPerShell": [2, 8, 8, 16]},
+        {"symbol": "Se", "name": "Selenium", "atomicNumber": 34, "atomicMass": 78.971, "electronConfiguration": "[Ar] 3d¹⁰ 4s² 4p⁴", "electronsPerShell": [2, 8, 8, 16]}
+    ]
     user_input = st.text_input("Masukkan nama unsur (contoh: Seng)").lower()
-    found = False
-    for elem in elements:
-        if user_input == elem["name"].lower():
-            st.success(f"Unsur: {elem['name']} ({elem['symbol']})")
-            st.write(f"• Nomor Atom: {elem['atomicNumber']}")
-            st.write(f"• Massa Atom: {elem['atomicMass']}")
-            st.write(f"• Konfigurasi Elektron: {elem['electronConfiguration']}")
-            st.write(f"• Elektron tiap kulit: {elem['electronsPerShell']}")
-            found = True
-            break
-    if user_input and not found:
-        st.warning("Unsur tidak ditemukan dalam database.")
+    if user_input:
+        found = False
+        for elem in elements:
+            if user_input == elem["name"].lower():
+                st.success(f"Unsur: {elem['name']} ({elem['symbol']})")
+                st.write(f"• Nomor Atom: {elem['atomicNumber']}")
+                st.write(f"• Massa Atom: {elem['atomicMass']}")
+                st.write(f"• Konfigurasi Elektron: {elem['electronConfiguration']}")
+                st.write(f"• Elektron tiap kulit: {elem['electronsPerShell']}")
+                found = True
+                break
+        if not found:
+            st.warning("Unsur tidak ditemukan dalam database.")
 
 # ==================== TAB 3 =====================
 with tab3:
