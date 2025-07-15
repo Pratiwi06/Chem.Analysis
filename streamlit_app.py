@@ -33,13 +33,10 @@ with tab2:
         for elem in elements:
             if user_input == elem["name"].lower():
                 st.success(f"Unsur: {elem['name']} ({elem['symbol']})")
-                col1, col2 = st.columns(2)
-                with col1:
-                    st.markdown(f"**Nomor Atom:** {elem['atomicNumber']}")
-                    st.markdown(f"**Massa Atom:** {elem['atomicMass']}")
-                with col2:
-                    st.markdown(f"**Konfigurasi Elektron:** {elem['electronConfiguration']}")
-                    st.markdown(f"**Elektron tiap kulit:** {elem['electronsPerShell']}")
+                st.markdown(f"**Nomor Atom:** {elem['atomicNumber']}")
+                st.markdown(f"**Massa Atom:** {elem['atomicMass']}")
+                st.markdown(f"**Konfigurasi Elektron:** {elem['electronConfiguration']}")
+                st.markdown(f"**Elektron tiap kulit:** {' - '.join(map(str, elem['electronsPerShell']))}")
                 found = True
                 break
         if not found:
