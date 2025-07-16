@@ -317,11 +317,10 @@ with tab5:
         concentration_value = st.number_input("Masukkan nilai konsentrasi:")
         concentration_unit = st.selectbox("Pilih satuan konsentrasi:", ["Molaritas (M)", "Normalitas (N)", "Persen (%)", "ppm", "ppb", "ppt"])
 
-        # Input untuk valensi
+        # Input untuk valensi dan density
         valency = st.number_input("Masukkan valensi (jika diperlukan):", min_value=1, value=1)
-
+        density = st.number_input("Masukkan bobot jenis (g/mL):", min_value=0.0)
         if st.button("Konversi"):
-            density = st.number_input("Masukkan bobot jenis (g/mL):", min_value=0.0)
             if concentration_unit == "Molaritas (M)":
                 normality = concentration_value * valency  # Normalitas = Molaritas x Valensi
                 percent = (concentration_value * density * 100) / 1000  # Asumsi 1 M = 1000 g/L
