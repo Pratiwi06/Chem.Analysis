@@ -321,28 +321,17 @@ with tab5:
         valency = st.number_input("Masukkan valensi (jika diperlukan):", min_value=1, value=1)
 
         if st.button("Konversi"):
+            density = st.number_input("Masukkan bobot jenis (g/mL):", min_value=0.0)
             if concentration_unit == "Molaritas (M)":
                 normality = concentration_value * valency  # Normalitas = Molaritas x Valensi
-                percent = concentration_value * 100  # Asumsi 1 M = 1000 g/L untuk air
-                ppm = concentration_value * 1000  # 1 M = 1000 ppm
-                ppb = ppm * 1000  # 1 ppm = 1000 ppb
-                ppt = ppb * 1000  # 1 ppb = 1000 ppt
+                percent = (concentration_value * density * 100) / 1000  # Asumsi 1 M = 1000 g/L
                 st.success(f"{concentration_value} M = {normality:.2f} N")
                 st.success(f"{concentration_value} M = {percent:.2f} %")
-                st.success(f"{concentration_value} M = {ppm:.2f} ppm")
-                st.success(f"{concentration_value} M = {ppb:.2f} ppb")
-                st.success(f"{concentration_value} M = {ppt:.2f} ppt")
             elif concentration_unit == "Normalitas (N)":
                 molarity = concentration_value / valency  # Normalitas = Molaritas x Valensi
-                percent = molarity * 100  # Asumsi 1 N = 1000 g/L untuk air
-                ppm = molarity * 1000  # 1 N = 1000 ppm
-                ppb = ppm * 1000  # 1 ppm = 1000 ppb
-                ppt = ppb * 1000  # 1 ppb = 1000 ppt
+                percent = (molarity * density * 100) / 1000  # Asumsi 1 N = 1000 g/L
                 st.success(f"{concentration_value} N = {molarity:.2f} M")
                 st.success(f"{concentration_value} N = {percent:.2f} %")
-                st.success(f"{concentration_value} N = {ppm:.2f} ppm")
-                st.success(f"{concentration_value} N = {ppb:.2f} ppb")
-                st.success(f"{concentration_value} N = {ppt:.2f} ppt")
             elif concentration_unit == "Persen (%)":
                 molarity = concentration_value / 100  # Asumsi 1 % = 10 g/L untuk air
                 normality = molarity * valency  # Normalitas = Molaritas x Valensi
@@ -351,40 +340,19 @@ with tab5:
                 ppt = ppb * 1000  # 1 ppb = 1000 ppt
                 st.success(f"{concentration_value} % = {molarity:.2f} M")
                 st.success(f"{concentration_value} % = {normality:.2f} N")
-                st.success(f"{concentration_value} % = {ppm:.2f} ppm")
-                st.success(f"{concentration_value} % = {ppb:.2f} ppb")
-                st.success(f"{concentration_value} % = {ppt:.2f} ppt")
             elif concentration_unit == "ppm":
-                molarity = concentration_value / 1000  # 1 ppm = 0.001 M
-                normality = molarity * valency  # Normalitas = Molaritas x Valensi
-                percent = molarity * 100  # Asumsi 1 ppm = 0.1 g/L untuk air
                 ppb = concentration_value * 1000  # 1 ppm = 1000 ppb
                 ppt = ppb * 1000  # 1 ppb = 1000 ppt
-                st.success(f"{concentration_value} ppm = {molarity:.2f} M")
-                st.success(f"{concentration_value} ppm = {normality:.2f} N")
-                st.success(f"{concentration_value} ppm = {percent:.2f} %")
                 st.success(f"{concentration_value} ppm = {ppb:.2f} ppb")
                 st.success(f"{concentration_value} ppm = {ppt:.2f} ppt")
             elif concentration_unit == "ppb":
-                molarity = concentration_value / 1e6  # 1 ppb = 0.000001 M
-                normality = molarity * valency  # Normalitas = Molaritas x Valensi
-                percent = molarity * 100  # Asumsi 1 ppb = 0.0001 g/L untuk air
                 ppm = concentration_value / 1000  # 1 ppb = 0.001 ppm
                 ppt = concentration_value * 1000  # 1 ppb = 1000 ppt
-                st.success(f"{concentration_value} ppb = {molarity:.2f} M")
-                st.success(f"{concentration_value} ppb = {normality:.2f} N")
-                st.success(f"{concentration_value} ppb = {percent:.2f} %")
                 st.success(f"{concentration_value} ppb = {ppm:.2f} ppm")
                 st.success(f"{concentration_value} ppb = {ppt:.2f} ppt")
             elif concentration_unit == "ppt":
-                molarity = concentration_value / 1e9  # 1 ppt = 0.000000001 M
-                normality = molarity * valency  # Normalitas = Molaritas x Valensi
-                percent = molarity * 100  # Asumsi 1 ppt = 0.0000001 g/L untuk air
                 ppm = concentration_value / 1e6  # 1 ppt = 0.000001 ppm
                 ppb = concentration_value / 1000  # 1 ppt = 0.001 ppb
-                st.success(f"{concentration_value} ppt = {molarity:.2f} M")
-                st.success(f"{concentration_value} ppt = {normality:.2f} N")
-                st.success(f"{concentration_value} ppt = {percent:.2f} %")
                 st.success(f"{concentration_value} ppt = {ppm:.2f} ppm")
                 st.success(f"{concentration_value} ppt = {ppb:.2f} ppb")
 
