@@ -118,7 +118,7 @@ with tab6:
         mg = st.number_input(f"mg boraks - Ulangan {i+1}", key=f"mg_{i}")
         mL = st.number_input(f"mL HCl - Ulangan {i+1}", key=f"ml_{i}")
         BE = st.number_input(f"BE boraks - Ulangan {i+1}", key=f"be_{i}")
-        f = st.number_input(f"Faktor pengali - Ulangan {i+1}", key=f"f_{i}")
+        f = st.number_input(f"Faktor pengali - Ulangan {i+1} (jika tidak ada FP, input nilai 1)", key=f"f_{i}")
 
         mg_boraks.append(mg)
         mL_HCl.append(mL)
