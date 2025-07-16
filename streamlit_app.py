@@ -190,12 +190,186 @@ with tab3:
 # ==================== TAB 4 =====================
 with tab4:
     st.header("Ketidakpastian Placeholder")
-    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
-
+    
 # ==================== TAB 5 =====================
 with tab5:
-    st.header("Konversi Placeholder")
-    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
+    st.header("🔄 Konversi Satuan")
+
+    # Pilih jenis konversi
+    conversion_type = st.selectbox("Pilih jenis konversi:", ["Suhu", "Tekanan", "Volume", "Massa", "Konsentrasi", "Molaritas"])
+
+    if conversion_type == "Suhu":
+        st.subheader("Konversi Suhu")
+        temp_value = st.number_input("Masukkan nilai suhu:")
+        temp_unit = st.selectbox("Pilih satuan suhu:", ["Celsius", "Fahrenheit", "Kelvin"])
+
+        if st.button("Konversi"):
+            if temp_unit == "Celsius":
+                fahrenheit = (temp_value * 9/5) + 32
+                kelvin = temp_value + 273.15
+                st.success(f"{temp_value} °C = {fahrenheit:.2f} °F")
+                st.success(f"{temp_value} °C = {kelvin:.2f} K")
+            elif temp_unit == "Fahrenheit":
+                celsius = (temp_value - 32) * 5/9
+                kelvin = celsius + 273.15
+                st.success(f"{temp_value} °F = {celsius:.2f} °C")
+                st.success(f"{temp_value} °F = {kelvin:.2f} K")
+            elif temp_unit == "Kelvin":
+                celsius = temp_value - 273.15
+                fahrenheit = (celsius * 9/5) + 32
+                st.success(f"{temp_value} K = {celsius:.2f} °C")
+                st.success(f"{temp_value} K = {fahrenheit:.2f} °F")
+
+    elif conversion_type == "Tekanan":
+        st.subheader("Konversi Tekanan")
+        pressure_value = st.number_input("Masukkan nilai tekanan:")
+        pressure_unit = st.selectbox("Pilih satuan tekanan:", ["Pascal", "Bar", "Atmosfer", "Torr"])
+
+        if st.button("Konversi"):
+            if pressure_unit == "Pascal":
+                bar = pressure_value / 1e5
+                atm = pressure_value / 101325
+                torr = pressure_value * 0.00750062
+                st.success(f"{pressure_value} Pa = {bar:.5f} Bar")
+                st.success(f"{pressure_value} Pa = {atm:.5f} atm")
+                st.success(f"{pressure_value} Pa = {torr:.5f} Torr")
+            elif pressure_unit == "Bar":
+                pascal = pressure_value * 1e5
+                atm = pressure_value / 1.01325
+                torr = pressure_value * 750.062
+                st.success(f"{pressure_value} Bar = {pascal:.2f} Pa")
+                st.success(f"{pressure_value} Bar = {atm:.5f} atm")
+                st.success(f"{pressure_value} Bar = {torr:.5f} Torr")
+            elif pressure_unit == "Atmosfer":
+                pascal = pressure_value * 101325
+                bar = pressure_value * 1.01325
+                torr = pressure_value * 760
+                st.success(f"{pressure_value} atm = {pascal:.2f} Pa")
+                st.success(f"{pressure_value} atm = {bar:.5f} Bar")
+                st.success(f"{pressure_value} atm = {torr:.5f} Torr")
+            elif pressure_unit == "Torr":
+                pascal = pressure_value / 0.00750062
+                bar = pressure_value / 750.062
+                atm = pressure_value / 760
+                st.success(f"{pressure_value} Torr = {pascal:.2f} Pa")
+                st.success(f"{pressure_value} Torr = {bar:.5f} Bar")
+                st.success(f"{pressure_value} Torr = {atm:.5f} atm")
+
+    elif conversion_type == "Volume":
+        st.subheader("Konversi Volume")
+        volume_value = st.number_input("Masukkan nilai volume:")
+        volume_unit = st.selectbox("Pilih satuan volume:", ["Liter", "Mililiter", "dm³", "Cubic Meter"])
+
+        if st.button("Konversi"):
+            if volume_unit == "Liter":
+                milliliter = volume_value * 1000
+                cubic_meter = volume_value / 1000
+                dm3 = volume_value  # 1 liter = 1 dm³
+                st.success(f"{volume_value} L = {milliliter:.2f} mL")
+                st.success(f"{volume_value} L = {cubic_meter:.5f} m³")
+                st.success(f"{volume_value} L = {dm3:.5f} dm³")
+            elif volume_unit == "Mililiter":
+                liter = volume_value / 1000
+                cubic_meter = liter / 1000
+                dm3 = liter  # 1 liter = 1 dm³
+                st.success(f"{volume_value} mL = {liter:.2f} L")
+                st.success(f"{volume_value} mL = {cubic_meter:.5f} m³")
+                st.success(f"{volume_value} mL = {dm3:.5f} dm³")
+            elif volume_unit == "dm³":
+                liter = volume_value  # 1 dm³ = 1 liter
+                milliliter = liter * 1000
+                cubic_meter = liter / 1000
+                st.success(f"{volume_value} dm³ = {liter:.2f} L")
+                st.success(f"{volume_value} dm³ = {milliliter:.2f} mL")
+                st.success(f"{volume_value} dm³ = {cubic_meter:.5f} m³")
+            elif volume_unit == "Cubic Meter":
+                liter = volume_value * 1000
+                milliliter = liter * 1000
+                dm3 = liter  # 1 liter = 1 dm³
+                st.success(f"{volume_value} m³ = {liter:.2f} L")
+                st.success(f"{volume_value} m³ = {milliliter:.2f} mL")
+                st.success(f"{volume_value} m³ = {dm3:.5f} dm³")
+
+    elif conversion_type == "Massa":
+        st.subheader("Konversi Massa")
+        mass_value = st.number_input("Masukkan nilai massa:")
+        mass_unit = st.selectbox("Pilih satuan massa:", ["Kilogram", "Gram", "Miligram"])
+
+        if st.button("Konversi"):
+            if mass_unit == "Kilogram":
+                gram = mass_value * 1000
+                milligram = mass_value * 1e6
+                st.success(f"{mass_value} kg = {gram:.2f} g")
+                st.success(f"{mass_value} kg = {milligram:.2f} mg")
+            elif mass_unit == "Gram":
+                kilogram = mass_value / 1000
+                milligram = mass_value * 1000
+                st.success(f"{mass_value} g = {kilogram:.2f} kg")
+                st.success(f"{mass_value} g = {milligram:.2f} mg")
+            elif mass_unit == "Miligram":
+                gram = mass_value / 1000
+                kilogram = gram / 1000
+                st.success(f"{mass_value} mg = {gram:.2f} g")
+                st.success(f"{mass_value} mg = {kilogram:.2f} kg")
+
+    elif conversion_type == "Konsentrasi":
+        st.subheader("Konversi Konsentrasi")
+        concentration_value = st.number_input("Masukkan nilai konsentrasi:")
+        concentration_unit = st.selectbox("Pilih satuan konsentrasi:", ["ppm", "ppb", "ppt"])
+
+        if st.button("Konversi"):
+            if concentration_unit == "ppm":
+                ppb = concentration_value * 1000
+                ppt = concentration_value * 1e6
+                st.success(f"{concentration_value} ppm = {ppb:.2f} ppb")
+                st.success(f"{concentration_value} ppm = {ppt:.2f} ppt")
+            elif concentration_unit == "ppb":
+                ppm = concentration_value / 1000
+                ppt = concentration_value * 1000
+                st.success(f"{concentration_value} ppb = {ppm:.2f} ppm")
+                st.success(f"{concentration_value} ppb = {ppt:.2f} ppt")
+            elif concentration_unit == "ppt":
+                ppm = concentration_value / 1e6
+                ppb = concentration_value / 1000
+                st.success(f"{concentration_value} ppt = {ppm:.2f} ppm")
+                st.success(f"{concentration_value} ppt = {ppb:.2f} ppb")
+
+    elif conversion_type == "Molaritas":
+        st.subheader("Konversi Molaritas")
+        molarity_value = st.number_input("Masukkan nilai molaritas (M):")
+        molarity_unit = st.selectbox("Pilih satuan molaritas:", ["Molaritas (M)", "Normalitas (N)", "Persen (%)", "ppm"])
+
+        if st.button("Konversi"):
+            if molarity_unit == "Molaritas (M)":
+                normality = molarity_value * 1  # Normalitas sama dengan Molaritas untuk larutan monovalen
+                percent = molarity_value * 100  # Asumsi 1 M = 1000 g/L untuk air
+                ppm = molarity_value * 1000  # 1 M = 1000 ppm
+                st.success(f"{molarity_value} M = {normality:.2f} N")
+                st.success(f"{molarity_value} M = {percent:.2f} %")
+                st.success(f"{molarity_value} M = {ppm:.2f} ppm")
+            elif molarity_unit == "Normalitas (N)":
+                molarity = molarity_value / 1  # Normalitas sama dengan Molaritas untuk larutan monovalen
+                percent = molarity * 100  # Asumsi 1 N = 1000 g/L untuk air
+                ppm = molarity * 1000  # 1 N = 1000 ppm
+                st.success(f"{molarity_value} N = {molarity:.2f} M")
+                st.success(f"{molarity_value} N = {percent:.2f} %")
+                st.success(f"{molarity_value} N = {ppm:.2f} ppm")
+            elif molarity_unit == "Persen (%)":
+                molarity = molarity_value / 100  # Asumsi 1 % = 10 g/L untuk air
+                normality = molarity * 1  # Normalitas sama dengan Molaritas untuk larutan monovalen
+                ppm = molarity * 1000  # 1 % = 10000 ppm
+                st.success(f"{molarity_value} % = {molarity:.2f} M")
+                st.success(f"{molarity_value} % = {normality:.2f} N")
+                st.success(f"{molarity_value} % = {ppm:.2f} ppm")
+            elif molarity_unit == "ppm":
+                molarity = molarity_value / 1000  # 1 ppm = 0.001 M
+                normality = molarity * 1  # Normalitas sama dengan Molaritas untuk larutan monovalen
+                percent = molarity * 100  # Asumsi 1 ppm = 0.1 g/L untuk air
+                st.success(f"{molarity_value} ppm = {molarity:.2f} M")
+                st.success(f"{molarity_value} ppm = {normality:.2f} N")
+                st.success(f"{molarity_value} ppm = {percent:.2f} %")
+
+   
 
 # ==================== TAB 6 =====================
 with tab6:
