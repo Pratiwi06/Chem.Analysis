@@ -120,28 +120,30 @@ with tab6:
         BE = st.number_input(f"BE boraks - Ulangan {i+1}", key=f"be_{i}")
         f = st.number_input(f"Faktor pengali - Ulangan {i+1}", key=f"f_{i}")
 
-        try:
-            N = mg / (mL * BE * f) if mL > 0 and BE > 0 and f > 0 else 0
-        except:
-            N = 0
-
         mg_boraks.append(mg)
         mL_HCl.append(mL)
         BE_boraks.append(BE)
         f_pengali.append(f)
-        normalitas.append(N)
 
-    df = pd.DataFrame({
-        "Ulangan": [f"Ulangan {i+1}" for i in range(n)],
-        "Normalitas (N)": normalitas
-    })
-    st.dataframe(df)
+    if st.button("🔍 Hitung Normalitas"):
+        for i in range(n):
+            try:
+                N = mg_boraks[i] / (mL_HCl[i] * BE_boraks[i] * f_pengali[i]) if mL_HCl[i] > 0 and BE_boraks[i] > 0 and f_pengali[i] > 0 else 0
+            except:
+                N = 0
+            normalitas.append(N)
 
-    mean_N = np.mean(normalitas)
-    std_N = np.std(normalitas, ddof=1)
-    rsd = (std_N / mean_N) * 100 if mean_N else 0
+        df = pd.DataFrame({
+            "Ulangan": [f"Ulangan {i+1}" for i in range(n)],
+            "Normalitas (N)": normalitas
+        })
+        st.dataframe(df)
 
-    st.markdown("### Statistik")
-    st.write(f"Rata-rata Normalitas: **{mean_N:.4f} N**")
-    st.write(f"Standar Deviasi (SD): **{std_N:.4f}**")
-    st.write(f"%RSD: **{rsd:.2f}%**")
+        mean_N = np.mean(normalitas)
+        std_N = np.std(normalitas, ddof=1)
+        rsd = (std_N / mean_N) * 100 if mean_N else 0
+
+        st.markdown("### Statistik")
+        st.write(f"Rata-rata Normalitas: **{mean_N:.4f} N**")
+        st.write(f"Standar Deviasi (SD): **{std_N:.4f}**")
+        st.write(f"%RSD: **{rsd:.2f}%**")
