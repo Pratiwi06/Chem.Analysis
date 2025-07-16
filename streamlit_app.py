@@ -46,8 +46,8 @@ with tab2:
 with tab3:
     st.header(":bar_chart: Regresi Linear")
 
-    x_input = st.text_input("Konsentrasi Standar (x), pisahkan koma", "")
-    y_input = st.text_input("Absorbansi Standar (y), pisahkan koma", "")
+    x_input = st.text_input("Nilai X (x), pisahkan koma", "")
+    y_input = st.text_input("Nilai Y (y), pisahkan koma", "")
 
     hitung = st.button("🔍 Hitung")
 
