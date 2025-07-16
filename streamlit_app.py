@@ -104,7 +104,6 @@ with tab5:
 # ==================== TAB 6 =====================
 with tab6:
         st.header("🧪 Perhitungan Titrasi Kimia")
-    st.markdown("Masukkan data titrasi duplo untuk menghitung **Normalitas Sampel, Rata-rata, SD**, **%RPD**, dan **Normalitas dari Standardisasi**.")
 
     jenis_titrasi = st.selectbox("Pilih Jenis Titrasi", [
         "Asam-Basa", "Argentometri", "Kompleksiometri", "Permanganometri"
