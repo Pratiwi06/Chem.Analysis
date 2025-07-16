@@ -9,7 +9,7 @@ st.title("Chemical Analysis")
 st.title("_chemical_ is :blue[cool] :sunglasses:")
 
 # Buat tabs
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Beranda", "Tabel Periodik", "Regresi", "Ketidakpastian", "Konversi", "Titrasi"])
+tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Beranda", "Tabel Periodik", "Regresi", "Konversi", "Titrasi"])
 
 # ==================== TAB 1 =====================
 with tab1:
