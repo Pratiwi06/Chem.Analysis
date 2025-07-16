@@ -12,12 +12,12 @@ tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Beranda", "Tabel Periodik", "Regr
 
 # ==================== TAB 1 =====================
 with tab1:
-    st.header("📘 Selamat Datang di Aplikasi Analisis Kimia")
+    st.header("\U0001F4D8 Selamat Datang di Aplikasi Analisis Kimia")
     st.write("Aplikasi ini dirancang untuk membantu analisis data kimia seperti regresi linear, konversi satuan, dan perhitungan titrasi.")
 
 # ==================== TAB 2 =====================
 with tab2:
-    st.header("🔬 Tabel Periodik Interaktif")
+    st.header("\U0001F52C Tabel Periodik Interaktif")
     elements = [
         {"symbol": "Zn", "name": "Seng", "atomicNumber": 30, "atomicMass": 65.38, "electronConfiguration": "[Ar] 3d¹⁰ 4s²", "electronsPerShell": [2, 8, 18, 2]},
         {"symbol": "Ga", "name": "Galium", "atomicNumber": 31, "atomicMass": 69.723, "electronConfiguration": "[Ar] 3d¹⁰ 4s² 4p¹", "electronsPerShell": [2, 8, 18, 3]},
@@ -49,7 +49,7 @@ with tab3:
     x_input = st.text_input("Nilai X (x), pisahkan koma", "")
     y_input = st.text_input("Nilai Y (y), pisahkan koma", "")
 
-    hitung = st.button("🔍 Hitung")
+    hitung = st.button("\U0001F50D Hitung")
 
     if hitung and x_input and y_input:
         try:
@@ -102,35 +102,33 @@ with tab5:
 
 # ==================== TAB 6 =====================
 with tab6:
-import numpy as np
-from scipy import stats
+    st.header("\U0001F9EA Perhitungan Titrasi Kimia")
+    st.markdown("Masukkan data titrasi duplo untuk menghitung **Normalitas Sampel, Rata-rata, SD**, dan **%RPD**.")
 
-# Misalnya, kita menggunakan file untuk membaca data
-with open('data_titrasi.txt', 'r') as file:
-    # Membaca data dari file dan mengonversinya menjadi array NumPy
-    data_titrasi = np.array([float(line.strip()) for line in file])
+    # Pilih jenis titrasi
+    jenis_titrasi = st.selectbox("Pilih Jenis Titrasi", [
+        "Asam-Basa", "Argentometri", "Kompleksiometri", "Permanganometri"
+    ])
 
-# Menghitung rata-rata
-rata_rata = np.mean(data_titrasi)
+    # Input data
+    col1, col2 = st.columns(2)
+    with col1:
+        V1 = st.number_input("Volume Titrasi ke-1 (mL)", min_value=0.0, step=0.01, format="%.2f")
+        N_titran = st.number_input("Normalitas Titran", min_value=0.0001, step=0.0001, format="%.4f")
+    with col2:
+        V2 = st.number_input("Volume Titrasi ke-2 (mL)", min_value=0.0, step=0.01, format="%.2f")
+        V_sampel = st.number_input("Volume Sampel (mL)", min_value=0.01, step=0.01, format="%.2f")
 
-# Menghitung deviasi standar
-deviasi_standar = np.std(data_titrasi, ddof=1)  # ddof=1 untuk sampel
+    if st.button("Hitung Titrasi"):
+        volumes = np.array([V1, V2])
+        avg_V = np.mean(volumes)
+        std_V = np.std(volumes, ddof=1) if len(volumes) > 1 else 0
+        rpd = (abs(V1 - V2) / avg_V) * 100 if avg_V != 0 else 0
+        N_sampel = (N_titran * avg_V) / V_sampel if V_sampel != 0 else 0
 
-# Menghitung %RPD
-rpd = (deviasi_standar / rata_rata) * 100
-
-# Uji normalitas menggunakan Shapiro-Wilk
-statistik, p_value = stats.shapiro(data_titrasi)
-
-# Menentukan hasil uji normalitas
-alpha = 0.05  # Tingkat signifikansi
-if p_value > alpha:
-    normalitas = "Data terdistribusi normal"
-else:
-    normalitas = "Data tidak terdistribusi normal"
-
-# Menampilkan hasil
-print(f"Rata-rata titrasi: {rata_rata:.2f} mL")
-print(f"Deviasi Standar: {deviasi_standar:.2f} mL")
-print(f"% RPD: {rpd:.2f}%")
-print(f"Hasil Uji Normalitas: {normalitas} (p-value: {p_value:.4f})")
+        st.subheader("\U0001F4CA Hasil Perhitungan Titrasi")
+        st.write(f"**Jenis Titrasi:** {jenis_titrasi}")
+        st.write(f"**Rata-rata Volume Titrasi:** {avg_V:.2f} mL")
+        st.write(f"**Standar Deviasi (SD):** {std_V:.4f}")
+        st.write(f"**%RPD:** {rpd:.2f}%")
+        st.success(f"**Normalitas Sampel:** {N_sampel:.4f} N")
