@@ -102,5 +102,34 @@ with tab5:
 
 # ==================== TAB 6 =====================
 with tab6:
-    st.header("Titrasi Placeholder")
-    st.image("https://static.streamlit.io/examples/owl.jpg", width=200)
+import numpy as np
+from scipy import stats
+
+# Data titrasi (misalnya, hasil titrasi dalam mL)
+data_titrasi = np.array([25.0, 24.8, 25.2, 25.1, 24.9])
+
+# Menghitung rata-rata
+rata_rata = np.mean(data_titrasi)
+
+# Menghitung deviasi standar
+deviasi_standar = np.std(data_titrasi, ddof=1)  # ddof=1 untuk sampel
+
+# Menghitung %RPD
+rpd = (deviasi_standar / rata_rata) * 100
+
+# Uji normalitas menggunakan Shapiro-Wilk
+statistik, p_value = stats.shapiro(data_titrasi)
+
+# Menentukan hasil uji normalitas
+alpha = 0.05  # Tingkat signifikansi
+if p_value > alpha:
+    normalitas = "Data terdistribusi normal"
+else:
+    normalitas = "Data tidak terdistribusi normal"
+
+# Menampilkan hasil
+print(f"Rata-rata titrasi: {rata_rata:.2f} mL")
+print(f"Deviasi Standar: {deviasi_standar:.2f} mL")
+print(f"% RPD: {rpd:.2f}%")
+print(f"Hasil Uji Normalitas: {normalitas} (p-value: {p_value:.4f})")
+
