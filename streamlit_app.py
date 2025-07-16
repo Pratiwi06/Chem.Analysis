@@ -119,10 +119,10 @@ with tab6:
         V2 = st.number_input("Volume Titrasi ke-2 (mL)", min_value=0.0, step=0.01, format="%.2f")
         V_sampel = st.number_input("Volume Sampel (mL)", min_value=0.01, step=0.01, format="%.2f")
 
-    if st.button("Hitung Titrasi"):
+    if V1 > 0 and V2 > 0 and N_titran > 0 and V_sampel > 0:
         volumes = np.array([V1, V2])
         avg_V = np.mean(volumes)
-        std_V = np.std(volumes, ddof=1) if len(volumes) > 1 else 0
+        std_V = np.std(volumes, ddof=1)
         rpd = (abs(V1 - V2) / avg_V) * 100 if avg_V != 0 else 0
         N_sampel = (N_titran * avg_V) / V_sampel if V_sampel != 0 else 0
 
@@ -132,3 +132,6 @@ with tab6:
         st.write(f"**Standar Deviasi (SD):** {std_V:.4f}")
         st.write(f"**%RPD:** {rpd:.2f}%")
         st.success(f"**Normalitas Sampel:** {N_sampel:.4f} N")
+    else:
+        st.subheader("\U0001F4CA Hasil Perhitungan Titrasi")
+        st.write("Silakan masukkan semua nilai terlebih dahulu untuk melihat hasil.")
