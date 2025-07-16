@@ -354,8 +354,8 @@ with tab5:
 
 # ==================== TAB 6 =====================
 with tab6:
-    st.header("🧪 Perhitungan Normalitas HCl berdasarkan Titrasi Boraks")
-
+    st.header("🧪 Standardisasi ")
+    st.writer("Dalam Normalitas")
     n = st.number_input("Jumlah Ulangan", min_value=2, step=1, value=2)
 
     mg_Standar_Baku_Primer = []
