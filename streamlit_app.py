@@ -358,28 +358,28 @@ with tab6:
 
     n = st.number_input("Jumlah Ulangan", min_value=2, step=1, value=2)
 
-    mg_boraks = []
-    mL_HCl = []
-    BE_boraks = []
+    mg_Standar_Baku_Primer = []
+    mL_Titran = []
+    BE_Standar_Baku_Primer = []
     f_pengali = []
     normalitas = []
 
     for i in range(n):
         st.markdown(f"### Ulangan {i+1}")
-        mg = st.number_input(f"mg boraks - Ulangan {i+1}", key=f"mg_{i}")
-        mL = st.number_input(f"mL HCl - Ulangan {i+1}", key=f"ml_{i}")
-        BE = st.number_input(f"BE boraks - Ulangan {i+1}", key=f"be_{i}")
+        mg = st.number_input(f"mg Standar Baku Primer - Ulangan {i+1}", key=f"mg_{i}")
+        mL = st.number_input(f"mL Titran - Ulangan {i+1}", key=f"ml_{i}")
+        BE = st.number_input(f"BE Standar Baku Primer - Ulangan {i+1}", key=f"be_{i}")
         f = st.number_input(f"Faktor pengali - Ulangan {i+1} (jika tidak ada FP, input nilai 1)", key=f"f_{i}")
 
-        mg_boraks.append(mg)
-        mL_HCl.append(mL)
-        BE_boraks.append(BE)
+        mg_Standar_Baku_Primer.append(mg)
+        mL_Titran.append(mL)
+        BE_Standar_Baku_Primer.append(BE)
         f_pengali.append(f)
 
     if st.button("🔍 Hitung Normalitas"):
         for i in range(n):
             try:
-                N = mg_boraks[i] / (mL_HCl[i] * BE_boraks[i] * f_pengali[i]) if mL_HCl[i] > 0 and BE_boraks[i] > 0 and f_pengali[i] > 0 else 0
+                N = mg_Standar_Baku_Primer[i] / (mL_Titran[i] * BE_Standar_Baku_Primer[i] * f_pengali[i]) if mL_Titran[i] > 0 and BE_Standar_Baku_Primer[i] > 0 and f_pengali[i] > 0 else 0
             except:
                 N = 0
             normalitas.append(N)
