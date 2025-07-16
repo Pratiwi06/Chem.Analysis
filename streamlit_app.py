@@ -105,8 +105,10 @@ with tab6:
 import numpy as np
 from scipy import stats
 
-# Data titrasi (misalnya, hasil titrasi dalam mL)
-data_titrasi = np.array([25.0, 24.8, 25.2, 25.1, 24.9])
+# Misalnya, kita menggunakan file untuk membaca data
+with open('data_titrasi.txt', 'r') as file:
+    # Membaca data dari file dan mengonversinya menjadi array NumPy
+    data_titrasi = np.array([float(line.strip()) for line in file])
 
 # Menghitung rata-rata
 rata_rata = np.mean(data_titrasi)
@@ -132,4 +134,3 @@ print(f"Rata-rata titrasi: {rata_rata:.2f} mL")
 print(f"Deviasi Standar: {deviasi_standar:.2f} mL")
 print(f"% RPD: {rpd:.2f}%")
 print(f"Hasil Uji Normalitas: {normalitas} (p-value: {p_value:.4f})")
-
