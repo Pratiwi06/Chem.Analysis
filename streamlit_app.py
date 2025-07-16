@@ -342,6 +342,9 @@ with tab5:
         # Input untuk valensi
         valency = st.number_input("Masukkan valensi (jika diperlukan):", min_value=1, value=1)
 
+        # Input untuk normalitas jika memilih Normalitas
+        normality_value = st.number_input("Masukkan nilai normalitas (N) (jika diperlukan):", min_value=0.0)
+
         if st.button("Konversi"):
             if molarity_unit == "Molaritas (M)":
                 normality = molarity_value * valency  # Normalitas = Molaritas x Valensi
@@ -351,12 +354,15 @@ with tab5:
                 st.success(f"{molarity_value} M = {percent:.2f} %")
                 st.success(f"{molarity_value} M = {ppm:.2f} ppm")
             elif molarity_unit == "Normalitas (N)":
-                molarity = molarity_value / valency  # Normalitas = Molaritas x Valensi
-                percent = molarity * 100  # Asumsi 1 N = 1000 g/L untuk air
-                ppm = molarity * 1000  # 1 N = 1000 ppm
-                st.success(f"{molarity_value} N = {molarity:.2f} M")
-                st.success(f"{molarity_value} N = {percent:.2f} %")
-                st.success(f"{molarity_value} N = {ppm:.2f} ppm")
+                if normality_value > 0:
+                    molarity = normality_value / valency  # Normalitas = Molaritas x Valensi
+                    percent = molarity * 100  # Asumsi 1 N = 1000 g/L untuk air
+                    ppm = molarity * 1000  # 1 N = 1000 ppm
+                    st.success(f"{normality_value} N = {molarity:.2f} M")
+                    st.success(f"{normality_value} N = {percent:.2f} %")
+                    st.success(f"{normality_value} N = {ppm:.2f} ppm")
+                else:
+                    st.warning("Normalitas harus lebih besar dari 0.")
             elif molarity_unit == "Persen (%)":
                 molarity = molarity_value / 100  # Asumsi 1 % = 10 g/L untuk air
                 normality = molarity * valency  # Normalitas = Molaritas x Valensi
@@ -371,7 +377,6 @@ with tab5:
                 st.success(f"{molarity_value} ppm = {molarity:.2f} M")
                 st.success(f"{molarity_value} ppm = {normality:.2f} N")
                 st.success(f"{molarity_value} ppm = {percent:.2f} %")
-
 
 # ==================== TAB 6 =====================
 with tab6:
