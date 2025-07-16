@@ -102,8 +102,6 @@ with tab5:
 
 # ==================== TAB 6 =====================
 with tab6:
-    # ==================== TAB 6 =====================
-with tab6:
     st.header("Perhitungan Normalitas HCl, SD, dan %RPD")
     
     jumlah_ulangan = st.number_input("Masukkan jumlah ulangan (minimal 2 untuk RPD):", min_value=1, step=1, value=2)
