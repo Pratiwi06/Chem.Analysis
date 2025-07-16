@@ -193,8 +193,6 @@ with tab4:
     
 # ==================== TAB 5 =====================
 with tab5:
-    # ==================== TAB 5 =====================
-with tab5:
     st.header("🔄 Konversi Satuan")
 
     # Pilih jenis konversi
