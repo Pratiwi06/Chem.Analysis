@@ -350,51 +350,6 @@ with tab5:
                 st.success(f"{concentration_value} ppm = {normality:.2f} N")
                 st.success(f"{concentration_value} ppm = {percent:.2f} %")
 
-    elif conversion_type == "Molaritas":
-        st.subheader("Konversi Molaritas")
-        molarity_value = st.number_input("Masukkan nilai molaritas (M):")
-        molarity_unit = st.selectbox("Pilih satuan molaritas:", ["Molaritas (M)", "Normalitas (N)", "Persen (%)", "ppm"])
-        
-        # Input untuk valensi
-        valency = st.number_input("Masukkan valensi (jika diperlukan):", min_value=1, value=1)
-
-        # Input untuk normalitas jika memilih Normalitas
-        normality_value = st.number_input("Masukkan nilai normalitas (N) (jika diperlukan):", min_value=0.0)
-
-        if st.button("Konversi"):
-            if molarity_unit == "Molaritas (M)":
-                normality = molarity_value * valency  # Normalitas = Molaritas x Valensi
-                percent = molarity_value * 100  # Asumsi 1 M = 1000 g/L untuk air
-                ppm = molarity_value * 1000  # 1 M = 1000 ppm
-                st.success(f"{molarity_value} M = {normality:.2f} N")
-                st.success(f"{molarity_value} M = {percent:.2f} %")
-                st.success(f"{molarity_value} M = {ppm:.2f} ppm")
-            elif molarity_unit == "Normalitas (N)":
-                if normality_value > 0:
-                    molarity = normality_value / valency  # Normalitas = Molaritas x Valensi
-                    percent = molarity * 100  # Asumsi 1 N = 1000 g/L untuk air
-                    ppm = molarity * 1000  # 1 N = 1000 ppm
-                    st.success(f"{normality_value} N = {molarity:.2f} M")
-                    st.success(f"{normality_value} N = {percent:.2f} %")
-                    st.success(f"{normality_value} N = {ppm:.2f} ppm")
-                else:
-                    st.warning("Normalitas harus lebih besar dari 0.")
-            elif molarity_unit == "Persen (%)":
-                molarity = molarity_value / 100  # Asumsi 1 % = 10 g/L untuk air
-                normality = molarity * valency  # Normalitas = Molaritas x Valensi
-                ppm = molarity * 1000  # 1 % = 10000 ppm
-                st.success(f"{molarity_value} % = {molarity:.2f} M")
-                st.success(f"{molarity_value} % = {normality:.2f} N")
-                st.success(f"{molarity_value} % = {ppm:.2f} ppm")
-            elif molarity_unit == "ppm":
-                molarity = molarity_value / 1000  # 1 ppm = 0.001 M
-                normality = molarity * valency  # Normalitas = Molaritas x Valensi
-                percent = molarity * 100  # Asumsi 1 ppm = 0.1 g/L untuk air
-                st.success(f"{molarity_value} ppm = {molarity:.2f} M")
-                st.success(f"{molarity_value} ppm = {normality:.2f} N")
-                st.success(f"{molarity_value} ppm = {percent:.2f} %")
-
-
 # ==================== TAB 6 =====================
 with tab6:
     st.header("🧪 Perhitungan Normalitas HCl berdasarkan Titrasi Boraks")
