@@ -103,7 +103,7 @@ with tab5:
 
 # ==================== TAB 6 =====================
 with tab6:
-        st.header("🧪 Perhitungan Titrasi Kimia")
+    st.header("🧪 Perhitungan Titrasi Kimia")
 
     jenis_titrasi = st.selectbox("Pilih Jenis Titrasi", [
         "Asam-Basa", "Argentometri", "Kompleksiometri", "Permanganometri"
