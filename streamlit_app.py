@@ -246,7 +246,7 @@ with tab5:
                 torr = pressure_value * 760
                 st.success(f"{pressure_value} atm = {pascal:.2f} Pa")
                 st.success(f"{pressure_value} atm = {bar:.5f} Bar")
-                st.success(f"{pressure_value} atm = {torr:.5f} Torr")
+                st.success(f"{pressure_value} atm = {torr:.2f} Torr")
             elif pressure_unit == "Torr":
                 pascal = pressure_value / 0.00750062
                 bar = pressure_value / 750.062
