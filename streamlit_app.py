@@ -9,7 +9,7 @@ st.title("Chemical Analysis")
 st.title("_chemical_ is :blue[cool] :sunglasses:")
 
 # Buat tabs
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["Beranda", "Tabel Periodik", "Regresi", "Konversi", "Titrasi"])
+tab1, tab2, tab3, tab5, tab6 = st.tabs(["Beranda", "Tabel Periodik", "Regresi", "Konversi", "Titrasi"])
 
 # ==================== TAB 1 =====================
 with tab1:
@@ -186,10 +186,6 @@ with tab3:
 
         except Exception as e:
             st.warning(f"❌ Masukkan data valid. Kesalahan: {e}")
-
-# ==================== TAB 4 =====================
-with tab4:
-    st.header("Ketidakpastian Placeholder")
     
 # ==================== TAB 5 =====================
 with tab5:
