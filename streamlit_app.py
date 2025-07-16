@@ -311,46 +311,46 @@ with tab5:
                 kilogram = gram / 1000
                 st.success(f"{mass_value} mg = {gram:.2f} g")
                 st.success(f"{mass_value} mg = {kilogram:.2f} kg")
-elif conversion_type == "konsentrasi":
-     st.subheader("🔁 Konversi Konsentrasi")
-    conversion_value = st.number_input("Masukkan nilai konsentrasi:")
-    conversion_unit = st.selectbox("Pilih satuan konsentrasi:", ["Molaritas (M)", "Normalitas (N)", "Persen (%)", "ppm", "ppb", "ppt"])
+    elif conversion_type == "konsentrasi":
+        st.subheader("🔁 Konversi Konsentrasi")
+        conversion_value = st.number_input("Masukkan nilai konsentrasi:")
+        conversion_unit = st.selectbox("Pilih satuan konsentrasi:", ["Molaritas (M)", "Normalitas (N)", "Persen (%)", "ppm", "ppb", "ppt"])
+    
+        valency = st.number_input("Masukkan valensi (jika diperlukan):", min_value=1, value=1)
+        density = st.number_input("Masukkan bobot jenis/densitas (g/mL):", min_value=0.0)
+        mol_weight = st.number_input("Masukkan bobot molekul (g/mol):", min_value=0.0)
 
-    valency = st.number_input("Masukkan valensi (jika diperlukan):", min_value=1, value=1)
-    density = st.number_input("Masukkan bobot jenis/densitas (g/mL):", min_value=0.0)
-    mol_weight = st.number_input("Masukkan bobot molekul (g/mol):", min_value=0.0)
-
-    if st.button("Konversi"):
-        if conversion_unit == "Molaritas (M)":
-            normality = conversion_value * valency
-            percent = (conversion_value * mol_weight * density) / 10  # % = (M * MW * density) / 10
-            st.success(f"{conversion_value} M = {normality:.4f} N")
-            st.success(f"{conversion_value} M = {percent:.4f} %")
-        elif conversion_unit == "Normalitas (N)":
-            molarity = conversion_value / valency
-            percent = (molarity * mol_weight * density) / 10
-            st.success(f"{conversion_value} N = {molarity:.4f} M")
-            st.success(f"{conversion_value} N = {percent:.4f} %")
-        elif conversion_unit == "Persen (%)":
-            molarity = (conversion_value * density * 10) / (mol_weight) if mol_weight > 0 and density > 0 else 0
-            normality = molarity * valency
-            st.success(f"{conversion_value} % = {molarity:.4f} M")
-            st.success(f"{conversion_value} % = {normality:.4f} N")
-        elif conversion_unit == "ppm":
-            ppb = conversion_value * 1000
-            ppt = ppb * 1000
-            st.success(f"{conversion_value} ppm = {ppb:.2f} ppb")
-            st.success(f"{conversion_value} ppm = {ppt:.2f} ppt")
-        elif conversion_unit == "ppb":
-            ppm = conversion_value / 1000
-            ppt = conversion_value * 1000
-            st.success(f"{conversion_value} ppb = {ppm:.2f} ppm")
-            st.success(f"{conversion_value} ppb = {ppt:.2f} ppt")
-        elif conversion_unit == "ppt":
-            ppm = conversion_value / 1e6
-            ppb = conversion_value / 1000
-            st.success(f"{conversion_value} ppt = {ppm:.6f} ppm")
-            st.success(f"{conversion_value} ppt = {ppb:.2f} ppb")
+        if st.button("Konversi"):
+            if conversion_unit == "Molaritas (M)":
+                normality = conversion_value * valency
+                percent = (conversion_value * mol_weight * density) / 10  # % = (M * MW * density) / 10
+                st.success(f"{conversion_value} M = {normality:.4f} N")
+                st.success(f"{conversion_value} M = {percent:.4f} %")
+            elif conversion_unit == "Normalitas (N)":
+                molarity = conversion_value / valency
+                percent = (molarity * mol_weight * density) / 10
+                st.success(f"{conversion_value} N = {molarity:.4f} M")
+                st.success(f"{conversion_value} N = {percent:.4f} %")
+            elif conversion_unit == "Persen (%)":
+                molarity = (conversion_value * density * 10) / (mol_weight) if mol_weight > 0 and density > 0 else 0
+                normality = molarity * valency
+                st.success(f"{conversion_value} % = {molarity:.4f} M")
+                st.success(f"{conversion_value} % = {normality:.4f} N")
+            elif conversion_unit == "ppm":
+                ppb = conversion_value * 1000
+                ppt = ppb * 1000
+                st.success(f"{conversion_value} ppm = {ppb:.2f} ppb")
+                st.success(f"{conversion_value} ppm = {ppt:.2f} ppt")
+            elif conversion_unit == "ppb":
+                ppm = conversion_value / 1000
+                ppt = conversion_value * 1000
+                st.success(f"{conversion_value} ppb = {ppm:.2f} ppm")
+                st.success(f"{conversion_value} ppb = {ppt:.2f} ppt")
+            elif conversion_unit == "ppt":
+                ppm = conversion_value / 1e6
+                ppb = conversion_value / 1000
+                st.success(f"{conversion_value} ppt = {ppm:.6f} ppm")
+                st.success(f"{conversion_value} ppt = {ppb:.2f} ppb")
 
 # ==================== TAB 6 =====================
 with tab6:
