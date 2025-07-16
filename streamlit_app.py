@@ -102,57 +102,55 @@ with tab5:
 
 # ==================== TAB 6 =====================
 with tab6:
-st.title("Perhitungan Normalitas HCl, SD, dan %RSD")
-
-st.markdown("### Input Data Ulangan")
-
-# Jumlah ulangan
-jumlah_ulangan = st.number_input("Masukkan jumlah ulangan:", min_value=1, step=1, value=3)
-
-# Data perulangan
-data = {
-    "mg_boraks": [],
-    "mL_HCl": [],
-    "BE_boraks": [],
-    "f_pengali": []
-}
-
-for i in range(jumlah_ulangan):
-    st.markdown(f"#### Ulangan {i+1}")
-    mg = st.number_input(f"mg boraks - Ulangan {i+1}", key=f"mg_{i}")
-    mL = st.number_input(f"mL HCl - Ulangan {i+1}", key=f"ml_{i}")
-    be = st.number_input(f"BE boraks - Ulangan {i+1}", key=f"be_{i}")
-    f = st.number_input(f"Faktor pengali - Ulangan {i+1}", key=f"f_{i}")
+    st.header("Perhitungan Normalitas HCl, SD, dan %RSD")
     
-    data["mg_boraks"].append(mg)
-    data["mL_HCl"].append(mL)
-    data["BE_boraks"].append(be)
-    data["f_pengali"].append(f)
-
-# Hitung Normalitas untuk tiap ulangan
-normalitas = []
-for i in range(jumlah_ulangan):
-    try:
-        N = data["mg_boraks"][i] / (data["mL_HCl"][i] * data["BE_boraks"][i] * data["f_pengali"][i])
-    except ZeroDivisionError:
-        N = 0
-    normalitas.append(N)
-
-# Tampilkan hasil
-st.markdown("### Hasil Normalitas per Ulangan")
-df = pd.DataFrame({
-    "Ulangan": [f"Ulangan {i+1}" for i in range(jumlah_ulangan)],
-    "Normalitas (N)": normalitas
-})
-st.dataframe(df)
-
-# Hitung SD dan %RSD
-if jumlah_ulangan > 1:
-    mean_N = np.mean(normalitas)
-    std_N = np.std(normalitas, ddof=1)
-    rsd = (std_N / mean_N) * 100 if mean_N != 0 else 0
-
-    st.markdown("### Statistik")
-    st.write(f"Rata-rata Normalitas: **{mean_N:.4f} N**")
-    st.write(f"Standar Deviasi (SD): **{std_N:.4f}**")
-    st.write(f"%RSD: **{rsd:.2f}%**")
+    # Jumlah ulangan
+    jumlah_ulangan = st.number_input("Masukkan jumlah ulangan:", min_value=1, step=1, value=3)
+    
+    # Data perulangan
+    data = {
+        "mg_boraks": [],
+        "mL_HCl": [],
+        "BE_boraks": [],
+        "f_pengali": []
+    }
+    
+    for i in range(jumlah_ulangan):
+        st.markdown(f"#### Ulangan {i+1}")
+        mg = st.number_input(f"mg boraks - Ulangan {i+1}", key=f"mg_{i}")
+        mL = st.number_input(f"mL HCl - Ulangan {i+1}", key=f"ml_{i}")
+        be = st.number_input(f"BE boraks - Ulangan {i+1}", key=f"be_{i}")
+        f = st.number_input(f"Faktor pengali - Ulangan {i+1}", key=f"f_{i}")
+        
+        data["mg_boraks"].append(mg)
+        data["mL_HCl"].append(mL)
+        data["BE_boraks"].append(be)
+        data["f_pengali"].append(f)
+    
+    # Hitung Normalitas untuk tiap ulangan
+    normalitas = []
+    for i in range(jumlah_ulangan):
+        try:
+            N = data["mg_boraks"][i] / (data["mL_HCl"][i] * data["BE_boraks"][i] * data["f_pengali"][i])
+        except ZeroDivisionError:
+            N = 0
+        normalitas.append(N)
+    
+    # Tampilkan hasil
+    st.markdown("### Hasil Normalitas per Ulangan")
+    df = pd.DataFrame({
+        "Ulangan": [f"Ulangan {i+1}" for i in range(jumlah_ulangan)],
+        "Normalitas (N)": normalitas
+    })
+    st.dataframe(df)
+    
+    # Hitung SD dan %RSD
+    if jumlah_ulangan > 1:
+        mean_N = np.mean(normalitas)
+        std_N = np.std(normalitas, ddof=1)
+        rsd = (std_N / mean_N) * 100 if mean_N != 0 else 0
+    
+        st.markdown("### Statistik")
+        st.write(f"Rata-rata Normalitas: **{mean_N:.4f} N**")
+        st.write(f"Standar Deviasi (SD): **{std_N:.4f}**")
+        st.write(f"%RSD: **{rsd:.2f}%**")
