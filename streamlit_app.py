@@ -1,4 +1,4 @@
-satukan dengan kodingan ini pada tab 6 nya satukan dengan kodingan ini pada tab 6 import streamlit as st
+import streamlit as st
 import numpy as np
 import matplotlib.pyplot as plt
 
