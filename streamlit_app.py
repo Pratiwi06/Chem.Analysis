@@ -311,11 +311,11 @@ with tab5:
                 kilogram = gram / 1000
                 st.success(f"{mass_value} mg = {gram:.2f} g")
                 st.success(f"{mass_value} mg = {kilogram:.2f} kg")
-    elif conversion_type == "konsentrasi":
+                
+    elif conversion_type == "Konsentrasi":
         st.subheader("🔁 Konversi Konsentrasi")
         conversion_value = st.number_input("Masukkan nilai konsentrasi:")
         conversion_unit = st.selectbox("Pilih satuan konsentrasi:", ["Molaritas (M)", "Normalitas (N)", "Persen (%)", "ppm", "ppb", "ppt"])
-    
         valency = st.number_input("Masukkan valensi (jika diperlukan):", min_value=1, value=1)
         density = st.number_input("Masukkan bobot jenis/densitas (g/mL):", min_value=0.0)
         mol_weight = st.number_input("Masukkan bobot molekul (g/mol):", min_value=0.0)
