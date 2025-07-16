@@ -312,7 +312,7 @@ with tab5:
                 st.success(f"{mass_value} mg = {gram:.2f} g")
                 st.success(f"{mass_value} mg = {kilogram:.2f} kg")
 
-        elif conversion_type == "Konsentrasi":
+    elif conversion_type == "Konsentrasi":
         st.subheader("Konversi Konsentrasi")
         concentration_value = st.number_input("Masukkan nilai konsentrasi:")
         concentration_unit = st.selectbox("Pilih satuan konsentrasi:", ["Molaritas (M)", "Normalitas (N)", "Persen (%)", "ppm", "ppb", "ppt"])
