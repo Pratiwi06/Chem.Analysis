@@ -24,7 +24,7 @@ with tab2:
         {"symbol": "He", "name": "Helium", "atomicNumber": 2, "atomicMass": 4.002602, "electronConfiguration": "1s²", "electronsPerShell": [2]},
         {"symbol": "Li", "name": "Litium", "atomicNumber": 3, "atomicMass": 6.941, "electronConfiguration": "[He] 2s¹", "electronsPerShell": [2, 1]},
         {"symbol": "Be", "name": "Berilium", "atomicNumber": 4, "atomicMass": 9.012182, "electronConfiguration": "[He] 2s²", "electronsPerShell": [2, 2]},
-        {"symbol": "B", "name": "Bor", "atomicNumber": 5, "atomicMass": 10.811, "electronConfiguration": "[He] 2s² 2p¹", "electronsPerShell": [2, 3]},
+        {"symbol": "B", "name": "Boron", "atomicNumber": 5, "atomicMass": 10.811, "electronConfiguration": "[He] 2s² 2p¹", "electronsPerShell": [2, 3]},
         {"symbol": "C", "name": "Karbon", "atomicNumber": 6, "atomicMass": 12.0107, "electronConfiguration": "[He] 2s² 2p²", "electronsPerShell": [2, 4]},
         {"symbol": "N", "name": "Nitrogen", "atomicNumber": 7, "atomicMass": 14.0067, "electronConfiguration": "[He] 2s² 2p³", "electronsPerShell": [2, 5]},
         {"symbol": "O", "name": "Oksigen", "atomicNumber": 8, "atomicMass": 15.9994, "electronConfiguration": "[He] 2s² 2p⁴", "electronsPerShell": [2, 6]},
