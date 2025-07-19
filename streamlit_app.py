@@ -18,7 +18,7 @@ with tab1:
 
 # ==================== TAB 2 =====================
 with tab2:
-    st.header("🔬 Tabel Periodik Interaktif")
+    st.header("🔬 Tabel Periodik Unsur")
     elements = [
         {"symbol": "H", "name": "Hidrogen", "atomicNumber": 1, "atomicMass": 1.00794, "electronConfiguration": "1s¹", "electronsPerShell": [1]},
         {"symbol": "He", "name": "Helium", "atomicNumber": 2, "atomicMass": 4.002602, "electronConfiguration": "1s²", "electronsPerShell": [2]},
