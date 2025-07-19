@@ -362,8 +362,8 @@ with tab5:
                 percent_bv = (molarity * mol_weight) / 10
                 percent_bb = (molarity * mol_weight) / (density * 10) if density > 0 else 0
                 st.success(f"{conversion_value:.4f} N = {molarity:.4f} M")
-                st.success(f"{conversion_value:.4f} N = {percent_bv:.4f} % (b/v)")
-                st.success(f"{conversion_value:.4f} N = {percent_bb:.4f} % (b/b)")
+                st.success(f"{conversion_value:.4f} N = {percent_bv:.2f} % (b/v)")
+                st.success(f"{conversion_value:.4f} N = {percent_bb:.2f} % (b/b)")
                 
             elif conversion_unit == "Persen (% (b/v))":
                 molarity = (conversion_value * 10) / mol_weight if mol_weight > 0 else 0
@@ -371,7 +371,7 @@ with tab5:
                 percent_bb = conversion_value / density if density > 0 else 0
                 st.success(f"{conversion_value:.4f} % (b/v) = {molarity:.4f} M")
                 st.success(f"{conversion_value:.4f} % (b/v) = {normality:.4f} N")
-                st.success(f"{conversion_value:.4f} % (b/v) = {percent_bb:.4f} % (b/b)")
+                st.success(f"{conversion_value:.4f} % (b/v) = {percent_bb:.2f} % (b/b)")
     
             elif conversion_unit == "Persen (% (b/b))":
                 molarity = (conversion_value * density * 10) / mol_weight if mol_weight > 0 and density > 0 else 0
@@ -379,7 +379,7 @@ with tab5:
                 percent_bv = conversion_value * density  # % (b/v) = % (b/b) × ρ
                 st.success(f"{conversion_value:.4f} % (b/b) = {molarity:.4f} M")
                 st.success(f"{conversion_value:.4f} % (b/b) = {normality:.4f} N")
-                st.success(f"{conversion_value:.4f} % (b/b) = {percent_bv:.4f} % (b/v)")
+                st.success(f"{conversion_value:.4f} % (b/b) = {percent_bv:.2f} % (b/v)")
     
             elif conversion_unit == "ppm":
                 ppb = conversion_value * 1000
