@@ -203,18 +203,18 @@ with tab5:
             if temp_unit == "Celsius":
                 fahrenheit = (temp_value * 9/5) + 32
                 kelvin = temp_value + 273.15
-                st.success(f"{temp_value} °C = {fahrenheit:.2f} °F")
-                st.success(f"{temp_value} °C = {kelvin:.2f} K")
+                st.success(f"{temp_value} °C = {fahrenheit:.1f} °F")
+                st.success(f"{temp_value} °C = {kelvin:.1f} K")
             elif temp_unit == "Fahrenheit":
                 celsius = (temp_value - 32) * 5/9
                 kelvin = celsius + 273.15
-                st.success(f"{temp_value} °F = {celsius:.2f} °C")
-                st.success(f"{temp_value} °F = {kelvin:.2f} K")
+                st.success(f"{temp_value} °F = {celsius:.1f} °C")
+                st.success(f"{temp_value} °F = {kelvin:.1f} K")
             elif temp_unit == "Kelvin":
                 celsius = temp_value - 273.15
                 fahrenheit = (celsius * 9/5) + 32
-                st.success(f"{temp_value} K = {celsius:.2f} °C")
-                st.success(f"{temp_value} K = {fahrenheit:.2f} °F")
+                st.success(f"{temp_value} K = {celsius:.1f} °C")
+                st.success(f"{temp_value} K = {fahrenheit:.1f} °F")
 
     elif conversion_type == "Tekanan":
         st.subheader("Konversi Tekanan")
