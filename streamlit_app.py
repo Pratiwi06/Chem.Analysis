@@ -346,11 +346,16 @@ with tab5:
         if st.button("Konversi"):
             if conversion_unit == "Molaritas (M)":
                 normality = conversion_value * valency
-                percent_bv = conversion_value * mol_weight / 10  # Asumsi volume 100 mL
-                percent_bb = conversion_value * mol_weight * density / 10  # Asumsi volume 100 mL
+            
+                # Rumus benar untuk % b/v: (M * Mr) / 10
+                percent_bv = (conversion_value * mol_weight) / 10
+            
+                # Rumus benar untuk % b/b: (M * Mr) / (ρ * 10)
+                percent_bb = (conversion_value * mol_weight) / (density * 10) if density > 0 else 0
+            
                 st.success(f"{conversion_value:.4f} M = {normality:.4f} N")
-                st.success(f"{conversion_value:.4f} M = {percent_bv:.4f} % (b/v) (asumsi 100 mL)")
-                st.success(f"{conversion_value:.4f} M = {percent_bb:.4f} % (b/b) (asumsi 100 mL)")
+                st.success(f"{conversion_value:.4f} M = {percent_bv:.4f} % (b/v)")
+                st.success(f"{conversion_value:.4f} M = {percent_bb:.4f} % (b/b)")
     
             elif conversion_unit == "Normalitas (N)":
                 molarity = conversion_value / valency
