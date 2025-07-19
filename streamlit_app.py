@@ -337,6 +337,8 @@ with tab4:
         valency = st.number_input("Masukkan valensi (jika diperlukan):", min_value=1, value=1)
         density = st.number_input("Masukkan bobot jenis/densitas (g/mL):", min_value=0.0, value=1.0)
         mol_weight = st.number_input("Masukkan bobot molekul (g/mol):", min_value=0.0, value=1.0)
+        percent_bv = (conversion_value * mol_weight) / 10
+        percent_bb = (conversion_value * mol_weight * density) / 10
 
         if st.button("Konversi"):
             if conversion_unit == "Molaritas (M)":
