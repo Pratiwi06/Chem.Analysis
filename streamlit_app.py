@@ -9,7 +9,7 @@ st.title("Chemical Analysis")
 st.title("_chemical_ is :blue[cool] :sunglasses:")
 
 # Buat tabs
-tab1, tab2, tab3, tab5, tab6 = st.tabs(["Beranda", "Tabel Periodik", "Regresi", "Konversi", "Titrasi"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Beranda", "Tabel Periodik", "Regresi", "Konversi", "Titrasi"])
 
 # ==================== TAB 1 =====================
 with tab1:
@@ -187,8 +187,8 @@ with tab3:
         except Exception as e:
             st.warning(f"❌ Masukkan data valid. Kesalahan: {e}")
     
-# ==================== TAB 5 =====================
-with tab5:
+# ==================== TAB 4 =====================
+with tab4:
     st.header("🔄 Konversi Satuan")
 
     # Pilih jenis konversi
@@ -348,8 +348,8 @@ with tab5:
                 st.success(f"{conversion_value} ppt = {ppm:.6f} ppm")
                 st.success(f"{conversion_value} ppt = {ppb:.2f} ppb")
 
-# ==================== TAB 6 =====================
-with tab6:
+# ==================== TAB 5 =====================
+with tab5:
     st.header("🧪 Standardisasi ")
     st.write("Dalam Normalitas")
     n = st.number_input("Jumlah Ulangan", min_value=2, step=1, value=2)
