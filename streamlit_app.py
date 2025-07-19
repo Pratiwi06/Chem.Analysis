@@ -353,9 +353,9 @@ with tab5:
                 # Rumus benar untuk % b/b: (M * Mr) / (ρ * 10)
                 percent_bb = (conversion_value * mol_weight) / (density * 10) if density > 0 else 0
             
-                st.success(f"{conversion_value:.4f} M = {normality:.4f} N")
-                st.success(f"{conversion_value:.4f} M = {percent_bv:.4f} % (b/v)")
-                st.success(f"{conversion_value:.4f} M = {percent_bb:.4f} % (b/b)")
+                st.success(f"{conversion_value:.4f} M = {normality:.2f} N")
+                st.success(f"{conversion_value:.4f} M = {percent_bv:.2f} % (b/v)")
+                st.success(f"{conversion_value:.4f} M = {percent_bb:.2f} % (b/b)")
     
             elif conversion_unit == "Normalitas (N)":
                 molarity = conversion_value / valency
