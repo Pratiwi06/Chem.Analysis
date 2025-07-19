@@ -359,8 +359,8 @@ with tab5:
     
             elif conversion_unit == "Normalitas (N)":
                 molarity = conversion_value / valency
-                percent_bv = molarity * mol_weight / 10
-                percent_bb = molarity * mol_weight * density / 10
+                percent_bv = (molarity * mol_weight) / 10
+                percent_bb = (molarity * mol_weight) / (density * 10) if density > 0 else 0
                 st.success(f"{conversion_value:.4f} N = {molarity:.4f} M")
                 st.success(f"{conversion_value:.4f} N = {percent_bv:.4f} % (b/v)")
                 st.success(f"{conversion_value:.4f} N = {percent_bb:.4f} % (b/b)")
