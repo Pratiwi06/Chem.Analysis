@@ -14,7 +14,7 @@ tab1, tab2, tab3, tab5, tab6 = st.tabs(["Beranda", "Tabel Periodik", "Regresi Li
 # ==================== TAB 1 =====================
 with tab1:
     st.header("📘 Selamat Datang di Aplikasi Analisis Kimia")
-    st.write("Aplikasi ini dirancang untuk membantu analisis data kimia seperti informasi terkait tabel periodik unsur, perhitungan regresi linear, konversi satuan, dan perhitungan titrasi.")
+    st.write("Aplikasi ini dirancang untuk membantu analisis data kimia seperti informasi terkait tabel periodik unsur, perhitungan regresi linear, konversi satuan, dan perhitungan standardisasi.")
 
 # ==================== TAB 2 =====================
 with tab2:
