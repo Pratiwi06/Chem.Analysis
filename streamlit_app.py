@@ -330,33 +330,32 @@ with tab5:
                 st.success(f"{mass_value} mg = {gram:.2f} g")
                 st.success(f"{mass_value} mg = {kilogram:.2f} kg")
                 
-           
     elif conversion_type == "Konsentrasi":
         st.subheader("🔁 Konversi Konsentrasi")
-        
+    
         conversion_value = st.number_input("Masukkan nilai konsentrasi:")
         conversion_unit = st.selectbox(
             "Pilih satuan konsentrasi:",
             ["Molaritas (M)", "Normalitas (N)", "Persen (% (b/v))", "Persen (% (b/b))", "ppm", "ppb", "ppt"]
         )
-        
+    
         valency = st.number_input("Masukkan valensi (jika diperlukan):", min_value=1, value=1)
         density = st.number_input("Masukkan bobot jenis/densitas (g/mL):", min_value=0.0, value=1.0)
         mol_weight = st.number_input("Masukkan bobot molekul (g/mol):", min_value=0.0, value=1.0)
-    
+
         if st.button("Konversi"):
             if conversion_unit == "Molaritas (M)":
                 normality = conversion_value * valency
-                percent_bv = (conversion_value * mol_weight) / 10  # % (b/v) = M * MW / 10
-                percent_bb = (conversion_value * mol_weight * density) / 10  # % (b/b) = M * MW * ρ / 10
+                percent_bv = conversion_value * mol_weight / 10  # Asumsi volume 100 mL
+                percent_bb = conversion_value * mol_weight * density / 10  # Asumsi volume 100 mL
                 st.success(f"{conversion_value:.4f} M = {normality:.4f} N")
-                st.success(f"{conversion_value:.4f} M = {percent_bv:.4f} % (b/v)")
-                st.success(f"{conversion_value:.4f} M = {percent_bb:.4f} % (b/b)")
+                st.success(f"{conversion_value:.4f} M = {percent_bv:.4f} % (b/v) (asumsi 100 mL)")
+                st.success(f"{conversion_value:.4f} M = {percent_bb:.4f} % (b/b) (asumsi 100 mL)")
     
             elif conversion_unit == "Normalitas (N)":
                 molarity = conversion_value / valency
-                percent_bv = (molarity * mol_weight) / 10
-                percent_bb = (molarity * mol_weight * density) / 10
+                percent_bv = molarity * mol_weight / 10
+                percent_bb = molarity * mol_weight * density / 10
                 st.success(f"{conversion_value:.4f} N = {molarity:.4f} M")
                 st.success(f"{conversion_value:.4f} N = {percent_bv:.4f} % (b/v)")
                 st.success(f"{conversion_value:.4f} N = {percent_bb:.4f} % (b/b)")
@@ -390,6 +389,7 @@ with tab5:
                 ppb = conversion_value / 1000
                 st.success(f"{conversion_value:.2f} ppt = {ppm:.6f} ppm")
                 st.success(f"{conversion_value:.2f} ppt = {ppb:.2f} ppb")
+
   
 
 # ==================== TAB 6 =====================
