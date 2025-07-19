@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 st.set_page_config(page_title="Chemical Analysis App", layout="wide")
 
-st.title("Chemical Analysis")
+st.title("Chemical")
 st.title("_chemical_ is :blue[cool] :sunglasses:")
 
 # Buat tabs
