@@ -2,3 +2,6 @@ streamlit
 numpy
 matplotlib
 pandas
+git add .
+git commit -m "update kode streamlit"
+git push origin main
