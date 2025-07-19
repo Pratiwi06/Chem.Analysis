@@ -372,7 +372,7 @@ with tab5:
                 st.success(f"{conversion_value:.4f} % (b/v) = {normality:.4f} N")
     
             elif conversion_unit == "Persen (% (b/b))":
-                molarity = (conversion_value * 10) / (mol_weight * density) if mol_weight > 0 and density > 0 else 0
+                molarity = (conversion_value * density * 10) / mol_weight if mol_weight > 0 and density > 0 else 0
                 normality = molarity * valency
                 st.success(f"{conversion_value:.4f} % (b/b) = {molarity:.4f} M")
                 st.success(f"{conversion_value:.4f} % (b/b) = {normality:.4f} N")
