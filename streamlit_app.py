@@ -217,39 +217,61 @@ with tab4:
                 st.success(f"{temp_value} K = {fahrenheit:.2f} °F")
 
     elif conversion_type == "Tekanan":
-        st.subheader("Konversi Tekanan")
-        pressure_value = st.number_input("Masukkan nilai tekanan:")
-        pressure_unit = st.selectbox("Pilih satuan tekanan:", ["Pascal", "Bar", "Atmosfer", "Torr"])
+    st.subheader("Konversi Tekanan")
+    pressure_value = st.number_input("Masukkan nilai tekanan:")
+    pressure_unit = st.selectbox("Pilih satuan tekanan:", ["Pascal", "hPa", "Bar", "Atmosfer", "Torr"])
 
-        if st.button("Konversi"):
-            if pressure_unit == "Pascal":
-                bar = pressure_value / 1e5
-                atm = pressure_value / 101325
-                torr = pressure_value * 0.00750062
-                st.success(f"{pressure_value} Pa = {bar:.5f} Bar")
-                st.success(f"{pressure_value} Pa = {atm:.5f} atm")
-                st.success(f"{pressure_value} Pa = {torr:.5f} Torr")
-            elif pressure_unit == "Bar":
-                pascal = pressure_value * 1e5
-                atm = pressure_value / 1.01325
-                torr = pressure_value * 750.062
-                st.success(f"{pressure_value} Bar = {pascal:.2f} Pa")
-                st.success(f"{pressure_value} Bar = {atm:.5f} atm")
-                st.success(f"{pressure_value} Bar = {torr:.5f} Torr")
-            elif pressure_unit == "Atmosfer":
-                pascal = pressure_value * 101325
-                bar = pressure_value * 1.01325
-                torr = pressure_value * 760
-                st.success(f"{pressure_value} atm = {pascal:.2f} Pa")
-                st.success(f"{pressure_value} atm = {bar:.5f} Bar")
-                st.success(f"{pressure_value} atm = {torr:.2f} Torr")
-            elif pressure_unit == "Torr":
-                pascal = pressure_value / 0.00750062
-                bar = pressure_value / 750.062
-                atm = pressure_value / 760
-                st.success(f"{pressure_value} Torr = {pascal:.2f} Pa")
-                st.success(f"{pressure_value} Torr = {bar:.5f} Bar")
-                st.success(f"{pressure_value} Torr = {atm:.5f} atm")
+    if st.button("Konversi"):
+        if pressure_unit == "Pascal":
+            hpa = pressure_value / 100
+            bar = pressure_value / 1e5
+            atm = pressure_value / 101325
+            torr = pressure_value * 0.00750062
+            st.success(f"{pressure_value} Pa = {hpa:.2f} hPa")
+            st.success(f"{pressure_value} Pa = {bar:.5f} Bar")
+            st.success(f"{pressure_value} Pa = {atm:.5f} atm")
+            st.success(f"{pressure_value} Pa = {torr:.5f} Torr")
+
+        elif pressure_unit == "hPa":
+            pascal = pressure_value * 100
+            bar = pascal / 1e5
+            atm = pascal / 101325
+            torr = pascal * 0.00750062
+            st.success(f"{pressure_value} hPa = {pascal:.2f} Pa")
+            st.success(f"{pressure_value} hPa = {bar:.5f} Bar")
+            st.success(f"{pressure_value} hPa = {atm:.5f} atm")
+            st.success(f"{pressure_value} hPa = {torr:.5f} Torr")
+
+        elif pressure_unit == "Bar":
+            pascal = pressure_value * 1e5
+            hpa = pascal / 100
+            atm = pressure_value / 1.01325
+            torr = pressure_value * 750.062
+            st.success(f"{pressure_value} Bar = {pascal:.2f} Pa")
+            st.success(f"{pressure_value} Bar = {hpa:.2f} hPa")
+            st.success(f"{pressure_value} Bar = {atm:.5f} atm")
+            st.success(f"{pressure_value} Bar = {torr:.5f} Torr")
+
+        elif pressure_unit == "Atmosfer":
+            pascal = pressure_value * 101325
+            hpa = pascal / 100
+            bar = pressure_value * 1.01325
+            torr = pressure_value * 760
+            st.success(f"{pressure_value} atm = {pascal:.2f} Pa")
+            st.success(f"{pressure_value} atm = {hpa:.2f} hPa")
+            st.success(f"{pressure_value} atm = {bar:.5f} Bar")
+            st.success(f"{pressure_value} atm = {torr:.2f} Torr")
+
+        elif pressure_unit == "Torr":
+            pascal = pressure_value / 0.00750062
+            hpa = pascal / 100
+            bar = pressure_value / 750.062
+            atm = pressure_value / 760
+            st.success(f"{pressure_value} Torr = {pascal:.2f} Pa")
+            st.success(f"{pressure_value} Torr = {hpa:.2f} hPa")
+            st.success(f"{pressure_value} Torr = {bar:.5f} Bar")
+            st.success(f"{pressure_value} Torr = {atm:.5f} atm")
+
 
     elif conversion_type == "Volume":
         st.subheader("Konversi Volume")
