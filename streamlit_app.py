@@ -175,8 +175,10 @@ with tab2:
         {"symbol": "No", "name": "Nobelium", "atomicNumber": 102, "atomicMass": 259, "electronConfiguration": "[Rn] 5f¹⁴ 7s²", "electronsPerShell": [2, 8, 8, 18, 18, 32, 16]},
         {"symbol": "Lr", "name": "Lawrencium", "atomicNumber": 103, "atomicMass": 262, "electronConfiguration": "[Rn] 5f¹⁴ 7s² 7p¹", "electronsPerShell": [2, 8, 8, 18, 18, 32, 17]},
     ]
+    st.title("Pencarian Unsur Kimia")
     user_input = st.text_input("Masukkan nama unsur (contoh: Seng)").lower()
-    if user_input:
+
+    if st.button("Cari"):
         found = False
         for elem in elements:
             if user_input == elem["name"].lower():
