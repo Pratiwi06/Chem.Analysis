@@ -187,8 +187,8 @@ with tab3:
         except Exception as e:
             st.warning(f"❌ Masukkan data valid. Kesalahan: {e}")
     
-# ==================== TAB 5 =====================
-with tab5:
+# ==================== TAB 4 =====================
+with tab4:
     st.header("🔄 Konversi Satuan")
 
     # Pilih jenis konversi
@@ -197,24 +197,41 @@ with tab5:
     if conversion_type == "Suhu":
         st.subheader("Konversi Suhu")
         temp_value = st.number_input("Masukkan nilai suhu:")
-        temp_unit = st.selectbox("Pilih satuan suhu:", ["Celsius", "Fahrenheit", "Kelvin"])
+        temp_unit = st.selectbox("Pilih satuan suhu:", ["Celsius", "Fahrenheit", "Kelvin", "Reamur"])
 
         if st.button("Konversi"):
             if temp_unit == "Celsius":
                 fahrenheit = (temp_value * 9/5) + 32
                 kelvin = temp_value + 273.15
+                reamur = temp_value * 4/5
                 st.success(f"{temp_value} °C = {fahrenheit:.1f} °F")
                 st.success(f"{temp_value} °C = {kelvin:.1f} K")
+                st.success(f"{temp_value} °C = {reamur:.1f} °Ré")
+
             elif temp_unit == "Fahrenheit":
                 celsius = (temp_value - 32) * 5/9
                 kelvin = celsius + 273.15
+                reamur = celsius * 4/5
                 st.success(f"{temp_value} °F = {celsius:.1f} °C")
                 st.success(f"{temp_value} °F = {kelvin:.1f} K")
+                st.success(f"{temp_value} °F = {reamur:.1f} °Ré")
+
             elif temp_unit == "Kelvin":
                 celsius = temp_value - 273.15
                 fahrenheit = (celsius * 9/5) + 32
+                reamur = celsius * 4/5
                 st.success(f"{temp_value} K = {celsius:.1f} °C")
                 st.success(f"{temp_value} K = {fahrenheit:.1f} °F")
+                st.success(f"{temp_value} K = {reamur:.1f} °Ré")
+
+            elif temp_unit == "Reamur":
+                celsius = temp_value * 5/4
+                fahrenheit = (celsius * 9/5) + 32
+                kelvin = celsius + 273.15
+                st.success(f"{temp_value} °Ré = {celsius:.1f} °C")
+                st.success(f"{temp_value} °Ré = {fahrenheit:.1f} °F")
+                st.success(f"{temp_value} °Ré = {kelvin:.1f} K")
+
                 
     elif conversion_type == "Tekanan":
         st.subheader("Konversi Tekanan")
@@ -422,8 +439,8 @@ with tab5:
 
   
 
-# ==================== TAB 6 =====================with tab6:
-with tab6:
+# ==================== TAB 5 =====================with tab6:
+with tab5:
     st.header("🧪 Standardisasi ")
     st.write("Dalam Normalitas")
     n = st.number_input("Jumlah Ulangan", min_value=2, step=1, value=2)
