@@ -178,7 +178,7 @@ with tab2:
     st.title("Pencarian Unsur Kimia")
     user_input = st.text_input("Masukkan nama unsur (contoh: Seng)").lower()
 
-    if st.button("Cari"):
+    if st.button(" 🔍Cari"):
         found = False
         for elem in elements:
             if user_input == elem["name"].lower():
