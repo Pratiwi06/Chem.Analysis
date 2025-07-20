@@ -343,13 +343,13 @@ with tab5:
             elif mass_unit == "Gram":
                 kilogram = mass_value / 1000
                 milligram = mass_value * 1000
-                st.success(f"{mass_value} g = {kilogram:.2f} kg")
+                st.success(f"{mass_value} g = {kilogram:.5f} kg")
                 st.success(f"{mass_value} g = {milligram:.2f} mg")
             elif mass_unit == "Miligram":
                 gram = mass_value / 1000
                 kilogram = gram / 1000
-                st.success(f"{mass_value} mg = {gram:.2f} g")
-                st.success(f"{mass_value} mg = {kilogram:.2f} kg")
+                st.success(f"{mass_value} mg = {gram:.5f} g")
+                st.success(f"{mass_value} mg = {kilogram:.5f} kg")
                 
     elif conversion_type == "Konsentrasi":
         st.subheader("🔁 Konversi Konsentrasi")
