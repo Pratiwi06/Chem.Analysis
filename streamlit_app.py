@@ -17,6 +17,16 @@ with tab1:
     st.header("📘 Selamat Datang di Aplikasi Analisis Kimia")
     st.write("Aplikasi ini dirancang untuk membantu analisis data kimia seperti informasi terkait tabel periodik unsur, perhitungan regresi linear, konversi satuan, dan perhitungan standardisasi.")
 
+     st.markdown("## 🎯 Tujuan Aplikasi")
+        st.write("""
+        Aplikasi ini dibuat untuk mempermudah proses **analisis kimia secara kuantitatif** yang meliputi:
+        - Konversi satuan suhu, tekanan, volume, massa, dan konsentrasi
+        - Visualisasi regresi linear
+        - Standarisasi larutan
+        - Referensi tabel periodik interaktif
+    
+        Dengan pendekatan berbasis web, aplikasi ini dapat diakses di berbagai perangkat tanpa instalasi khusus.
+        """)
 # ==================== TAB 2 =====================
 with tab2:
     st.header("🔬 Tabel Periodik Unsur")
