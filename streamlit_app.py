@@ -240,8 +240,8 @@ with tab5:
                 atm = pascal / 101325
                 torr = pascal * 0.00750062
                 mmhg = pascal / 133.322
-                st.success(f"{pressure_value} hPa = {pascal:.3f} Pa")
-                st.success(f"{pressure_value} hPa = {bar:.5f} Bar")
+                st.success(f"{pressure_value} hPa = {pascal:.2f} Pa")
+                st.success(f"{pressure_value} hPa = {bar:.4f} Bar")
                 st.success(f"{pressure_value} hPa = {atm:.5f} atm")
                 st.success(f"{pressure_value} hPa = {torr:.5f} Torr")
                 st.success(f"{pressure_value} hPa = {mmhg:.5f} mmHg")
