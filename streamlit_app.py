@@ -188,8 +188,8 @@ with tab3:
         except Exception as e:
             st.warning(f"❌ Masukkan data valid. Kesalahan: {e}")
     
-# ==================== TAB 4 =====================
-with tab4:
+# ==================== TAB 5 =====================
+with tab5:
     st.header("🔄 Konversi Satuan")
     # Pilih jenis konversi
     conversion_type = st.selectbox("Pilih jenis konversi:", ["Suhu", "Tekanan", "Volume", "Massa", "Konsentrasi"])
@@ -438,8 +438,8 @@ with tab4:
                 st.success(f"{conversion_value:.2f} ppt = {ppb:.2f} ppb")
 
   
-# ==================== TAB 5 =====================
-with tab5:
+# ==================== TAB 6 =====================
+with tab6:
     st.header("🧪 Standardisasi ")
     st.write("Dalam Normalitas")
     n = st.number_input("Jumlah Ulangan", min_value=2, step=1, value=2)
