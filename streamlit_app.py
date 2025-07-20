@@ -14,7 +14,7 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["Beranda", "Tabel Periodik", "Regresi Li
 
 # ==================== TAB 1 =====================
 with tab1:
-    st.header("📘 Selamat Datang di Website Kalkulator Kimia")
+    st.header("📘 Selamat Datang di Website Kimia")
     
     st.markdown("## 🎯 Tujuan Aplikasi")
     st.write("""
@@ -30,29 +30,29 @@ with tab1:
     - 💻 **Akses mudah** di berbagai platform
     - 🔍 **Mempermudah pembelajaran dan praktikum kimia**
     - 📈 **Mendukung pengolahan data laboratorium**
-    - 🧠 **Meningkatkan pemahaman konsep kimia dasar dan lanjutan**
+    - 🧠 **Memberikan**
     """)
     st.markdown("## 🧰 Fitur-Fitur yang Tersedia")
     st.markdown("""
-    ### 🏠 Beranda  
-    Halaman utama yang memuat informasi pengantar, tujuan pembuatan aplikasi, manfaat, dan panduan umum pengguna.
-    
-    ### 🧬 Tabel Periodik Interaktif  
-    Menampilkan informasi lengkap dan interaktif dari seluruh unsur dalam tabel periodik, seperti simbol, nomor atom, massa atom, golongan, dan periode.
+    ### 🧬 Tabel Periodik Unsur 
+    Menampilkan informasi lengkap dan interaktif dari seluruh unsur dalam tabel periodik, seperti simbol, nomor atom, massa atom, konfigurasi elektron, dan jumlah elektron tiap kulitnya.
     
     ### 📊 Regresi Linear  
     Fitur untuk menganalisis hubungan antara dua variabel eksperimen (misalnya absorbansi vs konsentrasi), dilengkapi dengan:
-    - Persamaan garis regresi  
+    - Persamaan garis regresi
+    - Nilai Slope
+    - Nilai Intercept 
+    - Koefisien korelasi (r)
     - Nilai R² (koefisien determinasi)  
-    - Plot visual hasil regresi  
+    - % RSD kurva Regresi 
     
     ### 🔄 Konversi Satuan  
     Mengubah berbagai satuan kimia untuk kebutuhan perhitungan praktikum atau penelitian:
     - **Suhu**: Celsius, Fahrenheit, Kelvin, Reamur  
-    - **Tekanan**: atm, mmHg, hPa, Pa  
-    - **Volume**: mL, L  
+    - **Tekanan**: atm, mmHg, hPa, Pa , Barr
+    - **Volume**: mL, L, m3  
     - **Massa**: mg, g, kg  
-    - **Konsentrasi**: M, % b/v, % b/b, ppm  
+    - **Konsentrasi**: M,N, % b/v, % b/b, ppm, ppb, ppt
     
     ### 🧪 Standardisasi Larutan  
     Menghitung konsentrasi larutan hasil **titrasi atau standardisasi**, berdasarkan volume, normalitas, dan bobot ekuivalen.  
@@ -62,18 +62,8 @@ with tab1:
     - Iodometri  
     - Kompleksiometri  
     
-    > 📌 **Catatan**: Apabila hasil standardisasi ingin diperoleh dalam satuan **Molaritas (M)**, maka nilai **Bobot Ekuivalen (BE)** diisi dengan nilai **Bobot Molekul (BM)**.
+    > 📌 **Catatan**: Apabila hasil standardisasi yang ingin diperoleh dalam satuan **Molaritas (M)**, maka nilai **Bobot Ekuivalen (BE)** diisi dengan nilai **Bobot Molekul (BM)**.
     """)
-
-    # Statistik / Hiasan tambahan
-    st.markdown("## 📈 Statistik Singkat")
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.metric("Jumlah Modul", "4+")
-    with col2:
-        st.metric("Tipe Konversi", "5 Jenis")
-    with col3:
-        st.metric("Akses", "24 Jam")
 
     # Penutup / Semangat
     st.markdown("> 🚀 **Ayo jelajahi fitur-fitur aplikasi ini untuk mendukung proses pembelajaran dan analisis kimia yang lebih interaktif dan menyenangkan!**")
@@ -235,7 +225,7 @@ with tab3:
                 st.write(f"Koefisien Determinasi (R²): {R2:.4f}")
 
                 RSD = Sy / y_mean * 100 if y_mean else 0.0
-                st.success(f"%RSD Kurva Kalibrasi: {RSD:.2f}%")
+                st.success(f"%RSD Kurva Regresi: {RSD:.2f}%")
 
                 fig, ax = plt.subplots()
                 ax.scatter(x_vals, y_vals, label='Data')
