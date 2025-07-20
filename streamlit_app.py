@@ -423,6 +423,7 @@ with tab5:
   
 
 # ==================== TAB 6 =====================with tab6:
+with tab6:
     st.header("🧪 Standardisasi ")
     st.write("Dalam Normalitas")
     n = st.number_input("Jumlah Ulangan", min_value=2, step=1, value=2)
@@ -437,7 +438,7 @@ with tab5:
         st.markdown(f"### Ulangan {i+1}")
         mg = st.number_input(f"Standar baku primer (mg) - Ulangan {i+1}", key=f"mg_{i}")
         mL = st.number_input(f"Titran (mL) - Ulangan {i+1}", key=f"ml_{i}")
-        BE = st.number_input(f"Bobot Ekuivalen Standar Baku Primer - Ulangan {i+1}", key=f"be_{i}")
+        BE = st.number_input(f"BE Standar Baku Primer - Ulangan {i+1}", key=f"be_{i}")
         f = st.number_input(f"Faktor pengali - Ulangan {i+1} (jika tidak ada FP, input nilai 1)", key=f"f_{i}")
 
         mg_Standar_Baku_Primer.append(mg)
@@ -467,4 +468,3 @@ with tab5:
         st.write(f"Rata-rata Normalitas: **{mean_N:.4f} N**")
         st.write(f"Standar Deviasi (SD): **{std_N:.4f}**")
         st.write(f"%RSD: **{rsd:.2f}%**")
-
