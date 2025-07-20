@@ -34,26 +34,35 @@ with tab1:
     """)
     st.markdown("## 🧰 Fitur-Fitur yang Tersedia")
     st.markdown("""
-    ### 🔄 Konversi Satuan  
-    Mengubah berbagai satuan kimia seperti suhu, tekanan, massa, volume, dan konsentrasi.
-
-    ### 📊 Regresi Linear  
-    Menganalisis hubungan antara dua variabel eksperimen lengkap dengan persamaan dan grafik regresi.
-
-    ### 🧪 Standardisasi Larutan  
-    Menghitung konsentrasi larutan hasil titrasi atau standardisasi menggunakan rumus kimia dasar.
-    Jenis Standardisasi:
-    -Asam-basa
-    -Permanganometri
-    -iodometri
-    -Kompleksiometri
-    catatan: Apabila Standardisasi yang ingin diperoleh dalam satuan Molaritas, maka nilai bobot ekuivalen (BE) diisi dengan nilai Bobot molekul (BM) 
-
-    ### 🧬 Tabel Periodik Interaktif  
-    Menyediakan informasi lengkap dan interaktif dari seluruh unsur dalam tabel periodik.
-
     ### 🏠 Beranda  
-    Halaman utama berisi informasi pengantar, tujuan aplikasi, manfaat, dan panduan umum.
+    Halaman utama yang memuat informasi pengantar, tujuan pembuatan aplikasi, manfaat, dan panduan umum pengguna.
+    
+    ### 🧬 Tabel Periodik Interaktif  
+    Menampilkan informasi lengkap dan interaktif dari seluruh unsur dalam tabel periodik, seperti simbol, nomor atom, massa atom, golongan, dan periode.
+    
+    ### 📊 Regresi Linear  
+    Fitur untuk menganalisis hubungan antara dua variabel eksperimen (misalnya absorbansi vs konsentrasi), dilengkapi dengan:
+    - Persamaan garis regresi  
+    - Nilai R² (koefisien determinasi)  
+    - Plot visual hasil regresi  
+    
+    ### 🔄 Konversi Satuan  
+    Mengubah berbagai satuan kimia untuk kebutuhan perhitungan praktikum atau penelitian:
+    - **Suhu**: Celsius, Fahrenheit, Kelvin, Reamur  
+    - **Tekanan**: atm, mmHg, hPa, Pa  
+    - **Volume**: mL, L  
+    - **Massa**: mg, g, kg  
+    - **Konsentrasi**: M, % b/v, % b/b, ppm  
+    
+    ### 🧪 Standardisasi Larutan  
+    Menghitung konsentrasi larutan hasil **titrasi atau standardisasi**, berdasarkan volume, normalitas, dan bobot ekuivalen.  
+    Jenis metode standardisasi yang tersedia:
+    - Asam-Basa  
+    - Permanganometri  
+    - Iodometri  
+    - Kompleksiometri  
+    
+    > 📌 **Catatan**: Apabila hasil standardisasi ingin diperoleh dalam satuan **Molaritas (M)**, maka nilai **Bobot Ekuivalen (BE)** diisi dengan nilai **Bobot Molekul (BM)**.
     """)
 
     # Statistik / Hiasan tambahan
