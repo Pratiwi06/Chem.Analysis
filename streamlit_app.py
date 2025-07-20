@@ -14,19 +14,60 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["Beranda", "Tabel Periodik", "Regresi Li
 
 # ==================== TAB 1 =====================
 with tab1:
-    st.header("📘 Selamat Datang di Aplikasi Analisis Kimia")
-    st.write("Aplikasi ini dirancang untuk membantu analisis data kimia seperti informasi terkait tabel periodik unsur, perhitungan regresi linear, konversi satuan, dan perhitungan standardisasi.")
-
+    st.header("📘 Selamat Datang di Website Kalkulator Kimia")
+    
     st.markdown("## 🎯 Tujuan Aplikasi")
     st.write("""
-        Aplikasi ini dibuat untuk mempermudah proses **analisis kimia secara kuantitatif** yang meliputi:
-        - Konversi satuan suhu, tekanan, volume, massa, dan konsentrasi
-        - Visualisasi regresi linear
-        - Standarisasi larutan
-        - Referensi tabel periodik interaktif
-    
-        Dengan pendekatan berbasis web, aplikasi ini dapat diakses di berbagai perangkat tanpa instalasi khusus.
+        Aplikasi ini dirancang untuk membantu analisis data kimia meliputi informasi terkait:
+        -Tabel periodik unsur
+        -Perhitungan regresi linear
+        -konversi satuan
+        -perhitungan standardisasi
         """)
+    st.markdown("## 🌟 Manfaat Aplikasi")
+    st.write("""
+    Beberapa manfaat dari aplikasi ini adalah:
+    - 💻 **Akses mudah** di berbagai platform
+    - 🔍 **Mempermudah pembelajaran dan praktikum kimia**
+    - 📈 **Mendukung pengolahan data laboratorium**
+    - 🧠 **Meningkatkan pemahaman konsep kimia dasar dan lanjutan**
+    """)
+    st.markdown("## 🧰 Fitur-Fitur yang Tersedia")
+    st.markdown("""
+    ### 🔄 Konversi Satuan  
+    Mengubah berbagai satuan kimia seperti suhu, tekanan, massa, volume, dan konsentrasi.
+
+    ### 📊 Regresi Linear  
+    Menganalisis hubungan antara dua variabel eksperimen lengkap dengan persamaan dan grafik regresi.
+
+    ### 🧪 Standardisasi Larutan  
+    Menghitung konsentrasi larutan hasil titrasi atau standardisasi menggunakan rumus kimia dasar.
+    Jenis Standardisasi:
+    -Asam-basa
+    -Permanganometri
+    -iodometri
+    -Kompleksiometri
+    catatan: Apabila Standardisasi yang ingin diperoleh dalam satuan Molaritas, maka nilai bobot ekuivalen (BE) diisi dengan nilai Bobot molekul (BM) 
+
+    ### 🧬 Tabel Periodik Interaktif  
+    Menyediakan informasi lengkap dan interaktif dari seluruh unsur dalam tabel periodik.
+
+    ### 🏠 Beranda  
+    Halaman utama berisi informasi pengantar, tujuan aplikasi, manfaat, dan panduan umum.
+    """)
+
+    # Statistik / Hiasan tambahan
+    st.markdown("## 📈 Statistik Singkat")
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric("Jumlah Modul", "4+")
+    with col2:
+        st.metric("Tipe Konversi", "5 Jenis")
+    with col3:
+        st.metric("Akses", "24 Jam")
+
+    # Penutup / Semangat
+    st.markdown("> 🚀 **Ayo jelajahi fitur-fitur aplikasi ini untuk mendukung proses pembelajaran dan analisis kimia yang lebih interaktif dan menyenangkan!**")
 # ==================== TAB 2 =====================
 with tab2:
     st.header("🔬 Tabel Periodik Unsur")
