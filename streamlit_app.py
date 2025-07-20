@@ -18,7 +18,7 @@ with tab1:
     st.write("Aplikasi ini dirancang untuk membantu analisis data kimia seperti informasi terkait tabel periodik unsur, perhitungan regresi linear, konversi satuan, dan perhitungan standardisasi.")
 
     st.markdown("## 🎯 Tujuan Aplikasi")
-        st.write("""
+    st.write("""
         Aplikasi ini dibuat untuk mempermudah proses **analisis kimia secara kuantitatif** yang meliputi:
         - Konversi satuan suhu, tekanan, volume, massa, dan konsentrasi
         - Visualisasi regresi linear
