@@ -9,7 +9,7 @@ st.title("Chem.Analysis")
 st.title("_chemical_ is :blue[cool] :sunglasses:")
 
 # Buat tabs
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Beranda", "Tabel Periodik", "Regresi Linear", "Konversi", "Standardisai"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Beranda", "Periodik Unsur", "Regresi Linear", "Konversi", "Standardisai"])
 
 
 # ==================== TAB 1 =====================
@@ -69,7 +69,7 @@ with tab1:
     st.markdown("> 🚀 **Ayo jelajahi fitur-fitur aplikasi ini untuk mendukung proses pembelajaran dan analisis kimia yang lebih interaktif dan menyenangkan!**")
 # ==================== TAB 2 =====================
 with tab2:
-    st.header("🔬 Tabel Periodik Unsur")
+    st.header("🔬 Periodik Unsur Kimia")
     elements = [
         {"symbol": "H", "name": "Hidrogen", "atomicNumber": 1, "atomicMass": 1.00794, "electronConfiguration": "1s¹", "electronsPerShell": [1]},
         {"symbol": "He", "name": "Helium", "atomicNumber": 2, "atomicMass": 4.002602, "electronConfiguration": "1s²", "electronsPerShell": [2]},
