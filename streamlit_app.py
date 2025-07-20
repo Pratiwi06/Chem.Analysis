@@ -15,7 +15,7 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["Beranda", "Tabel Periodik", "Regresi Li
 # ==================== TAB 1 =====================
 with tab1:
     st.header("📘 Selamat Datang di Website Kimia")
-    "gambar": "https://cdn-icons-png.flaticon.com/512/5063/5063265.png"
+    
     st.markdown("## 🎯 Tujuan Aplikasi")
     st.write("""
         Aplikasi ini dirancang untuk membantu analisis data kimia meliputi informasi terkait:
