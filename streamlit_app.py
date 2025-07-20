@@ -9,7 +9,7 @@ st.title("Chem.Analysis")
 st.title("_chemical_ is :blue[cool] :sunglasses:")
 
 # Buat tabs
-tab1, tab2, tab3, tab4, tab5 = st.tabs(["Beranda", "Periodik Unsur", "Regresi Linear", "Konversi", "Standardisai"])
+tab1, tab2, tab3, tab4, tab5 = st.tabs(["Beranda", "Periodik Unsur", "Regresi Linier", "Konversi", "Standardisai"])
 
 
 # ==================== TAB 1 =====================
@@ -194,7 +194,7 @@ with tab2:
 
 # ==================== TAB 3 =====================
 with tab3:
-    st.header(":bar_chart: Regresi Linear")
+    st.header(":bar_chart: Regresi Linier")
 
     x_input = st.text_input("Nilai X , pisahkan dengan koma", "")
     y_input = st.text_input("Nilai Y , pisahkan dengan koma", "")
