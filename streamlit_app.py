@@ -437,7 +437,7 @@ with tab5:
         st.markdown(f"### Ulangan {i+1}")
         mg = st.number_input(f"Standar baku primer (mg) - Ulangan {i+1}", key=f"mg_{i}")
         mL = st.number_input(f"Titran (mL) - Ulangan {i+1}", key=f"ml_{i}")
-        BE = st.number_input(f"BE Standar Baku Primer - Ulangan {i+1}", key=f"be_{i}")
+        BE = st.number_input(f"Bobot Ekuivalen Standar Baku Primer - Ulangan {i+1}", key=f"be_{i}")
         f = st.number_input(f"Faktor pengali - Ulangan {i+1} (jika tidak ada FP, input nilai 1)", key=f"f_{i}")
 
         mg_Standar_Baku_Primer.append(mg)
