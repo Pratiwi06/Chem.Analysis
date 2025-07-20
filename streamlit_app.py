@@ -220,7 +220,7 @@ with tab3:
                 r = np.corrcoef(x_vals, y_vals)[0, 1]
                 R2 = r ** 2
 
-                st.success(f"Persamaan regresi: y = {m:.4f}x {b:.4f}")
+                st.success(f"Persamaan regresi: y = {m:.4f}x + ( {b:.4f})")
                 st.write(f"• Slope (m): {m:.4f}")
                 st.write(f"• Intercept (b): {b:.4f}")
                 st.write(f"Koefisien Korelasi (r): {r:.4f}")
