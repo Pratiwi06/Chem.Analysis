@@ -439,7 +439,7 @@ with tab4:
 
   
 
-# ==================== TAB 5 =====================with tab6:
+# ==================== TAB 5 =====================
 with tab5:
     st.header("🧪 Standardisasi ")
     st.write("Dalam Normalitas")
