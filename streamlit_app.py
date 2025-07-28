@@ -10,7 +10,7 @@ st.title("_chemical_ is :blue[cool] :sunglasses:")
 st.markdown("""
     <style>
     .stApp {
-        background-image: url("https://images.unsplash.com/photo-1581091012184-7f79b5c3dc4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80");
+        background-image: url("https://www.google.com/imgres?q=background%20kimia%20dan%20perhitungannya&imgurl=https%3A%2F%2Fimg.pikbest.com%2Fbackgrounds%2F20241229%2F-22design-a-background-for-chemistry-lecture-22_11309993.jpg!sw800&imgrefurl=https%3A%2F%2Fid.pikbest.com%2Fbackgrounds%2F%2522design-a-background-for-chemistry-lecture%2522_11309993.html&docid=s-YT3GWD97MzCM&tbnid=5SQzRrCIM1RUvM&vet=12ahUKEwjN5OHWz-COAxUyzTgGHfm5H6YQM3oECB4QAA..i&w=800&h=533&hcb=2&ved=2ahUKEwjN5OHWz-COAxUyzTgGHfm5H6YQM3oECB4QAA");
         background-size: cover;
         background-repeat: no-repeat;
         background-attachment: fixed;
