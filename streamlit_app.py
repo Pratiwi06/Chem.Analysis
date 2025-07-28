@@ -192,27 +192,25 @@ with tab2:
         {"symbol": "Lr", "name": "Lawrencium", "atomicNumber": 103, "atomicMass": 262, "electronConfiguration": "[Rn] 5f¹⁴ 7s² 7p¹", "electronsPerShell": [2, 8, 8, 18, 18, 32, 17]},
     ]
         # Input nama unsur
-           user_input = st.text_input("Masukkan nama unsur (contoh: Seng)").lower()
-    
-            if st.button("🔍 Cari", key="cari_unsur"):
-                hasil = [elem for elem in elements if user_input in elem["name"].lower()]
-        
-                if hasil:
-                    if len(hasil) == 1:
-                        dipilih = hasil[0]
-                    else:
-                        pilihan_nama = st.selectbox("Pilih unsur yang dimaksud:", [e["name"] for e in hasil])
-                        dipilih = next(e for e in hasil if e["name"] == pilihan_nama)
-        
-                    # Tampilkan detail unsur
-                    st.success(f"✅ Unsur Ditemukan: {dipilih['name']} ({dipilih['symbol']})")
-                    st.markdown(f"**Nomor Atom:** {dipilih['atomicNumber']}")
-                    st.markdown(f"**Massa Atom:** {dipilih['atomicMass']}")
-                    st.markdown(f"**Konfigurasi Elektron:** {dipilih['electronConfiguration']}")
-                    st.markdown(f"**Elektron tiap kulit:** {' - '.join(map(str, dipilih['electronsPerShell']))}")
-                else:
-                    st.warning("❌ Unsur tidak ditemukan dalam database.")
-               
+    user_input = st.text_input("Masukkan nama unsur (contoh: Seng)").lower()
+    if st.button("🔍 Cari", key="cari_unsur"):
+        hasil = [elem for elem in elements if user_input in elem["name"].lower()]
+
+        if hasil:
+            if len(hasil) == 1:
+                dipilih = hasil[0]
+            else:
+                pilihan_nama = st.selectbox("Pilih unsur yang dimaksud:", [e["name"] for e in hasil])
+                dipilih = next(e for e in hasil if e["name"] == pilihan_nama)
+
+            st.success(f"✅ Unsur Ditemukan: {dipilih['name']} ({dipilih['symbol']})")
+            st.markdown(f"**Nomor Atom:** {dipilih['atomicNumber']}")
+            st.markdown(f"**Massa Atom:** {dipilih['atomicMass']}")
+            st.markdown(f"**Konfigurasi Elektron:** {dipilih['electronConfiguration']}")
+            st.markdown(f"**Elektron tiap kulit:** {' - '.join(map(str, dipilih['electronsPerShell']))}")
+        else:
+            st.warning("❌ Unsur tidak ditemukan dalam database.")
+
 # ==================== TAB 3 =====================
 with tab3:
     st.header(":bar_chart: Regresi Linier")
