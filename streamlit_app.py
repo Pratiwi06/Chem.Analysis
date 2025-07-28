@@ -15,27 +15,12 @@ tab1, tab2, tab3, tab4, tab5 = st.tabs(["Beranda", "Periodik Unsur", "Regresi Li
 # ==================== TAB 1 =====================
 with tab1:
     st.header("📘 Selamat Datang di Website Kimia")
-    st.markdown("""
-        <style>
-        .stApp {
-            background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...<POTONGAN>...");  /* (sudah disingkat agar tidak terlalu panjang) */
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-        }
-        .title-text {
-            color: white;
-            text-shadow: 2px 2px 4px #000000;
-        }
-        .box {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 20px;
-            border-radius: 12px;
-            color: white;
-            margin-top: 20px;
-        }
-        </style>
-    """, unsafe_allow_html=True)
+    st.image(
+    "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Chemical_equilibrium_diagram.png/640px-Chemical_equilibrium_diagram.png",
+    caption="Diagram Kesetimbangan Kimia dan Perhitungan Reaksi",
+    use_column_width=True
+    )
+
     
     # Konten utama
     st.markdown("<h1 class='title-text'>🧪 Aplikasi Analisis Kimia</h1>", unsafe_allow_html=True)
