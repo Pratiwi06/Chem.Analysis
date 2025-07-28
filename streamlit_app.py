@@ -563,7 +563,3 @@ with tab5:
         st.write(f"**Standar Deviasi (SD)**: {std_N:.4f}")
         st.write(f"**%RSD**: {rsd:.2f}%")
         
-            st.markdown("### Statistik")
-            st.write(f"**Rata-rata Normalitas**: {mean_N:.4f} N")
-            st.write(f"**Standar Deviasi (SD)**: {std_N:.4f}")
-            st.write(f"**%RSD**: {rsd:.2f}%")
