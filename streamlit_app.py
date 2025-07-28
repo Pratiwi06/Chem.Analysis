@@ -519,20 +519,20 @@ with tab5:
     ulangan = st.radio("Pilih jumlah ulangan", ["Duplo (2)", "Triplo (3)"])
     n = 2 if "Duplo" in ulangan else 3
     
-    # Menyimpan data input
+    # Variabel input
     mg_Standar_Baku_Primer = []
     mL_Titran = []
     BE_Standar_Baku_Primer = []
     f_pengali = []
     normalitas = []
     
-    # Input data berdasarkan jumlah ulangan
+    # Input per ulangan
     for i in range(n):
         st.markdown(f"### Ulangan {i+1}")
         mg = st.number_input(f"Standar baku primer (mg) - Ulangan {i+1}", key=f"mg_{i}")
         mL = st.number_input(f"Titran (mL) - Ulangan {i+1}", key=f"ml_{i}")
         BE = st.number_input(f"Bobot Ekuivalen (mg/mgrek) - Ulangan {i+1}", key=f"be_{i}")
-        f = st.number_input(f"Faktor pengali (jika tidak ada, isi 1) - Ulangan {i+1}", key=f"f_{i}", value=1.0)
+        f = st.number_input(f"Faktor pengali (isi 1 jika tidak ada) - Ulangan {i+1}", key=f"f_{i}", value=1.0)
     
         mg_Standar_Baku_Primer.append(mg)
         mL_Titran.append(mL)
@@ -548,11 +548,9 @@ with tab5:
                 N = 0
             normalitas.append(N)
     
-        # Tampilkan tabel hasil
-        df = pd.DataFrame({
-            "Ulangan": [f"Ulangan {i+1}" for i in range(n)],
-            "Normalitas (N)": normalitas
-        })
+        # Buat dataframe horizontal
+        df_dict = {f"Ulangan {i+1}": [normalitas[i]] for i in range(n)}
+        df = pd.DataFrame(df_dict, index=["Normalitas (N)"])
         st.dataframe(df)
     
         # Statistik
@@ -564,3 +562,8 @@ with tab5:
         st.write(f"**Rata-rata Normalitas**: {mean_N:.4f} N")
         st.write(f"**Standar Deviasi (SD)**: {std_N:.4f}")
         st.write(f"**%RSD**: {rsd:.2f}%")
+        
+            st.markdown("### Statistik")
+            st.write(f"**Rata-rata Normalitas**: {mean_N:.4f} N")
+            st.write(f"**Standar Deviasi (SD)**: {std_N:.4f}")
+            st.write(f"**%RSD**: {rsd:.2f}%")
