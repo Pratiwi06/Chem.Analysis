@@ -191,21 +191,21 @@ with tab2:
         {"symbol": "No", "name": "Nobelium", "atomicNumber": 102, "atomicMass": 259, "electronConfiguration": "[Rn] 5f¹⁴ 7s²", "electronsPerShell": [2, 8, 8, 18, 18, 32, 16]},
         {"symbol": "Lr", "name": "Lawrencium", "atomicNumber": 103, "atomicMass": 262, "electronConfiguration": "[Rn] 5f¹⁴ 7s² 7p¹", "electronsPerShell": [2, 8, 8, 18, 18, 32, 17]},
     ]
-        # Daftar nama unsur untuk dropdown autocomplete
-    element_names = [elem["name"] for elem in elements]
+        # Nama unsur untuk dropdown
+    element_names = [""] + [elem["name"] for elem in elements]  # "" untuk default kosong
 
-    # Dropdown pencarian dengan fitur autocomplete
+    # Pilihan pengguna
     selected_name = st.selectbox("🔍 Ketik atau pilih nama unsur:", element_names)
 
-    # Menampilkan informasi unsur yang dipilih
-    for elem in elements:
-        if elem["name"] == selected_name:
-            st.success(f"Unsur: {elem['name']} ({elem['symbol']})")
-            st.markdown(f"**Nomor Atom:** {elem['atomicNumber']}")
-            st.markdown(f"**Massa Atom:** {elem['atomicMass']}")
-            st.markdown(f"**Konfigurasi Elektron:** {elem['electronConfiguration']}")
-            st.markdown(f"**Elektron tiap kulit:** {' - '.join(map(str, elem['electronsPerShell']))}")
-            break
+    if selected_name != "":
+        for elem in elements:
+            if elem["name"] == selected_name:
+                st.success(f"Unsur: {elem['name']} ({elem['symbol']})")
+                st.markdown(f"**Nomor Atom:** {elem['atomicNumber']}")
+                st.markdown(f"**Massa Atom:** {elem['atomicMass']}")
+                st.markdown(f"**Konfigurasi Elektron:** {elem['electronConfiguration']}")
+                st.markdown(f"**Elektron tiap kulit:** {' - '.join(map(str, elem['electronsPerShell']))}")
+                break
 
 # ==================== TAB 3 =====================
 with tab3:
