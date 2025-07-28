@@ -7,37 +7,7 @@ st.set_page_config(page_title="Chem.Analysis", layout="wide")
 
 st.title("Chem.Analysis")
 st.title("_chemical_ is :blue[cool] :sunglasses:")
-st.markdown("""
-    <style>
-    .stApp {
-        background-image: url("https://www.google.com/imgres?q=background%20kimia%20dan%20perhitungannya&imgurl=https%3A%2F%2Fimg.pikbest.com%2Fbackgrounds%2F20241229%2F-22design-a-background-for-chemistry-lecture-22_11309993.jpg!sw800&imgrefurl=https%3A%2F%2Fid.pikbest.com%2Fbackgrounds%2F%2522design-a-background-for-chemistry-lecture%2522_11309993.html&docid=s-YT3GWD97MzCM&tbnid=5SQzRrCIM1RUvM&vet=12ahUKEwjN5OHWz-COAxUyzTgGHfm5H6YQM3oECB4QAA..i&w=800&h=533&hcb=2&ved=2ahUKEwjN5OHWz-COAxUyzTgGHfm5H6YQM3oECB4QAA");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-position: center;
-    }
-    .title-text {
-        color: white;
-        text-shadow: 2px 2px 4px #000000;
-        font-size: 48px;
-        text-align: center;
-        margin-top: 40px;
-    }
-    .box {
-        background-color: rgba(0, 0, 0, 0.6);
-        padding: 30px;
-        border-radius: 15px;
-        color: white;
-        margin: 50px auto;
-        max-width: 800px;
-        font-size: 18px;
-        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-    ul {
-        padding-left: 20px;
-    }
-    </style>
-""", unsafe_allow_html=True)
+
 # Buat tabs
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["Beranda", "Periodik Unsur", "Regresi Linier", "Konversi", "Standardisai"])
 
@@ -546,45 +516,51 @@ with tab4:
 with tab5:
     st.header("🧪 Standardisasi ")
     st.write("Dalam Normalitas")
-    n = st.number_input("Jumlah Ulangan", min_value=2, step=1, value=2)
-
+    ulangan = st.radio("Pilih jumlah ulangan", ["Duplo (2)", "Triplo (3)"])
+    n = 2 if "Duplo" in ulangan else 3
+    
+    # Menyimpan data input
     mg_Standar_Baku_Primer = []
     mL_Titran = []
     BE_Standar_Baku_Primer = []
     f_pengali = []
     normalitas = []
-
+    
+    # Input data berdasarkan jumlah ulangan
     for i in range(n):
         st.markdown(f"### Ulangan {i+1}")
         mg = st.number_input(f"Standar baku primer (mg) - Ulangan {i+1}", key=f"mg_{i}")
         mL = st.number_input(f"Titran (mL) - Ulangan {i+1}", key=f"ml_{i}")
-        BE = st.number_input(f"Bobot Ekuivalen Standar Baku Primer (mg/mgrek) - Ulangan {i+1}", key=f"be_{i}")
-        f = st.number_input(f"Faktor pengali - Ulangan {i+1} (jika tidak ada FP, input nilai 1)", key=f"f_{i}")
-
+        BE = st.number_input(f"Bobot Ekuivalen (mg/mgrek) - Ulangan {i+1}", key=f"be_{i}")
+        f = st.number_input(f"Faktor pengali (jika tidak ada, isi 1) - Ulangan {i+1}", key=f"f_{i}", value=1.0)
+    
         mg_Standar_Baku_Primer.append(mg)
         mL_Titran.append(mL)
         BE_Standar_Baku_Primer.append(BE)
         f_pengali.append(f)
-
+    
+    # Tombol hitung
     if st.button("🔍 Hitung Normalitas"):
         for i in range(n):
             try:
-                N = mg_Standar_Baku_Primer[i] / (mL_Titran[i] * BE_Standar_Baku_Primer[i] * f_pengali[i]) if mL_Titran[i] > 0 and BE_Standar_Baku_Primer[i] > 0 and f_pengali[i] > 0 else 0
-            except:
+                N = mg_Standar_Baku_Primer[i] / (mL_Titran[i] * BE_Standar_Baku_Primer[i] * f_pengali[i])
+            except ZeroDivisionError:
                 N = 0
             normalitas.append(N)
-
+    
+        # Tampilkan tabel hasil
         df = pd.DataFrame({
             "Ulangan": [f"Ulangan {i+1}" for i in range(n)],
             "Normalitas (N)": normalitas
         })
         st.dataframe(df)
-
+    
+        # Statistik
         mean_N = np.mean(normalitas)
-        std_N = np.std(normalitas, ddof=1)
+        std_N = np.std(normalitas, ddof=1) if n > 1 else 0
         rsd = (std_N / mean_N) * 100 if mean_N else 0
-
+    
         st.markdown("### Statistik")
-        st.write(f"Rata-rata Normalitas: **{mean_N:.4f} N**")
-        st.write(f"Standar Deviasi (SD): **{std_N:.4f}**")
-        st.write(f"%RSD: **{rsd:.2f}%**")
+        st.write(f"**Rata-rata Normalitas**: {mean_N:.4f} N")
+        st.write(f"**Standar Deviasi (SD)**: {std_N:.4f}")
+        st.write(f"**%RSD**: {rsd:.2f}%")
