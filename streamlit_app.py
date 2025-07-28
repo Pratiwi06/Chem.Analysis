@@ -190,7 +190,8 @@ with tab2:
         {"symbol": "Md", "name": "Mendelevium", "atomicNumber": 101, "atomicMass": 258, "electronConfiguration": "[Rn] 5f¹³ 7s²", "electronsPerShell": [2, 8, 8, 18, 18, 32, 15]},
         {"symbol": "No", "name": "Nobelium", "atomicNumber": 102, "atomicMass": 259, "electronConfiguration": "[Rn] 5f¹⁴ 7s²", "electronsPerShell": [2, 8, 8, 18, 18, 32, 16]},
         {"symbol": "Lr", "name": "Lawrencium", "atomicNumber": 103, "atomicMass": 262, "electronConfiguration": "[Rn] 5f¹⁴ 7s² 7p¹", "electronsPerShell": [2, 8, 8, 18, 18, 32, 17]},
-       # Input nama unsur
+    ]
+        # Input nama unsur
    user_input = st.text_input("Masukkan nama unsur (contoh: Seng)").lower()
 
     if st.button("🔍 Cari", key="cari_unsur"):
