@@ -7,7 +7,37 @@ st.set_page_config(page_title="Chem.Analysis", layout="wide")
 
 st.title("Chem.Analysis")
 st.title("_chemical_ is :blue[cool] :sunglasses:")
-
+st.markdown("""
+    <style>
+    .stApp {
+        background-image: url("https://images.unsplash.com/photo-1581091012184-7f79b5c3dc4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1650&q=80");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-position: center;
+    }
+    .title-text {
+        color: white;
+        text-shadow: 2px 2px 4px #000000;
+        font-size: 48px;
+        text-align: center;
+        margin-top: 40px;
+    }
+    .box {
+        background-color: rgba(0, 0, 0, 0.6);
+        padding: 30px;
+        border-radius: 15px;
+        color: white;
+        margin: 50px auto;
+        max-width: 800px;
+        font-size: 18px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    ul {
+        padding-left: 20px;
+    }
+    </style>
+""", unsafe_allow_html=True)
 # Buat tabs
 tab1, tab2, tab3, tab4, tab5 = st.tabs(["Beranda", "Periodik Unsur", "Regresi Linier", "Konversi", "Standardisai"])
 
