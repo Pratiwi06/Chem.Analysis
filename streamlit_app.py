@@ -123,7 +123,7 @@ if menu == "Beranda":
 
         <blockquote>🚀 <b>Jelajahi fitur-fitur kami untuk pembelajaran kimia lebih seru!</b></blockquote>
     """, unsafe_allow_html=True)
-         <blockquote> <b>!</b></blockquote>
+         <blockquote> <c!</c></blockquote>
     """, unsafe_allow_html=True)
 
      
