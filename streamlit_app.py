@@ -68,6 +68,8 @@ if menu == "Beranda":
     <h1 style='text-align: center; font-size: 40px;'>🧪 Aplikasi Analisis Kimia</h1>
     <h3 style='text-align: center; font-size: 20px; color: gray;'> 🌟Selamat Datang di Chem Analysis🌟</h3>
     """, unsafe_allow_html=True)
+    st.markdown("<div style='height:300px;'></div>", unsafe_allow_html=True)
+
     st.markdown("""
     <div class='footer'>
         Web ini dibuat oleh Xavier Delia Aspin Nay Salma
