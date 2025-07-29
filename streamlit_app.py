@@ -232,60 +232,12 @@ elif menu == "Regresi Linier":
 
 # ==================== KONVERSI =====================
 elif menu == "Konversi":
-    st.header("🔄 Konversi Satuan")
-    x_input = st.text_input("Nilai X , pisahkan dengan koma", "")
-    y_input = st.text_input("Nilai Y , pisahkan dengan koma", "")
-
-    hitung = st.button("🔍 Hitung")
-
-    if hitung and x_input and y_input:
-        try:
-            x_vals = np.array([float(v) for v in x_input.split(",")])
-            y_vals = np.array([float(v) for v in y_input.split(",")])
-            if len(x_vals) != len(y_vals):
-                st.error("❌ Jumlah data x dan y tidak sama.")
-            elif len(x_vals) < 2:
-                st.warning("❗ Minimal 2 pasang data diperlukan.")
-            else:
-                n = len(x_vals)
-                x_mean = np.mean(x_vals)
-                y_mean = np.mean(y_vals)
-                m = np.sum((x_vals - x_mean) * (y_vals - y_mean)) / np.sum((x_vals - x_mean) ** 2)
-                b = y_mean - m * x_mean
-                y_fit = m * x_vals + b
-                Sy = np.sqrt(np.sum((y_vals - y_fit) ** 2) / (n - 2))
-                r = np.corrcoef(x_vals, y_vals)[0, 1]
-                R2 = r ** 2
-
-                st.success(f"Persamaan regresi: y = {m:.4f}x + ( {b:.4f})")
-                st.write(f"• Slope (m): {m:.4f}")
-                st.write(f"• Intercept (b): {b:.4f}")
-                st.write(f"Koefisien Korelasi (r): {r:.4f}")
-                st.write(f"Koefisien Determinasi (R²): {R2:.4f}")
-
-                RSD = Sy / y_mean * 100 if y_mean else 0.0
-                st.success(f"%RSD Kurva Regresi: {RSD:.2f}%")
-
-                fig, ax = plt.subplots()
-                ax.scatter(x_vals, y_vals, label='Data')
-                ax.plot(x_vals, y_fit, color='red', label='Regresi')
-                ax.set_xlabel('Nilai x')
-                ax.set_ylabel('Nilai Y')
-                ax.legend()
-                st.pyplot(fig)
-
-        except Exception as e:
-            st.warning(f"❌ Masukkan data valid. Kesalahan: {e}")
-    
-# ==================== TAB 4 =====================
-elif menu == "Konversi" :
-    st.header("🔄 Konversi Satuan")
+   st.header("🔄 Konversi Satuan")
     # Pilih jenis konversi
     conversion_type = st.selectbox("Pilih jenis konversi:", ["Suhu", "Tekanan", "Volume", "Massa", "Konsentrasi"])
 
     if conversion_type == "Suhu":
         st.subheader("Konversi Suhu")
-        
         temp_value = st.number_input("Masukkan nilai suhu:")
         temp_unit = st.selectbox("Pilih satuan suhu:", ["Celsius", "Fahrenheit", "Kelvin", "Reamur"])
 
@@ -527,7 +479,7 @@ elif menu == "Konversi" :
                 st.success(f"{conversion_value:.2f} ppt = {ppm:.6f} ppm")
                 st.success(f"{conversion_value:.2f} ppt = {ppb:.2f} ppb")
 
-   # ==================== STANDARDISASI =====================
-    elif menu == "Standardisasi":
-        st.header("🧪 Standardisasi Larutan")
-        st.info("🔧 Fitur ini dalam pengembangan.")
+# ==================== STANDARDISASI =====================
+elif menu == "Standardisasi":
+    st.header("🧪 Standardisasi Larutan")
+    st.info("🔧 Fitur ini dalam pengembangan.")
