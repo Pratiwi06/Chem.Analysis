@@ -20,55 +20,88 @@ st.markdown("""
 
 # ==================== BERANDA =====================
 if menu == "Beranda":
-    st.title("📘 Selamat Datang di Chem Analysis")
     st.markdown("""
-    <div class='box'>
-        <h1 class='title-text'>🧪 Aplikasi Analisis Kimia</h1>
-        <h3>Selamat datang!</h3>
-        <p>Aplikasi ini membantu kamu dalam:</p>
+        <style>
+            .welcome-box {
+                background-color: #e6f7ff;
+                padding: 25px;
+                border-radius: 15px;
+                border: 1px solid #91d5ff;
+                margin-bottom: 25px;
+            }
+            .section-box {
+                background-color: #f9f9f9;
+                padding: 20px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            }
+            ul li {
+                margin-bottom: 6px;
+                font-size: 16px;
+            }
+            h3 {
+                color: #096dd9;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
+    st.title("📘 Selamat Datang di Chem Analysis")
+
+    st.markdown("""
+    <div class="welcome-box">
+        <h2>🧪 Aplikasi Analisis Kimia</h2>
+        <p>Selamat datang di aplikasi interaktif yang membantu kamu dalam:</p>
         <ul>
-            <li>🔄 Konversi Satuan</li>
-            <li>🧪 Titrasi / Standardisasi</li>
-            <li>📊 Regresi Linear</li>
-            <li>📘 Tabel Periodik</li>
+            <li>🔄 Konversi satuan kimia</li>
+            <li>🧪 Titrasi / Standardisasi larutan</li>
+            <li>📊 Perhitungan Regresi Linear</li>
+            <li>🧬 Tabel Periodik Interaktif</li>
         </ul>
-        <p>Gunakan menu di samping untuk menjelajah fitur-fitur.</p>
+        <p>Gunakan menu di sebelah kiri untuk menjelajahi fitur-fitur yang tersedia.</p>
     </div>
     """, unsafe_allow_html=True)
 
-    st.subheader("🎯 Tujuan Aplikasi")
+    # Tujuan
     st.markdown("""
-    Aplikasi ini dirancang untuk membantu analisis data kimia meliputi:
-    - Tabel periodik unsur
-    - Perhitungan regresi linear
-    - Konversi satuan
-    - Perhitungan standardisasi
-    """)
+    <div class="section-box">
+        <h3>🎯 Tujuan Aplikasi</h3>
+        <p>Aplikasi ini dirancang untuk membantu analisis data kimia meliputi:</p>
+        <ul>
+            <li>🧬 Informasi Tabel Periodik Unsur</li>
+            <li>📊 Perhitungan Regresi Linear dan grafiknya</li>
+            <li>🔄 Konversi satuan fisik dan kimia</li>
+            <li>🧪 Perhitungan Standardisasi Larutan</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
 
-    st.subheader("🌟 Manfaat Aplikasi")
+    # Manfaat
     st.markdown("""
-    - 💻 **Akses mudah** di berbagai platform
-    - 🔍 **Mempermudah pembelajaran dan praktikum kimia**
-    - 📈 **Mendukung pengolahan data laboratorium**
-    - 🧠 **Memberikan pengalaman interaktif dan edukatif**
-    """)
+    <div class="section-box">
+        <h3>🌟 Manfaat Aplikasi</h3>
+        <ul>
+            <li>💻 Akses mudah melalui browser tanpa instalasi</li>
+            <li>🔍 Mempermudah pembelajaran dan praktikum kimia</li>
+            <li>📈 Mendukung pengolahan dan presentasi data laboratorium</li>
+            <li>🧠 Memberikan pengalaman interaktif dan edukatif</li>
+        </ul>
+    </div>
+    """, unsafe_allow_html=True)
 
-    st.subheader("🧰 Fitur-Fitur Tersedia")
+    # Fitur-fitur
     st.markdown("""
-    ### 🧬 Tabel Periodik Unsur
-    Informasi lengkap seperti simbol, nomor atom, massa atom, konfigurasi elektron, dll.
-
-    ### 📊 Regresi Linear
-    Hitung persamaan regresi, koefisien korelasi, R², dan lainnya.
-
-    ### 🔄 Konversi Satuan
-    Suhu, tekanan, volume, massa, dan konsentrasi.
-
-    ### 🧪 Standardisasi Larutan
-    Hitung konsentrasi berdasarkan titrasi berbagai metode.
-    """)
-
-    st.markdown("> 🚀 **Jelajahi fitur-fitur kami untuk pembelajaran kimia lebih seru!**")
+    <div class="section-box">
+        <h3>🧰 Fitur-Fitur Tersedia</h3>
+        <ul>
+            <li>🧬 <b>Tabel Periodik Unsur:</b> Menampilkan simbol, nomor atom, massa atom, konfigurasi, dan lainnya</li>
+            <li>📊 <b>Regresi Linear:</b> Menghitung koefisien regresi, R², korelasi, serta menampilkan grafik</li>
+            <li>🔄 <b>Konversi Satuan:</b> Termasuk suhu, tekanan, volume, massa, dan konsentrasi</li>
+            <li>🧪 <b>Standardisasi Larutan:</b> Hitung normalitas dari titrasi berbagai metode (duplo & triplo)</li>
+        </ul>
+        <p style='text-align: center; font-weight: bold;'>🚀 Jelajahi semua fitur untuk pengalaman kimia yang lebih menyenangkan!</p>
+    </div>
+    """, unsafe_allow_html=True)
 
 # ==================== PERIODIK UNSUR =====================
 elif menu == "Periodik Unsur":
