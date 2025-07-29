@@ -69,7 +69,10 @@ if menu == "Beranda":
     <h3 style='text-align: center; font-size: 20px; color: gray;'> 🌟Selamat Datang di Chem Analysis🌟</h3>
     """, unsafe_allow_html=True)
     st.markdown("""
-
+    <div class='footer'>
+        Web ini dibuat oleh Xavier Delia Aspin Nay Salma
+    </div>
+    """, unsafe_allow_html=True)
 
     st.markdown("""
     Aplikasi ini membantu kamu dalam berbagai aktivitas analisis kimia, seperti:
@@ -120,10 +123,10 @@ if menu == "Beranda":
 
         <blockquote>🚀 <b>Jelajahi fitur-fitur kami untuk pembelajaran kimia lebih seru!</b></blockquote>
     """, unsafe_allow_html=True)
+         <blockquote> <b>!</b></blockquote>
+    """, unsafe_allow_html=True)
 
-
-
-
+     
 
 
 # ==================== PERIODIK UNSUR =====================
