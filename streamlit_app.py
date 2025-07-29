@@ -31,7 +31,7 @@ if menu == "Beranda":
                 color: #000000; /* Warna teks hitam */
             }
             .section-box {
-                background-color: #ffffff;
+                background-color: #e6f7ff;
                 padding: 20px;
                 border-radius: 10px;
                 margin-bottom: 20px;
