@@ -34,6 +34,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+
 # ==================== BERANDA =====================
 if menu == "Beranda":
     st.markdown("""
@@ -68,10 +69,10 @@ if menu == "Beranda":
     <h1 style='text-align: center; font-size: 40px;'>🧪 Aplikasi Analisis Kimia</h1>
     <h3 style='text-align: center; font-size: 20px; color: gray;'> 🌟Selamat Datang di Chem Analysis🌟</h3>
     """, unsafe_allow_html=True)
-    st.markdown("""
-
+    
     st.markdown("""
     Aplikasi ini membantu kamu dalam berbagai aktivitas analisis kimia, seperti:
+    
     - 🔄 **Konversi Satuan**
     - 🧪 **Titrasi / Standardisasi**
     - 📊 **Regresi Linear**
@@ -116,20 +117,24 @@ if menu == "Beranda":
             </ul>
         </div>
 
-        <footer style="text-align: center; padding: 20px; background-color: #f5f5f5; font-size: 18px; font-family: Arial, sans-serif;">
-          <p>Web ini dibuat oleh</p>
-          <div style="line-height: 2;">
-            Xavier<br>
-            Delia<br>
-            Aspin<br>
-            Nay<br>
-            Salma
-          </div>
-        </footer>
+st.markdown("<div style='height:300px;'></div>", unsafe_allow_html=True)
 
+# Footer: Web ini dibuat oleh...
+footer_text = """
+Web ini dibuat oleh  
+Xavier  
+Delia  
+Aspin  
+Nay  
+Salma
+"""
 
-     
-
+st.markdown(f"""
+    <hr style="margin-top: 50px;">
+    <p style='text-align: center; color: gray; white-space: pre-line;'>
+        {footer_text}
+    </p>
+""", unsafe_allow_html=True)
 
 # ==================== PERIODIK UNSUR =====================
 elif menu == "Periodik Unsur":
