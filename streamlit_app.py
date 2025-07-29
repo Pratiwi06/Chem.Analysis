@@ -81,6 +81,17 @@ if menu == "Beranda":
     """)
 
     st.markdown("---")
+    st.markdown("""
+    <p style='text-align: center; font-size:10px; color:#000'>
+    Aplikasi ini dirancang oleh 
+    Xavier
+    Delia
+    Aspin
+    Nay
+    Salma
+    </p>
+    """, unsafe_allow_html=True)
+
 
     st.markdown("""
         <div class='section-box'>
