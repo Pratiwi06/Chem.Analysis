@@ -534,7 +534,7 @@ elif menu == "Standardisasi":
             # %RSD untuk triplo atau lebih
             std_N = np.std(normalitas, ddof=1)
             rsd = (std_N / mean_N) * 100 if mean_N else 0
-            st.write(f"**Standar Deviasi (SD)**: {std_N:.4f}")
+            st.write(f"**Standar Deviasi (SD)**: {std_N:.5f}")
             st.write(f"**%RSD (Relative Standard Deviation)**: {rsd:.2f}%")
 
     
