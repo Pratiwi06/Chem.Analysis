@@ -19,89 +19,33 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ==================== BERANDA =====================
-if menu == "Beranda":
-    st.markdown("""
-        <style>
-            .welcome-box {
-                background-color: #e6f7ff;
-                padding: 25px;
-                border-radius: 15px;
-                border: 1px solid #91d5ff;
-                margin-bottom: 25px;
-            }
-            .section-box {
-                background-color: #f9f9f9;
-                padding: 20px;
-                border-radius: 10px;
-                margin-bottom: 20px;
-                box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-            }
-            ul li {
-                margin-bottom: 6px;
-                font-size: 16px;
-            }
-            h3 {
-                color: #096dd9;
-            }
-        </style>
-    """, unsafe_allow_html=True)
-
-    st.title("📘 Selamat Datang di Chem Analysis")
-
-    st.markdown("""
-    <div class="welcome-box">
-        <h2>🧪 Aplikasi Analisis Kimia</h2>
-        <p>Selamat datang di aplikasi interaktif yang membantu kamu dalam:</p>
-        <ul>
-            <li>🔄 Konversi satuan kimia</li>
-            <li>🧪 Titrasi / Standardisasi larutan</li>
-            <li>📊 Perhitungan Regresi Linear</li>
-            <li>🧬 Tabel Periodik Interaktif</li>
-        </ul>
-        <p>Gunakan menu di sebelah kiri untuk menjelajahi fitur-fitur yang tersedia.</p>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Tujuan
-    st.markdown("""
-    <div class="section-box">
-        <h3>🎯 Tujuan Aplikasi</h3>
-        <p>Aplikasi ini dirancang untuk membantu analisis data kimia meliputi:</p>
-        <ul>
-            <li>🧬 Informasi Tabel Periodik Unsur</li>
-            <li>📊 Perhitungan Regresi Linear dan grafiknya</li>
-            <li>🔄 Konversi satuan fisik dan kimia</li>
-            <li>🧪 Perhitungan Standardisasi Larutan</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Manfaat
-    st.markdown("""
-    <div class="section-box">
-        <h3>🌟 Manfaat Aplikasi</h3>
-        <ul>
-            <li>💻 Akses mudah melalui browser tanpa instalasi</li>
-            <li>🔍 Mempermudah pembelajaran dan praktikum kimia</li>
-            <li>📈 Mendukung pengolahan dan presentasi data laboratorium</li>
-            <li>🧠 Memberikan pengalaman interaktif dan edukatif</li>
-        </ul>
-    </div>
-    """, unsafe_allow_html=True)
-
-    # Fitur-fitur
-    st.markdown("""
-    <div class="section-box">
-        <h3>🧰 Fitur-Fitur Tersedia</h3>
-        <ul>
-            <li>🧬 <b>Tabel Periodik Unsur:</b> Menampilkan simbol, nomor atom, massa atom, konfigurasi, dan lainnya</li>
-            <li>📊 <b>Regresi Linear:</b> Menghitung koefisien regresi, R², korelasi, serta menampilkan grafik</li>
-            <li>🔄 <b>Konversi Satuan:</b> Termasuk suhu, tekanan, volume, massa, dan konsentrasi</li>
-            <li>🧪 <b>Standardisasi Larutan:</b> Hitung normalitas dari titrasi berbagai metode (duplo & triplo)</li>
-        </ul>
-        <p style='text-align: center; font-weight: bold;'>🚀 Jelajahi semua fitur untuk pengalaman kimia yang lebih menyenangkan!</p>
-    </div>
-    """, unsafe_allow_html=True)
+st.markdown("""
+    <style>
+        .welcome-box {
+            background-color: #e6f7ff;
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid #91d5ff;
+            margin-bottom: 25px;
+            color: #000000; /* Warna teks hitam */
+        }
+        .section-box {
+            background-color: #ffffff; /* Tetap putih */
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            color: #000000; /* Warna teks hitam */
+        }
+        ul li {
+            margin-bottom: 6px;
+            font-size: 16px;
+        }
+        h3 {
+            color: #096dd9;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
 # ==================== PERIODIK UNSUR =====================
 elif menu == "Periodik Unsur":
