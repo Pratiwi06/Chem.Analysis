@@ -21,34 +21,6 @@ st.markdown("""
 # ==================== BERANDA =====================
 if menu == "Beranda":
     st.markdown("""
-        <style>
-            .welcome-box {
-                background-color: #e6f7ff;
-                padding: 25px;
-                border-radius: 15px;
-                border: 1px solid #91d5ff;
-                margin-bottom: 25px;
-                color: #000000; /* Warna teks hitam */
-            }
-            .section-box {
-                background-color: #ffffff;
-                padding: 20px;
-                border-radius: 10px;
-                margin-bottom: 20px;
-                box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-                color: #000000; /* Warna teks hitam */
-            }
-            ul li {
-                margin-bottom: 6px;
-                font-size: 16px;
-            }
-            h3, h2 {
-                color: #096dd9;
-            }
-        </style>
-    """, unsafe_allow_html=True)
-
-    st.markdown("""
         <div class='welcome-box'>
             <h2>🧪 Aplikasi Analisis Kimia</h2>
             <h3>Selamat datang!</h3>
