@@ -80,17 +80,7 @@ if menu == "Beranda":
     Gunakan menu di sebelah kiri untuk menjelajah fitur-fitur yang tersedia.
     """)
 
-    st.markdown("""
-    <p style='text-align: center; font-size:10px; color:#000'>
-    Aplikasi ini dirancang oleh 
-    Xavier
-    Delia
-    Aspin
-    Nay
-    Salma
-    </p>
-    """, unsafe_allow_html=True)
-
+   
 
     st.markdown("""
         <div class='section-box'>
@@ -127,6 +117,9 @@ if menu == "Beranda":
         </div>
 
         <blockquote>🚀 <b>Jelajahi fitur-fitur kami untuk pembelajaran kimia lebih seru!</b></blockquote>
+    """, unsafe_allow_html=True)
+ st.markdown("""
+    <p style='text-align: center; font-size:16px;'>Web ini dibuat oleh Xavier Delia Aspin Nay Salma</p>
     """, unsafe_allow_html=True)
 
 
