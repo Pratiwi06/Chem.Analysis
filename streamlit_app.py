@@ -91,8 +91,6 @@ if menu == "Beranda":
     </p>
     """, unsafe_allow_html=True)
 
-  st.markdown("---")
-
 
     st.markdown("""
         <div class='section-box'>
