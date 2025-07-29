@@ -121,10 +121,14 @@ if menu == "Beranda":
             </ul>
         </div>
 
-        <blockquote>🚀 <b>Jelajahi fitur-fitur kami untuk pembelajaran kimia lebih seru!</b></blockquote>
+        <blockquote>🚀 <b>Web Aplikasi ini dibuat oleh
+        Xavier
+        Delia
+        ASpin
+        Nay
+        Salma</b></blockquote>
     """, unsafe_allow_html=True)
-         <blockquote> <c!</c></blockquote>
-    """, unsafe_allow_html=True)
+
 
      
 
