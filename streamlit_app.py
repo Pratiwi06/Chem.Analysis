@@ -482,6 +482,7 @@ elif menu == "Konversi":
 elif menu == "Standardisasi":
     st.header("🧪 Standardisasi Larutan")
     st.write("Dalam Normalitas")
+
     ulangan = st.radio("Pilih jumlah ulangan", ["Duplo (2)", "Triplo (3)"])
     n = 2 if "Duplo" in ulangan else 3
 
@@ -492,18 +493,21 @@ elif menu == "Standardisasi":
     f_pengali = []
     normalitas = []
 
-    # Input per ulangan
-    for i in range(n):
-        st.markdown(f"### Ulangan {i+1}")
-        mg = st.number_input(f"Standar baku primer (mg) - Ulangan {i+1}", key=f"mg_{i}")
-        mL = st.number_input(f"Titran (mL) - Ulangan {i+1}", key=f"ml_{i}")
-        BE = st.number_input(f"Bobot Ekuivalen (mg/mgrek) - Ulangan {i+1}", key=f"be_{i}")
-        f = st.number_input(f"Faktor pengali (isi 1 jika tidak ada) - Ulangan {i+1}", key=f"f_{i}", value=1.0)
+    # Buat kolom
+    kolom = st.columns(n)
 
-        mg_Standar_Baku_Primer.append(mg)
-        mL_Titran.append(mL)
-        BE_Standar_Baku_Primer.append(BE)
-        f_pengali.append(f)
+    for i in range(n):
+        with kolom[i]:
+            st.markdown(f"### Ulangan {i+1}")
+            mg = st.number_input(f"Standar baku primer (mg)", key=f"mg_{i}")
+            mL = st.number_input(f"Titran (mL)", key=f"ml_{i}")
+            BE = st.number_input(f"Bobot Ekuivalen (mg/mgrek)", key=f"be_{i}")
+            f = st.number_input(f"Faktor pengali", key=f"f_{i}", value=1.0)
+
+            mg_Standar_Baku_Primer.append(mg)
+            mL_Titran.append(mL)
+            BE_Standar_Baku_Primer.append(BE)
+            f_pengali.append(f)
 
     # Tombol hitung
     if st.button("🔍 Hitung Normalitas"):
@@ -521,11 +525,8 @@ elif menu == "Standardisasi":
 
         mean_N = np.mean(normalitas)
         st.markdown("### Statistik")
-        # Statistik
-        mean_N = np.mean(normalitas)
-        st.markdown("### Statistik")
         st.write(f"**Rata-rata Normalitas**: {mean_N:.4f} N")
-        
+
         if n == 2:
             # %RPD untuk duplo
             rpd = abs(normalitas[0] - normalitas[1]) / ((normalitas[0] + normalitas[1]) / 2) * 100
@@ -534,8 +535,9 @@ elif menu == "Standardisasi":
             # %RSD untuk triplo atau lebih
             std_N = np.std(normalitas, ddof=1)
             rsd = (std_N / mean_N) * 100 if mean_N else 0
-            st.write(f"**Standar Deviasi (SD)**: {std_N:.5f}")
+            st.write(f"**Standar Deviasi (SD)**: {std_N:.4f}")
             st.write(f"**%RSD (Relative Standard Deviation)**: {rsd:.2f}%")
+
 
     
 
