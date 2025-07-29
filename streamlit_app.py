@@ -133,9 +133,6 @@ if menu == "Beranda":
 
     Gunakan menu di sebelah kiri untuk menjelajah fitur-fitur yang tersedia.
     """)
-
-   
-
     st.markdown("""
         <div class='section-box'>
             <h3>🎯 Tujuan Aplikasi</h3>
