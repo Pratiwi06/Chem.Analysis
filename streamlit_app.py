@@ -73,7 +73,6 @@ if menu == "Beranda":
 # ==================== PERIODIK UNSUR =====================
 elif menu == "Periodik Unsur":
     st.header("🔬 Periodik Unsur Kimia")
-   st.header("🔬 Periodik Unsur Kimia")
     elements = [
         {"symbol": "H", "name": "Hidrogen", "atomicNumber": 1, "atomicMass": 1.00794, "electronConfiguration": "1s¹", "electronsPerShell": [1]},
         {"symbol": "He", "name": "Helium", "atomicNumber": 2, "atomicMass": 4.002602, "electronConfiguration": "1s²", "electronsPerShell": [2]},
