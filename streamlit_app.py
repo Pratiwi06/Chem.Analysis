@@ -233,9 +233,301 @@ elif menu == "Regresi Linier":
 # ==================== KONVERSI =====================
 elif menu == "Konversi":
     st.header("🔄 Konversi Satuan")
-    st.info("🔧 Fitur ini dalam pengembangan.")
+    x_input = st.text_input("Nilai X , pisahkan dengan koma", "")
+    y_input = st.text_input("Nilai Y , pisahkan dengan koma", "")
 
-# ==================== STANDARDISASI =====================
+    hitung = st.button("🔍 Hitung")
+
+    if hitung and x_input and y_input:
+        try:
+            x_vals = np.array([float(v) for v in x_input.split(",")])
+            y_vals = np.array([float(v) for v in y_input.split(",")])
+            if len(x_vals) != len(y_vals):
+                st.error("❌ Jumlah data x dan y tidak sama.")
+            elif len(x_vals) < 2:
+                st.warning("❗ Minimal 2 pasang data diperlukan.")
+            else:
+                n = len(x_vals)
+                x_mean = np.mean(x_vals)
+                y_mean = np.mean(y_vals)
+                m = np.sum((x_vals - x_mean) * (y_vals - y_mean)) / np.sum((x_vals - x_mean) ** 2)
+                b = y_mean - m * x_mean
+                y_fit = m * x_vals + b
+                Sy = np.sqrt(np.sum((y_vals - y_fit) ** 2) / (n - 2))
+                r = np.corrcoef(x_vals, y_vals)[0, 1]
+                R2 = r ** 2
+
+                st.success(f"Persamaan regresi: y = {m:.4f}x + ( {b:.4f})")
+                st.write(f"• Slope (m): {m:.4f}")
+                st.write(f"• Intercept (b): {b:.4f}")
+                st.write(f"Koefisien Korelasi (r): {r:.4f}")
+                st.write(f"Koefisien Determinasi (R²): {R2:.4f}")
+
+                RSD = Sy / y_mean * 100 if y_mean else 0.0
+                st.success(f"%RSD Kurva Regresi: {RSD:.2f}%")
+
+                fig, ax = plt.subplots()
+                ax.scatter(x_vals, y_vals, label='Data')
+                ax.plot(x_vals, y_fit, color='red', label='Regresi')
+                ax.set_xlabel('Nilai x')
+                ax.set_ylabel('Nilai Y')
+                ax.legend()
+                st.pyplot(fig)
+
+        except Exception as e:
+            st.warning(f"❌ Masukkan data valid. Kesalahan: {e}")
+    
+# ==================== TAB 4 =====================
+with tab4:
+    st.header("🔄 Konversi Satuan")
+    # Pilih jenis konversi
+    conversion_type = st.selectbox("Pilih jenis konversi:", ["Suhu", "Tekanan", "Volume", "Massa", "Konsentrasi"])
+
+    if conversion_type == "Suhu":
+        st.subheader("Konversi Suhu")
+        
+        temp_value = st.number_input("Masukkan nilai suhu:")
+        temp_unit = st.selectbox("Pilih satuan suhu:", ["Celsius", "Fahrenheit", "Kelvin", "Reamur"])
+
+        if st.button("Konversi"):
+            if temp_unit == "Celsius":
+                fahrenheit = (temp_value * 9/5) + 32
+                kelvin = temp_value + 273.15
+                reamur = temp_value * 4/5
+                st.success(f"{temp_value} °C = {fahrenheit:.1f} °F")
+                st.success(f"{temp_value} °C = {kelvin:.1f} K")
+                st.success(f"{temp_value} °C = {reamur:.1f} °Ré")
+
+            elif temp_unit == "Fahrenheit":
+                celsius = (temp_value - 32) * 5/9
+                kelvin = celsius + 273.15
+                reamur = celsius * 4/5
+                st.success(f"{temp_value} °F = {celsius:.1f} °C")
+                st.success(f"{temp_value} °F = {kelvin:.1f} K")
+                st.success(f"{temp_value} °F = {reamur:.1f} °Ré")
+
+            elif temp_unit == "Kelvin":
+                celsius = temp_value - 273.15
+                fahrenheit = (celsius * 9/5) + 32
+                reamur = celsius * 4/5
+                st.success(f"{temp_value} K = {celsius:.1f} °C")
+                st.success(f"{temp_value} K = {fahrenheit:.1f} °F")
+                st.success(f"{temp_value} K = {reamur:.1f} °Ré")
+
+            elif temp_unit == "Reamur":
+                celsius = temp_value * 5/4
+                fahrenheit = (celsius * 9/5) + 32
+                kelvin = celsius + 273.15
+                st.success(f"{temp_value} °Ré = {celsius:.1f} °C")
+                st.success(f"{temp_value} °Ré = {fahrenheit:.1f} °F")
+                st.success(f"{temp_value} °Ré = {kelvin:.1f} K")
+
+                
+    elif conversion_type == "Tekanan":
+        st.subheader("Konversi Tekanan")
+        pressure_value = st.number_input("Masukkan nilai tekanan:")
+        pressure_unit = st.selectbox("Pilih satuan tekanan:", ["Pascal", "hPa", "Bar", "Atmosfer", "Torr", "mmHg"])
+    
+        if st.button("Konversi"):
+            if pressure_unit == "Pascal":
+                hpa = pressure_value / 100
+                bar = pressure_value / 1e5
+                atm = pressure_value / 101325
+                torr = pressure_value * 0.00750062
+                mmhg = pressure_value / 133.322
+                st.success(f"{pressure_value} Pa = {hpa:.2f} hPa")
+                st.success(f"{pressure_value} Pa = {bar:.5f} Bar")
+                st.success(f"{pressure_value} Pa = {atm:.5f} atm")
+                st.success(f"{pressure_value} Pa = {torr:.5f} Torr")
+                st.success(f"{pressure_value} Pa = {mmhg:.5f} mmHg")
+    
+            elif pressure_unit == "hPa":
+                pascal = pressure_value * 100
+                bar = pascal / 1e5
+                atm = pascal / 101325
+                torr = pascal * 0.00750062
+                mmhg = pascal / 133.322
+                st.success(f"{pressure_value} hPa = {pascal:.2f} Pa")
+                st.success(f"{pressure_value} hPa = {bar:.4f} Bar")
+                st.success(f"{pressure_value} hPa = {atm:.5f} atm")
+                st.success(f"{pressure_value} hPa = {torr:.5f} Torr")
+                st.success(f"{pressure_value} hPa = {mmhg:.5f} mmHg")
+    
+            elif pressure_unit == "Bar":
+                pascal = pressure_value * 1e5
+                hpa = pascal / 100
+                atm = pressure_value / 1.01325
+                torr = pressure_value * 750.062
+                mmhg = pascal / 133.322
+                st.success(f"{pressure_value} Bar = {pascal:.2f} Pa")
+                st.success(f"{pressure_value} Bar = {hpa:.2f} hPa")
+                st.success(f"{pressure_value} Bar = {atm:.5f} atm")
+                st.success(f"{pressure_value} Bar = {torr:.5f} Torr")
+                st.success(f"{pressure_value} Bar = {mmhg:.5f} mmHg")
+    
+            elif pressure_unit == "Atmosfer":
+                pascal = pressure_value * 101325
+                hpa = pascal / 100
+                bar = pressure_value * 1.01325
+                torr = pressure_value * 760
+                mmhg = pascal / 133.322
+                st.success(f"{pressure_value} atm = {pascal:.2f} Pa")
+                st.success(f"{pressure_value} atm = {hpa:.2f} hPa")
+                st.success(f"{pressure_value} atm = {bar:.5f} Bar")
+                st.success(f"{pressure_value} atm = {torr:.2f} Torr")
+                st.success(f"{pressure_value} atm = {mmhg:.2f} mmHg")
+    
+            elif pressure_unit == "Torr":
+                pascal = pressure_value / 0.00750062
+                hpa = pascal / 100
+                bar = pressure_value / 750.062
+                atm = pressure_value / 760
+                mmhg = pascal / 133.322
+                st.success(f"{pressure_value} Torr = {pascal:.2f} Pa")
+                st.success(f"{pressure_value} Torr = {hpa:.2f} hPa")
+                st.success(f"{pressure_value} Torr = {bar:.5f} Bar")
+                st.success(f"{pressure_value} Torr = {atm:.5f} atm")
+                st.success(f"{pressure_value} Torr = {mmhg:.5f} mmHg")
+    
+            elif pressure_unit == "mmHg":
+                pascal = pressure_value * 133.322
+                hpa = pascal / 100
+                bar = pascal / 1e5
+                atm = pascal / 101325
+                torr = pascal * 0.00750062
+                st.success(f"{pressure_value} mmHg = {pascal:.2f} Pa")
+                st.success(f"{pressure_value} mmHg = {hpa:.2f} hPa")
+                st.success(f"{pressure_value} mmHg = {bar:.5f} Bar")
+                st.success(f"{pressure_value} mmHg = {atm:.5f} atm")
+                st.success(f"{pressure_value} mmHg = {torr:.5f} Torr")
+
+    elif conversion_type == "Volume":
+        st.subheader("Konversi Volume")
+        volume_value = st.number_input("Masukkan nilai volume:")
+        volume_unit = st.selectbox("Pilih satuan volume:", ["Liter", "Mililiter", "dm³", "Cubic Meter"])
+
+        if st.button("Konversi"):
+            if volume_unit == "Liter":
+                milliliter = volume_value * 1000
+                cubic_meter = volume_value / 1000
+                dm3 = volume_value  # 1 liter = 1 dm³
+                st.success(f"{volume_value} L = {milliliter:.2f} mL")
+                st.success(f"{volume_value} L = {cubic_meter:.5f} m³")
+                st.success(f"{volume_value} L = {dm3:.5f} dm³")
+            elif volume_unit == "Mililiter":
+                liter = volume_value / 1000
+                cubic_meter = liter / 1000
+                dm3 = liter  # 1 liter = 1 dm³
+                st.success(f"{volume_value} mL = {liter:.2f} L")
+                st.success(f"{volume_value} mL = {cubic_meter:.5f} m³")
+                st.success(f"{volume_value} mL = {dm3:.5f} dm³")
+            elif volume_unit == "dm³":
+                liter = volume_value  # 1 dm³ = 1 liter
+                milliliter = liter * 1000
+                cubic_meter = liter / 1000
+                st.success(f"{volume_value} dm³ = {liter:.2f} L")
+                st.success(f"{volume_value} dm³ = {milliliter:.2f} mL")
+                st.success(f"{volume_value} dm³ = {cubic_meter:.5f} m³")
+            elif volume_unit == "Cubic Meter":
+                liter = volume_value * 1000
+                milliliter = liter * 1000
+                dm3 = liter  # 1 liter = 1 dm³
+                st.success(f"{volume_value} m³ = {liter:.2f} L")
+                st.success(f"{volume_value} m³ = {milliliter:.2f} mL")
+                st.success(f"{volume_value} m³ = {dm3:.5f} dm³")
+
+    elif conversion_type == "Massa":
+        st.subheader("Konversi Massa")
+        mass_value = st.number_input("Masukkan nilai massa:")
+        mass_unit = st.selectbox("Pilih satuan massa:", ["Kilogram", "Gram", "Miligram"])
+
+        if st.button("Konversi"):
+            if mass_unit == "Kilogram":
+                gram = mass_value * 1000
+                milligram = mass_value * 1e6
+                st.success(f"{mass_value} kg = {gram:.2f} g")
+                st.success(f"{mass_value} kg = {milligram:.2f} mg")
+            elif mass_unit == "Gram":
+                kilogram = mass_value / 1000
+                milligram = mass_value * 1000
+                st.success(f"{mass_value} g = {kilogram:.5f} kg")
+                st.success(f"{mass_value} g = {milligram:.2f} mg")
+            elif mass_unit == "Miligram":
+                gram = mass_value / 1000
+                kilogram = gram / 1000
+                st.success(f"{mass_value} mg = {gram:.5f} g")
+                st.success(f"{mass_value} mg = {kilogram:.5f} kg")
+                
+    elif conversion_type == "Konsentrasi":
+        st.subheader("🔁 Konversi Konsentrasi")
+    
+        conversion_value = st.number_input("Masukkan nilai konsentrasi:")
+        conversion_unit = st.selectbox(
+            "Pilih satuan konsentrasi:",
+            ["Molaritas (M)", "Normalitas (N)", "Persen (% (b/v))", "Persen (% (b/b))", "ppm", "ppb", "ppt"]
+        )
+    
+        valency = st.number_input("Masukkan valensi (jika diperlukan):", min_value=1, value=1)
+        density = st.number_input("Masukkan bobot jenis/densitas (g/mL):", min_value=0.0, value=1.0)
+        mol_weight = st.number_input("Masukkan bobot molekul (g/mol):", min_value=0.0, value=1.0)
+
+        if st.button("Konversi"):
+            if conversion_unit == "Molaritas (M)":
+                normality = conversion_value * valency
+            
+                # Rumus benar untuk % b/v: (M * Mr) / 10
+                percent_bv = (conversion_value * mol_weight) / 10
+            
+                # Rumus benar untuk % b/b: (M * Mr) / (ρ * 10)
+                percent_bb = (conversion_value * mol_weight) / (density * 10) if density > 0 else 0
+            
+                st.success(f"{conversion_value:.4f} M = {normality:.2f} N")
+                st.success(f"{conversion_value:.4f} M = {percent_bv:.2f} % (b/v)")
+                st.success(f"{conversion_value:.4f} M = {percent_bb:.2f} % (b/b)")
+    
+            elif conversion_unit == "Normalitas (N)":
+                molarity = conversion_value / valency
+                percent_bv = (molarity * mol_weight) / 10
+                percent_bb = (molarity * mol_weight) / (density * 10) if density > 0 else 0
+                st.success(f"{conversion_value:.4f} N = {molarity:.4f} M")
+                st.success(f"{conversion_value:.4f} N = {percent_bv:.2f} % (b/v)")
+                st.success(f"{conversion_value:.4f} N = {percent_bb:.2f} % (b/b)")
+                
+            elif conversion_unit == "Persen (% (b/v))":
+                molarity = (conversion_value * 10) / mol_weight if mol_weight > 0 else 0
+                normality = molarity * valency
+                percent_bb = conversion_value / density if density > 0 else 0
+                st.success(f"{conversion_value:.4f} % (b/v) = {molarity:.4f} M")
+                st.success(f"{conversion_value:.4f} % (b/v) = {normality:.4f} N")
+                st.success(f"{conversion_value:.4f} % (b/v) = {percent_bb:.2f} % (b/b)")
+    
+            elif conversion_unit == "Persen (% (b/b))":
+                molarity = (conversion_value * density * 10) / mol_weight if mol_weight > 0 and density > 0 else 0
+                normality = molarity * valency
+                percent_bv = conversion_value * density  # % (b/v) = % (b/b) × ρ
+                st.success(f"{conversion_value:.4f} % (b/b) = {molarity:.4f} M")
+                st.success(f"{conversion_value:.4f} % (b/b) = {normality:.4f} N")
+                st.success(f"{conversion_value:.4f} % (b/b) = {percent_bv:.2f} % (b/v)")
+    
+            elif conversion_unit == "ppm":
+                ppb = conversion_value * 1000
+                ppt = ppb * 1000
+                st.success(f"{conversion_value:.2f} ppm = {ppb:.2f} ppb")
+                st.success(f"{conversion_value:.2f} ppm = {ppt:.2f} ppt")
+    
+            elif conversion_unit == "ppb":
+                ppm = conversion_value / 1000
+                ppt = conversion_value * 1000
+                st.success(f"{conversion_value:.2f} ppb = {ppm:.2f} ppm")
+                st.success(f"{conversion_value:.2f} ppb = {ppt:.2f} ppt")
+    
+            elif conversion_unit == "ppt":
+                ppm = conversion_value / 1_000_000
+                ppb = conversion_value / 1000
+                st.success(f"{conversion_value:.2f} ppt = {ppm:.6f} ppm")
+                st.success(f"{conversion_value:.2f} ppt = {ppb:.2f} ppb")
+
+   # ==================== STANDARDISASI =====================
 elif menu == "Standardisasi":
     st.header("🧪 Standardisasi Larutan")
     st.info("🔧 Fitur ini dalam pengembangan.")
