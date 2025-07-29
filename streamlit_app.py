@@ -50,7 +50,7 @@ if menu == "Beranda":
 
     st.markdown("""
     <h1 style='text-align: center; font-size: 40px;'>🧪 Aplikasi Analisis Kimia</h1>
-    <h3 style='text-align: center; font-size: 30px; color: gray;'>📘 Selamat Datang di Chem Analysis</h3>
+    <h3 style='text-align: center; font-size: 15px; color: gray;'>📘 Selamat Datang di Chem Analysis</h3>
     """, unsafe_allow_html=True)
 
     st.markdown("""
