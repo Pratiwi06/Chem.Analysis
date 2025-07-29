@@ -17,7 +17,7 @@ def set_custom_background(image_url):
         </style>
         """, unsafe_allow_html=True)
 
-image_link = "https://cdn.bhdw.net/im/chemistry-and-physics-symbols-on-black-board-wallpaper-108136_w635.webp"
+image_link = "https://i.pinimg.com/736x/d4/4a/4f/d44a4fc2f4d3a6a0c9a847088c059cd6.jpg"
 set_custom_background(image_link)
 st.set_page_config(page_title="Chem Analysis", layout="wide")
 
