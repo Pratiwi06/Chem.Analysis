@@ -69,10 +69,6 @@ if menu == "Beranda":
     <h3 style='text-align: center; font-size: 20px; color: gray;'> 🌟Selamat Datang di Chem Analysis🌟</h3>
     """, unsafe_allow_html=True)
     st.markdown("""
-    <div class='footer'>
-        Web ini dibuat oleh Xavier Delia Aspin Nay Salma
-    </div>
-    """, unsafe_allow_html=True)
 
     st.markdown("""
     Aplikasi ini membantu kamu dalam berbagai aktivitas analisis kimia, seperti:
@@ -121,13 +117,16 @@ if menu == "Beranda":
             </ul>
         </div>
 
-        <blockquote>🚀 <b>Web Aplikasi ini dibuat oleh
-        Xavier
-        Delia
-        ASpin
-        Nay
-        Salma</b></blockquote>
-    """, unsafe_allow_html=True)
+        <footer style="text-align: center; padding: 20px; background-color: #f5f5f5; font-size: 18px; font-family: Arial, sans-serif;">
+          <p>Web ini dibuat oleh</p>
+          <div style="line-height: 2;">
+            Xavier<br>
+            Delia<br>
+            Aspin<br>
+            Nay<br>
+            Salma
+          </div>
+        </footer>
 
 
      
