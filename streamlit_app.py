@@ -117,24 +117,24 @@ if menu == "Beranda":
             </ul>
         </div>
 
-st.markdown("<div style='height:300px;'></div>", unsafe_allow_html=True)
-
-# Footer: Web ini dibuat oleh...
-footer_text = """
-Web ini dibuat oleh  
-Xavier  
-Delia  
-Aspin  
-Nay  
-Salma
-"""
-
-st.markdown(f"""
-    <hr style="margin-top: 50px;">
-    <p style='text-align: center; color: gray; white-space: pre-line;'>
-        {footer_text}
-    </p>
-""", unsafe_allow_html=True)
+    st.markdown("<div style='height:300px;'></div>", unsafe_allow_html=True)
+    
+    # Footer: Web ini dibuat oleh...
+    footer_text = """
+    Web ini dibuat oleh  
+    Xavier  
+    Delia  
+    Aspin  
+    Nay  
+    Salma
+    """
+    
+    st.markdown(f"""
+        <hr style="margin-top: 50px;">
+        <p style='text-align: center; color: gray; white-space: pre-line;'>
+            {footer_text}
+        </p>
+    """, unsafe_allow_html=True)
 
 # ==================== PERIODIK UNSUR =====================
 elif menu == "Periodik Unsur":
