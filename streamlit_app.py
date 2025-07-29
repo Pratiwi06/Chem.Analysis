@@ -50,7 +50,7 @@ if menu == "Beranda":
 
     st.markdown("""
     <h1 style='text-align: center; font-size: 40px;'>🧪 Aplikasi Analisis Kimia</h1>
-    <h3 style='text-align: center; font-size: 20px; color: gray;'>📘 Selamat Datang di Chem Analysis</h3>
+    <h3 style='text-align: center; font-size: 20px; color: gray;'> 🌟Selamat Datang di Chem Analysis🌟</h3>
     """, unsafe_allow_html=True)
 
     st.markdown("""
@@ -81,7 +81,7 @@ if menu == "Beranda":
         </div>
 
         <div class='section-box'>
-            <h3>🌟 Manfaat Aplikasi</h3>
+            <h3>📘 Manfaat Aplikasi</h3>
             <ul>
                 <li>💻 <b>Akses mudah</b> di berbagai platform</li>
                 <li>🔍 <b>Mempermudah pembelajaran dan praktikum kimia</b></li>
