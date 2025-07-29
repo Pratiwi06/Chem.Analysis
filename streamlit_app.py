@@ -20,6 +20,34 @@ st.markdown("""
 
 # ==================== BERANDA =====================
 if menu == "Beranda":
+    st.markdown("""
+        <style>
+            .welcome-box {
+                background-color: #e6f7ff;
+                padding: 25px;
+                border-radius: 15px;
+                border: 1px solid #91d5ff;
+                margin-bottom: 25px;
+                color: #000000; /* Warna teks hitam */
+            }
+            .section-box {
+                background-color: #ffffff;
+                padding: 20px;
+                border-radius: 10px;
+                margin-bottom: 20px;
+                box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+                color: #000000; /* Warna teks hitam */
+            }
+            ul li {
+                margin-bottom: 6px;
+                font-size: 16px;
+            }
+            h3, h2 {
+                color: #096dd9;
+            }
+        </style>
+    """, unsafe_allow_html=True)
+
     st.title("🧪 Aplikasi Analisis Kimia")
     st.subheader("📘 Selamat Datang di Chem Analysis")
 
@@ -34,10 +62,42 @@ if menu == "Beranda":
     Gunakan menu di sebelah kiri untuk menjelajah fitur-fitur yang tersedia.
     """)
 
-    st.markdown("---")
+    st.markdown("""
+        <div class='section-box'>
+            <h3>🎯 Tujuan Aplikasi</h3>
+            <p>
+                Aplikasi ini dirancang untuk membantu analisis data kimia meliputi:
+                <ul>
+                    <li>📘 Tabel periodik unsur</li>
+                    <li>📊 Perhitungan regresi linear</li>
+                    <li>🔄 Konversi satuan</li>
+                    <li>🧪 Perhitungan standardisasi larutan</li>
+                </ul>
+            </p>
+        </div>
 
-    st.subheader("🎯 Tujuan Aplikasi")
-    st.markdown(
+        <div class='section-box'>
+            <h3>🌟 Manfaat Aplikasi</h3>
+            <ul>
+                <li>💻 <b>Akses mudah</b> di berbagai platform</li>
+                <li>🔍 <b>Mempermudah pembelajaran dan praktikum kimia</b></li>
+                <li>📈 <b>Mendukung pengolahan data laboratorium</b></li>
+                <li>🧠 <b>Memberikan pengalaman interaktif dan edukatif</b></li>
+            </ul>
+        </div>
+
+        <div class='section-box'>
+            <h3>🧰 Fitur-Fitur Tersedia</h3>
+            <ul>
+                <li><b>🧬 Tabel Periodik Unsur</b><br>Informasi lengkap seperti simbol, nomor atom, massa atom, konfigurasi elektron, dll.</li>
+                <li><b>📊 Regresi Linear</b><br>Hitung persamaan regresi, koefisien korelasi, R², dan lainnya.</li>
+                <li><b>🔄 Konversi Satuan</b><br>Suhu, tekanan, volume, massa, dan konsentrasi.</li>
+                <li><b>🧪 Standardisasi Larutan</b><br>Hitung konsentrasi berdasarkan titrasi berbagai metode.</li>
+            </ul>
+        </div>
+
+        <blockquote>🚀 <b>Jelajahi fitur-fitur kami untuk pembelajaran kimia lebih seru!</b></blockquote>
+    """, unsafe_allow_html=True)
 
 
 
