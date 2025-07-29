@@ -72,7 +72,6 @@ if menu == "Beranda":
 
     st.markdown("""
     Aplikasi ini membantu kamu dalam berbagai aktivitas analisis kimia, seperti:
-
     - 🔄 **Konversi Satuan**
     - 🧪 **Titrasi / Standardisasi**
     - 📊 **Regresi Linear**
