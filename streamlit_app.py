@@ -4,21 +4,22 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Konfigurasi halaman
+def set_custom_background(image_url):
+    st.markdown(f"""
+        <style>
+        .stApp {{
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), 
+                        url("{image_url}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }}
+        </style>
+        """, unsafe_allow_html=True)
+
+image_link = "https://cdn.bhdw.net/im/chemistry-and-physics-symbols-on-black-board-wallpaper-108136_w635.webp"
+set_custom_background(image_link)
 st.set_page_config(page_title="Chem Analysis", layout="wide")
-st.markdown(f"""
-            <style>
-            .stApp {{
-                background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), 
-                            url("{image_url}");
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-            }}
-            </style>
-            """, unsafe_allow_html=True)
-    
-    image_link = https://images.theconversation.com/files/576318/original/image-20160510-20731-1pf8nwv.jpg?ixlib=rb-4.1.0&q=45&auto=format&w=926&fit=clip
-    
 
 
 # Sidebar sebagai navigasi utama
