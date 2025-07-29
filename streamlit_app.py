@@ -35,43 +35,39 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 # ==================== BERANDA =====================
+st.markdown("""
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1555949963-aa79dcee981c');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .main {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        h1, h3, p, li {
+            color: #000 !important;
+            text-shadow: 1px 1px 2px #fff;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            font-size: 14px;
+            color: #000;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
+menu = st.sidebar.selectbox("Pilih Menu", ["Beranda", "Standardisasi", "Periodik Unsur", "Konversi", "Regresi"])
+
 if menu == "Beranda":
     st.markdown("""
-        <style>
-            .welcome-box {
-                background-color: #e6f7ff;
-                padding: 25px;
-                border-radius: 15px;
-                border: 1px solid #91d5ff;
-                margin-bottom: 25px;
-                color: #000000; /* Warna teks hitam */
-            }
-            .section-box {
-                background-color: #e6f7ff;
-                padding: 20px;
-                border-radius: 10px;
-                margin-bottom: 20px;
-                box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-                color: #000000; /* Warna teks hitam */
-            }
-            ul li {
-                margin-bottom: 6px;
-                font-size: 16px;
-            }
-            h3, h2 {
-                color: #096dd9;
-            }
-        </style>
-    """, unsafe_allow_html=True)
-
-    st.markdown("""
-    <h1 style='text-align: center; font-size: 40px;'>🧪 Aplikasi Analisis Kimia</h1>
-    <h3 style='text-align: center; font-size: 20px; color: gray;'> 🌟Selamat Datang di Chem Analysis🌟</h3>
-    """, unsafe_allow_html=True)
-    st.markdown("""
-    <div class='footer'>
-        Web ini dibuat oleh Xavier Delia Aspin Nay Salma
-    </div>
+    <div class='main'>
+        <h1 style='text-align: center; font-size: 40px;'>🧪 Aplikasi Analisis Kimia</h1>
+        <h3 style='text-align: center; font-size: 20px;'>📘 Selamat Datang di Chem Analysis</h3>
     """, unsafe_allow_html=True)
 
     st.markdown("""
@@ -85,43 +81,52 @@ if menu == "Beranda":
     Gunakan menu di sebelah kiri untuk menjelajah fitur-fitur yang tersedia.
     """)
 
-   
+    st.markdown("---")
+
+    st.subheader("🎯 Tujuan Aplikasi")
+    st.markdown("""
+    Aplikasi ini dirancang untuk memudahkan analisis data kimia meliputi:
+
+    - 📘 Tabel periodik unsur lengkap
+    - 📊 Perhitungan regresi linear
+    - 🔄 Konversi satuan kimia dasar
+    - 🧪 Standardisasi larutan berbasis titrasi
+    """)
+
+    st.markdown("---")
+
+    st.subheader("🌟 Manfaat Aplikasi")
+    st.markdown("""
+    - 💻 **Akses mudah** di berbagai perangkat
+    - 🔍 **Membantu pembelajaran dan praktikum kimia**
+    - 📈 **Mendukung pengolahan data laboratorium**
+    - 🧠 **Interaktif dan edukatif untuk mahasiswa dan pelajar**
+    """)
+
+    st.markdown("---")
+
+    st.subheader("🧰 Fitur-Fitur Tersedia")
+    st.markdown("""
+    **🧬 Tabel Periodik Unsur**  
+    Menyediakan informasi seperti simbol, nomor atom, massa atom, dan konfigurasi elektron.
+
+    **📊 Regresi Linear**  
+    Menghitung persamaan regresi, R², korelasi, dan estimasi nilai.
+
+    **🔄 Konversi Satuan**  
+    Mengubah suhu, tekanan, volume, massa, dan konsentrasi dengan mudah.
+
+    **🧪 Standardisasi Larutan**  
+    Menghitung konsentrasi larutan berdasarkan metode titrasi (duplo/triplo).
+    """)
+
+    st.markdown("> 🚀 **Eksplor semua fitur untuk pengalaman belajar kimia yang lebih menyenangkan!**")
+    st.markdown("</div>", unsafe_allow_html=True)
 
     st.markdown("""
-        <div class='section-box'>
-            <h3>🎯 Tujuan Aplikasi</h3>
-            <p>
-                Aplikasi ini dirancang untuk membantu analisis data kimia meliputi:
-                <ul>
-                    <li>📘 Tabel periodik unsur</li>
-                    <li>📊 Perhitungan regresi linear</li>
-                    <li>🔄 Konversi satuan</li>
-                    <li>🧪 Perhitungan standardisasi larutan</li>
-                </ul>
-            </p>
-        </div>
-
-        <div class='section-box'>
-            <h3>📘 Manfaat Aplikasi</h3>
-            <ul>
-                <li>💻 <b>Akses mudah</b> di berbagai platform</li>
-                <li>🔍 <b>Mempermudah pembelajaran dan praktikum kimia</b></li>
-                <li>📈 <b>Mendukung pengolahan data laboratorium</b></li>
-                <li>🧠 <b>Memberikan pengalaman interaktif dan edukatif</b></li>
-            </ul>
-        </div>
-
-        <div class='section-box'>
-            <h3>🧰 Fitur-Fitur Tersedia</h3>
-            <ul>
-                <li><b>🧬 Tabel Periodik Unsur</b><br>Informasi lengkap seperti simbol, nomor atom, massa atom, konfigurasi elektron, dll.</li>
-                <li><b>📊 Regresi Linear</b><br>Hitung persamaan regresi, koefisien korelasi, R², dan lainnya.</li>
-                <li><b>🔄 Konversi Satuan</b><br>Suhu, tekanan, volume, massa, dan konsentrasi.</li>
-                <li><b>🧪 Standardisasi Larutan</b><br>Hitung konsentrasi berdasarkan titrasi berbagai metode.</li>
-            </ul>
-        </div>
-
-        <blockquote>🚀 <b>Jelajahi fitur-fitur kami untuk pembelajaran kimia lebih seru!</b></blockquote>
+    <div class='footer'>
+        Web ini dibuat oleh Xavier Delia Aspin Nay Salma
+    </div>
     """, unsafe_allow_html=True)
 
 
