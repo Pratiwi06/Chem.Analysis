@@ -521,3 +521,22 @@ elif menu == "Standardisasi":
 
         mean_N = np.mean(normalitas)
         st.markdown("### Statistik")
+        # Statistik
+        mean_N = np.mean(normalitas)
+        st.markdown("### Statistik")
+        st.write(f"**Rata-rata Normalitas**: {mean_N:.4f} N")
+        
+        if n == 2:
+            # %RPD untuk duplo
+            rpd = abs(normalitas[0] - normalitas[1]) / ((normalitas[0] + normalitas[1]) / 2) * 100
+            st.write(f"**%RPD (Relative Percent Difference)**: {rpd:.2f}%")
+        else:
+            # %RSD untuk triplo atau lebih
+            std_N = np.std(normalitas, ddof=1)
+            rsd = (std_N / mean_N) * 100 if mean_N else 0
+            st.write(f"**Standar Deviasi (SD)**: {std_N:.4f}")
+            st.write(f"**%RSD (Relative Standard Deviation)**: {rsd:.2f}%")
+
+    
+
+
