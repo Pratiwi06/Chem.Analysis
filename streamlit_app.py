@@ -481,18 +481,17 @@ elif menu == "Konversi":
 # ==================== STANDARDISASI =====================
 elif menu == "Standardisasi":
     st.header("🧪 Standardisasi Larutan")
-    st.header("🧪 Standardisasi ")
     st.write("Dalam Normalitas")
     ulangan = st.radio("Pilih jumlah ulangan", ["Duplo (2)", "Triplo (3)"])
     n = 2 if "Duplo" in ulangan else 3
-    
+
     # Variabel input
     mg_Standar_Baku_Primer = []
     mL_Titran = []
     BE_Standar_Baku_Primer = []
     f_pengali = []
     normalitas = []
-    
+
     # Input per ulangan
     for i in range(n):
         st.markdown(f"### Ulangan {i+1}")
@@ -500,12 +499,12 @@ elif menu == "Standardisasi":
         mL = st.number_input(f"Titran (mL) - Ulangan {i+1}", key=f"ml_{i}")
         BE = st.number_input(f"Bobot Ekuivalen (mg/mgrek) - Ulangan {i+1}", key=f"be_{i}")
         f = st.number_input(f"Faktor pengali (isi 1 jika tidak ada) - Ulangan {i+1}", key=f"f_{i}", value=1.0)
-    
+
         mg_Standar_Baku_Primer.append(mg)
         mL_Titran.append(mL)
         BE_Standar_Baku_Primer.append(BE)
         f_pengali.append(f)
-    
+
     # Tombol hitung
     if st.button("🔍 Hitung Normalitas"):
         for i in range(n):
@@ -514,19 +513,12 @@ elif menu == "Standardisasi":
             except ZeroDivisionError:
                 N = 0
             normalitas.append(N)
-    
-        # Buat dataframe horizontal
+
+        # Tampilkan tabel normalitas
         df_dict = {f"Ulangan {i+1}": [normalitas[i]] for i in range(n)}
         df = pd.DataFrame(df_dict, index=["Normalitas (N)"])
         st.dataframe(df)
-    
-        # Statistik
+
         mean_N = np.mean(normalitas)
-        std_N = np.std(normalitas, ddof=1) if n > 1 else 0
-        rsd = (std_N / mean_N) * 100 if mean_N else 0
-    
         st.markdown("### Statistik")
-        st.write(f"**Rata-rata Normalitas**: {mean_N:.4f} N")
-        st.write(f"**Standar Deviasi (SD)**: {std_N:.4f}")
-        st.write(f"**%RSD**: {rsd:.2f}%")
-        
+        st.write(
