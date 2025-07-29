@@ -278,7 +278,7 @@ elif menu == "Konversi":
             st.warning(f"❌ Masukkan data valid. Kesalahan: {e}")
     
 # ==================== TAB 4 =====================
-with tab4:
+elif menu == "Konversi" :
     st.header("🔄 Konversi Satuan")
     # Pilih jenis konversi
     conversion_type = st.selectbox("Pilih jenis konversi:", ["Suhu", "Tekanan", "Volume", "Massa", "Konsentrasi"])
