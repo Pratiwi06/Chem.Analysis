@@ -123,9 +123,7 @@ if menu == "Beranda":
 
 
 
-<footer style="text-align: center; padding: 15px; background-color: #f5f5f5; font-size: 14px;">
-  Dibuat oleh <strong>Abdillah Pier</strong>
-</footer>
+
 
 
 # ==================== PERIODIK UNSUR =====================
