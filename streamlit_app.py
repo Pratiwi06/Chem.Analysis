@@ -5,6 +5,26 @@ import matplotlib.pyplot as plt
 
 # Konfigurasi halaman
 st.set_page_config(page_title="Chem Analysis", layout="wide")
+st.markdown("""
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1555949963-aa79dcee981c');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .main {
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px);
+            padding: 2rem;
+            border-radius: 10px;
+        }
+        h1, h3, p, li {
+            color: #000 !important;
+            text-shadow: 1px 1px 2px #fff;
+        }
+    </style>
+""", unsafe_allow_html=True)
+
 
 # Sidebar sebagai navigasi utama
 st.sidebar.title("🔬 Chem Analysis")
