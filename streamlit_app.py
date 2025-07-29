@@ -33,6 +33,59 @@ st.markdown("""
         .box {background-color:#f0f2f6; padding:20px; border-radius:10px;}
     </style>
 """, unsafe_allow_html=True)
+import streamlit as st
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Konfigurasi halaman
+def set_custom_background(image_url):
+    st.markdown(f"""
+        <style>
+        .stApp {{
+            background: linear-gradient(rgba(0,0,0,0.60), rgba(0,0,0,0.60)), 
+                        url("{image_url}");
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }}
+        </style>
+    """, unsafe_allow_html=True)
+
+# Set background gambar (opsional, ganti URL sesuai kebutuhan)
+set_custom_background("https://your-image-url.com/image.jpg")
+
+# Konten utama aplikasi
+st.title("Selamat Datang di Aplikasi Kami")
+st.write("Ini adalah aplikasi web contoh menggunakan Streamlit.")
+
+# Contoh grafik
+data = pd.DataFrame({
+    'x': np.linspace(0, 10, 100),
+    'y': np.sin(np.linspace(0, 10, 100))
+})
+st.line_chart(data.set_index('x'))
+
+# Spacer agar footer tampil di bawah
+st.markdown("<div style='height:300px;'></div>", unsafe_allow_html=True)
+
+# Footer: Web ini dibuat oleh...
+footer_text = """
+Web ini dibuat oleh  
+Xavier  
+Delia  
+Aspin  
+Nay  
+Salma
+"""
+
+st.markdown(f"""
+    <hr style="margin-top: 50px;">
+    <p style='text-align: center; color: gray; white-space: pre-line;'>
+        {footer_text}
+    </p>
+""", unsafe_allow_html=True)
+
 
 
 # ==================== BERANDA =====================
@@ -117,25 +170,8 @@ if menu == "Beranda":
             </ul>
         </div>
 
-    st.markdown("<div style='height:300px;'></div>", unsafe_allow_html=True)
+  
     
-    # Footer: Web ini dibuat oleh...
-    footer_text = """
-    Web ini dibuat oleh  
-    Xavier  
-    Delia  
-    Aspin  
-    Nay  
-    Salma
-    """
-    
-    st.markdown(f"""
-        <hr style="margin-top: 50px;">
-        <p style='text-align: center; color: gray; white-space: pre-line;'>
-            {footer_text}
-        </p>
-    """, unsafe_allow_html=True)
-
 # ==================== PERIODIK UNSUR =====================
 elif menu == "Periodik Unsur":
     st.header("🔬 Periodik Unsur Kimia")
