@@ -48,8 +48,10 @@ if menu == "Beranda":
         </style>
     """, unsafe_allow_html=True)
 
-    st.title("🧪 Aplikasi Analisis Kimia")
-    st.subheader("📘 Selamat Datang di Chem Analysis")
+    st.markdown("""
+    <h1 style='text-align: center; font-size: 40px;'>🧪 Aplikasi Analisis Kimia</h1>
+    <h3 style='text-align: center; color: gray;'>📘 Selamat Datang di Chem Analysis</h3>
+    """, unsafe_allow_html=True)
 
     st.markdown("""
     Aplikasi ini membantu kamu dalam berbagai aktivitas analisis kimia, seperti:
@@ -61,6 +63,8 @@ if menu == "Beranda":
 
     Gunakan menu di sebelah kiri untuk menjelajah fitur-fitur yang tersedia.
     """)
+
+    st.markdown("---")
 
     st.markdown("""
         <div class='section-box'>
