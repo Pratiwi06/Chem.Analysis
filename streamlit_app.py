@@ -521,4 +521,3 @@ elif menu == "Standardisasi":
 
         mean_N = np.mean(normalitas)
         st.markdown("### Statistik")
-        st.write(
