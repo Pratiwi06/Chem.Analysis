@@ -65,8 +65,8 @@ if menu == "Beranda":
     """, unsafe_allow_html=True)
 
     st.markdown("""
-    <h1 style='text-align: center; font-size: 40px;'>🧪 Aplikasi Analisis Kimia</h1>
-    <h3 style='text-align: center; font-size: 20px; color: gray;'> 🌟Selamat Datang di Chem Analysis🌟</h3>
+    <h1 style='text-align: center; font-size: 40px;'>🧪 Chem Analysis </h1>
+    <h3 style='text-align: center; font-size: 20px; color: gray;'> 🌟Selamat Datang di Aplikasi Analisis Kimia🌟</h3>
     """, unsafe_allow_html=True)
 
         # Tambahan untuk nama kelompok
