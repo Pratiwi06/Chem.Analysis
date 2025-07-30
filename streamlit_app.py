@@ -68,14 +68,18 @@ if menu == "Beranda":
     <h1 style='text-align: center; font-size: 40px;'>🧪 Aplikasi Analisis Kimia</h1>
     <h3 style='text-align: center; font-size: 20px; color: gray;'> 🌟Selamat Datang di Chem Analysis🌟</h3>
     """, unsafe_allow_html=True)
-    
-    st.markdown("""
-    Aplikasi ini membantu kamu dalam berbagai aktivitas analisis kimia, seperti:
 
-    - 🔄 **Konversi Satuan**
-    - 🧪 **Titrasi / Standardisasi**
-    - 📊 **Regresi Linear**
-    - 🧬 **Tabel Periodik Unsur**
+    # Tambahan untuk nama kelompok
+with st.expander("👥 Kelompok 3 - Chem Squad"):
+    st.markdown("""
+    **Anggota:**
+    - Delia Pratiwi
+    - Rizky Andika
+    - Putri Melati
+    - Fajar Sidik
+    - Ayu Lestari
+    """)
+    st.markdown("""
 
     Gunakan menu di sebelah kiri untuk menjelajah fitur-fitur yang tersedia.
     """)
