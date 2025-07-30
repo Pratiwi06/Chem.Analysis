@@ -264,26 +264,40 @@ elif menu == "Regresi Linier":
             if len(x_vals) != len(y_vals):
                 st.error("Jumlah data X dan Y harus sama!")
             else:
+                # Perhitungan regresi linier
                 slope, intercept = np.polyfit(x_vals, y_vals, 1)
+                y_pred = slope * x_vals + intercept
                 r_value = np.corrcoef(x_vals, y_vals)[0,1]
                 r_squared = r_value**2
 
-                st.success("📊 Hasil Regresi")
+                # Hitung %RSD (Relative Standard Deviation dari residu)
+                residu = y_vals - y_pred
+                std_residu = np.std(residu, ddof=1)
+                mean_y = np.mean(y_vals)
+                rsd_percent = (std_residu / mean_y) * 100
+
+                # Tampilkan hasil dan interpretasi
+                st.success("📊 Hasil Regresi Linier")
                 st.write(f"**Persamaan Regresi:** y = {slope:.3f}x + {intercept:.3f}")
-                st.write(f"- **Interpretasi:** Untuk setiap kenaikan 1 satuan pada X, nilai Y diperkirakan akan berubah sebesar {slope:.3f} satuan.")
+                st.write(f"➡️ **Slope (kemiringan):** {slope:.3f}")
+                st.write(f"- **Interpretasi:** Untuk setiap kenaikan 1 satuan X, nilai Y bertambah sebesar {slope:.3f} satuan.")
 
-                st.write(f"**Intercept (titik potong):** {intercept:.3f}")
-                st.write(f"- **Interpretasi:** Ketika X = 0, maka nilai Y diperkirakan sebesar {intercept:.3f}. (Catatan: relevansi tergantung konteks data)")
+                st.write(f"➡️ **Intercept (titik potong Y):** {intercept:.3f}")
+                st.write(f"- **Interpretasi:** Ketika X = 0, nilai Y diperkirakan {intercept:.3f}. Terkadang tidak bermakna jika X = 0 tidak relevan secara kontekstual.")
 
-                st.write(f"**Koefisien Korelasi (r):** {r_value:.3f}")
-                st.write(f"- **Interpretasi:** Nilai r menunjukkan kekuatan dan arah hubungan linier antara X dan Y. Nilai {r_value:.3f} berarti hubungan {'positif' if r_value > 0 else 'negatif' if r_value < 0 else 'tidak ada'} dengan kekuatan {'lemah' if abs(r_value) < 0.3 else 'sedang' if abs(r_value) < 0.7 else 'kuat'}.")
+                st.write(f"➡️ **Koefisien Korelasi (r):** {r_value:.3f}")
+                st.write(f"- **Interpretasi:** Menunjukkan hubungan {'positif' if r_value > 0 else 'negatif' if r_value < 0 else 'tidak ada'} antara X dan Y. Kekuatan hubungan: {'lemah' if abs(r_value) < 0.3 else 'sedang' if abs(r_value) < 0.7 else 'kuat'}.")
 
-                st.write(f"**Koefisien Determinasi (R²):** {r_squared:.3f}")
-                st.write(f"- **Interpretasi:** Sekitar {r_squared*100:.1f}% variasi dalam Y dapat dijelaskan oleh X berdasarkan model ini.")
+                st.write(f"➡️ **Koefisien Determinasi (R²):** {r_squared:.3f}")
+                st.write(f"- **Interpretasi:** {r_squared*100:.1f}% variasi dalam Y dapat dijelaskan oleh variasi dalam X.")
 
+                st.write(f"➡️ **%RSD (Relative Standard Deviation):** {rsd_percent:.2f}%")
+                st.write(f"- **Interpretasi:** Semakin kecil nilai %RSD, maka semakin presisi (konsisten) data terhadap garis regresi. Umumnya, %RSD < 5% dianggap sangat baik.")
+
+                # Plot grafik
                 fig, ax = plt.subplots()
-                ax.scatter(x_vals, y_vals, label='Data')
-                ax.plot(x_vals, slope*x_vals + intercept, color='red', label='Regresi')
+                ax.scatter(x_vals, y_vals, label='Data Asli')
+                ax.plot(x_vals, y_pred, color='red', label='Garis Regresi')
                 ax.set_xlabel('X')
                 ax.set_ylabel('Y')
                 ax.legend()
@@ -291,6 +305,7 @@ elif menu == "Regresi Linier":
 
         except ValueError:
             st.error("Input tidak valid. Gunakan angka dan pisahkan dengan koma.")
+
 
 
 # ==================== KONVERSI =====================
