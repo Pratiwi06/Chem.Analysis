@@ -70,14 +70,14 @@ if menu == "Beranda":
     """, unsafe_allow_html=True)
 
         # Tambahan untuk nama kelompok
-    with st.expander("👥 Kelompok 3 - Chem Squad"):
+    with st.expander("👥 Kelompok 1 - Chem Squad"):
         st.markdown("""
         **Anggota:**
+        - Abdillah Hafiz Xavier
         - Delia Pratiwi
-        - Rizky Andika
-        - Putri Melati
-        - Fajar Sidik
-        - Ayu Lestari
+        - Maulana Aziz  Asfin
+        - Nayla Aulia Fitryani
+        - Salma Seftia Darmawan
         """)
     st.markdown("""
 
