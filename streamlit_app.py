@@ -283,7 +283,7 @@ elif menu == "Regresi Linier":
                 st.write(f"- **Interpretasi:** Untuk setiap kenaikan 1 satuan X, nilai Y bertambah sebesar {slope:.3f} satuan.")
 
                 st.write(f"➡️ **Intercept (titik potong Y):** {intercept:.3f}")
-                st.write(f"- **Interpretasi:** Ketika X = 0, nilai Y diperkirakan {intercept:.3f}. Terkadang tidak bermakna jika X = 0 tidak relevan secara kontekstual.")
+                st.write(f"- **Interpretasi:** Ketika X = 0, nilai Y diperkirakan {intercept:.3f}. ")
 
                 st.write(f"➡️ **Koefisien Korelasi (r):** {r_value:.3f}")
                 st.write(f"- **Interpretasi:** Menunjukkan hubungan {'positif' if r_value > 0 else 'negatif' if r_value < 0 else 'tidak ada'} antara X dan Y. Kekuatan hubungan: {'lemah' if abs(r_value) < 0.3 else 'sedang' if abs(r_value) < 0.7 else 'kuat'}.")
