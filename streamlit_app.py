@@ -268,10 +268,18 @@ elif menu == "Regresi Linier":
                 r_value = np.corrcoef(x_vals, y_vals)[0,1]
                 r_squared = r_value**2
 
-                st.success("Hasil Regresi")
-                st.write(f"Persamaan: y = {slope:.3f}x + {intercept:.3f}")
-                st.write(f"Koefisien Korelasi (r): {r_value:.3f}")
-                st.write(f"R²: {r_squared:.3f}")
+                st.success("📊 Hasil Regresi")
+                st.write(f"**Persamaan Regresi:** y = {slope:.3f}x + {intercept:.3f}")
+                st.write(f"- **Interpretasi:** Untuk setiap kenaikan 1 satuan pada X, nilai Y diperkirakan akan berubah sebesar {slope:.3f} satuan.")
+
+                st.write(f"**Intercept (titik potong):** {intercept:.3f}")
+                st.write(f"- **Interpretasi:** Ketika X = 0, maka nilai Y diperkirakan sebesar {intercept:.3f}. (Catatan: relevansi tergantung konteks data)")
+
+                st.write(f"**Koefisien Korelasi (r):** {r_value:.3f}")
+                st.write(f"- **Interpretasi:** Nilai r menunjukkan kekuatan dan arah hubungan linier antara X dan Y. Nilai {r_value:.3f} berarti hubungan {'positif' if r_value > 0 else 'negatif' if r_value < 0 else 'tidak ada'} dengan kekuatan {'lemah' if abs(r_value) < 0.3 else 'sedang' if abs(r_value) < 0.7 else 'kuat'}.")
+
+                st.write(f"**Koefisien Determinasi (R²):** {r_squared:.3f}")
+                st.write(f"- **Interpretasi:** Sekitar {r_squared*100:.1f}% variasi dalam Y dapat dijelaskan oleh X berdasarkan model ini.")
 
                 fig, ax = plt.subplots()
                 ax.scatter(x_vals, y_vals, label='Data')
@@ -283,6 +291,7 @@ elif menu == "Regresi Linier":
 
         except ValueError:
             st.error("Input tidak valid. Gunakan angka dan pisahkan dengan koma.")
+
 
 # ==================== KONVERSI =====================
 elif menu == "Konversi":
