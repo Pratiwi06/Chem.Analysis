@@ -70,7 +70,7 @@ if menu == "Beranda":
     """, unsafe_allow_html=True)
 
         # Tambahan untuk nama kelompok
-    with st.expander("👥 Kelompok 1-1A - Chem Squad"):
+    with st.expander("👥 Kelompok 1- ANKIM 1A - Politeknik AKA Bogor"):
         st.markdown("""
         **Anggota:**
         - Abdillah Hafiz Xavier
