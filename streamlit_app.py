@@ -561,6 +561,10 @@ elif menu == "Standardisasi":
     st.header("🧪 Standardisasi Larutan")
     st.write("Dalam Normalitas")
 
+    st.markdown(
+        "> ℹ️ **Catatan:** Jika tidak ada *Faktor Pengali (FP)*, masukkan nilai **1**."
+    )
+
     ulangan = st.radio("Pilih jumlah ulangan", ["Duplo (2)", "Triplo (3)"])
     n = 2 if "Duplo" in ulangan else 3
 
@@ -580,7 +584,12 @@ elif menu == "Standardisasi":
             mg = st.number_input(f"Standar baku primer (mg)", key=f"mg_{i}")
             mL = st.number_input(f"Titran (mL)", key=f"ml_{i}")
             BE = st.number_input(f"Bobot Ekuivalen (mg/mgrek)", key=f"be_{i}")
-            f = st.number_input(f"Faktor pengali", key=f"f_{i}", value=1.0)
+            f = st.number_input(
+                f"Faktor pengali",
+                key=f"f_{i}",
+                value=1.0,
+                help="Jika tidak ada faktor pengali, biarkan nilainya 1"
+            )
 
             mg_Standar_Baku_Primer.append(mg)
             mL_Titran.append(mL)
@@ -615,3 +624,4 @@ elif menu == "Standardisasi":
             rsd = (std_N / mean_N) * 100 if mean_N else 0
             st.write(f"**Standar Deviasi (SD)**: {std_N:.4f}")
             st.write(f"**%RSD (Relative Standard Deviation)**: {rsd:.2f}%")
+
