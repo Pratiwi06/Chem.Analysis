@@ -69,16 +69,16 @@ if menu == "Beranda":
     <h3 style='text-align: center; font-size: 20px; color: gray;'> 🌟Selamat Datang di Chem Analysis🌟</h3>
     """, unsafe_allow_html=True)
 
-    # Tambahan untuk nama kelompok
-with st.expander("👥 Kelompok 3 - Chem Squad"):
-    st.markdown("""
-    **Anggota:**
-    - Delia Pratiwi
-    - Rizky Andika
-    - Putri Melati
-    - Fajar Sidik
-    - Ayu Lestari
-    """)
+        # Tambahan untuk nama kelompok
+    with st.expander("👥 Kelompok 3 - Chem Squad"):
+        st.markdown("""
+        **Anggota:**
+        - Delia Pratiwi
+        - Rizky Andika
+        - Putri Melati
+        - Fajar Sidik
+        - Ayu Lestari
+        """)
     st.markdown("""
 
     Gunakan menu di sebelah kiri untuk menjelajah fitur-fitur yang tersedia.
